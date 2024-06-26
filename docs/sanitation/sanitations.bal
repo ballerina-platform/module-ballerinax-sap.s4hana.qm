@@ -63,12 +63,21 @@ type Get record {
     string description?;
     string[] tags?;
     ParametersItem[] parameters;
-    json responses?;
+    map<ResponseCode> responses?;
+};
+
+type Post record {
+    string summary?;
+    string description?;
+    string[] tags?;
+    ParametersItem[] parameters?;
+    map<ResponseCode> responses?;
 };
 
 type Path record {
     json[] parameters?;
     Get get?;
+    Post post?;
 };
 
 type Components record {
@@ -76,6 +85,25 @@ type Components record {
     map<ParametersItem> parameters;
     json responses;
     json securitySchemes;
+};
+
+type Response record{
+    map<json> resposeCodes?;
+};
+
+type ResponseCode record {
+    string description?;
+    map<ResponseJson> content?;
+};
+
+type ResponseJson record {
+    ResponseSchema schema?;
+};
+
+type ResponseSchema record {
+    string title?;
+    string schemaType?;
+    json d?;
 };
 
 type Specification record {
@@ -315,3 +343,42 @@ function getSanitizedSchemaName(string schemaName) returns string {
     }
     return updatedKey;
 }
+
+function SanitizeWrappers(string specPath) returns error? {
+    json openAPISpec = check io:fileReadJson(specPath);
+    Specification spec = check openAPISpec.cloneWithType(Specification);
+    map<Path> paths = spec.paths;
+    foreach var [key,value] in paths.entries() {
+        if value.get != () {
+            Get getPath = value.get ?: {parameters: []};
+            map<ResponseCode> responses = getPath.responses ?: {};
+            foreach [string,ResponseCode] [_,item] in responses.entries() {
+                map<ResponseJson> content = item.content ?: {};
+                if content.hasKey("application/json"){
+                    ResponseJson app = content["application/json"] ?: {};
+                    ResponseSchema schema = app.schema ?: {};
+                    if schema.title == "Wrapper"{
+                        string suffix = key.substring(1,key.length());
+                        schema["title"] = suffix+"Wrapper";
+                    }
+                }
+            }
+        }
+        if value.post != () {
+            Post postPath = value.get ?: {parameters: []};
+            map<ResponseCode> responses = postPath.responses ?: {};
+            foreach [string,ResponseCode] [_,item] in responses.entries() {
+                map<ResponseJson> content = item.content ?: {};
+                if content.hasKey("application/json"){
+                    ResponseJson app = content["application/json"] ?: {};
+                    ResponseSchema schema = app.schema ?: {};
+                    if schema.title == "Wrapper"{
+                        string suffix = key.substring(1,key.length());
+                        schema["title"] = suffix+"Wrapper";
+                    }
+                }
+            }
+        }
+    }
+    check io:fileWriteJson(specPath, spec.toJson());
+};
