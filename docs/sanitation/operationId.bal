@@ -75,14 +75,14 @@ public function main(string apiName) returns error? {
     Specification spec = check openAPISpec.cloneWithType(Specification);
 
     boolean isODATA4 = false;
-    if (spec.x\-sap\-api\-type=="ODATAV4"){
+    if spec.x\-sap\-api\-type == "ODATAV4" {
         isODATA4 = true;
     }
 
     map<Path> paths = spec.paths;
     foreach var [key, value] in paths.entries() {
         if (value.get is Method) {
-            value.get.operationId = check getSanitisedPathName(key, GET,isODATA4, value.get?.responses);
+            value.get.operationId = check getSanitisedPathName(key, GET, isODATA4, value.get?.responses);
         }
         if (value.post is Method) {
             value.post.operationId = check getSanitisedPathName(key, POST, isODATA4);
@@ -100,7 +100,7 @@ public function main(string apiName) returns error? {
     check io:fileWriteJson(specPath, spec.toJson());
 }
 
-function getSanitisedPathName(string key, HttpMethod method,boolean isODATA4, json? response = ()) returns string|error {
+function getSanitisedPathName(string key, HttpMethod method, boolean isODATA4, json? response = ()) returns string|error {
 
     match key {
         "/rejectApprovalRequest" => {
@@ -119,10 +119,9 @@ function getSanitisedPathName(string key, HttpMethod method,boolean isODATA4, js
     regexp:RegExp pathRegex;
     if isODATA4 {
         pathRegex = re `^/([^/]+)?(/[^{]+)?(/[^/{]+)?(/.*)?$`;
-    }else {
+    } else {
         pathRegex = re `/([^(]*)(\(.*\))?(/.*)?`;
     }
-
 
     regexp:Groups? groups = pathRegex.findGroups(key);
     if groups is () {
