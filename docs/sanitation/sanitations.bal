@@ -87,10 +87,6 @@ type Components record {
     json securitySchemes;
 };
 
-type Response record {
-    map<json> resposeCodes?;
-};
-
 type ResponseCode record {
     string description?;
     map<ResponseHeader> content?;
@@ -102,12 +98,14 @@ type ResponseHeader record {
 
 type ResponseSchema record {
     string title?;
+    string 'type?;
     string schemaType?;
     map<ResponseProperties> properties?;
 };
 
 type ResponseProperties record {
     string title?;
+    string 'type?;
     string objectType?;
     json properties?;
 };
@@ -132,7 +130,7 @@ public function main(string apiName) returns error? {
     string specPath = string `spec/${apiName}.json`;
     check sanitizeSchemaNames(apiName, specPath);
     check sanitizeEnumParamters(specPath);
-    check sanitizResponseSchemaNames(specPath);
+    check sanitizeResponseSchemaNames(specPath);
 }
 
 function sanitizeEnumParamters(string specPath) returns error? {
@@ -351,11 +349,11 @@ function getSanitizedSchemaName(string schemaName) returns string {
     return updatedKey;
 }
 
-function sanitizResponseSchemaNames(string specPath) returns error? {
+function sanitizeResponseSchemaNames(string specPath) returns error? {
     json openAPISpec = check io:fileReadJson(specPath);
     Specification spec = check openAPISpec.cloneWithType(Specification);
     boolean isODATA4 = false;
-    if (spec.x\-sap\-api\-type=="ODATAV4"){
+    if spec.x\-sap\-api\-type == "ODATAV4" {
         isODATA4 = true;
     }
     map<Path> paths = spec.paths;
@@ -363,66 +361,55 @@ function sanitizResponseSchemaNames(string specPath) returns error? {
         if value.get != () {
             Get getPath = value.get ?: {parameters: []};
             map<ResponseCode> responses = getPath.responses ?: {};
-            foreach [string,ResponseCode] [_,item] in responses.entries() {
+            foreach [string, ResponseCode] [_, item] in responses.entries() {
                 if item.description == "Retrieved entities" {
                     map<ResponseHeader> content = item.content ?: {};
-                    if content.hasKey("application/json"){
-                        ResponseHeader app = content["application/json"] ?: {};
-                        ResponseSchema schema = app.schema ?: {};
-                        if !isODATA4 {
-                            ResponseProperties properties = schema.properties["d"] ?: {properties: ()};
-                            string prefix = properties.title ?: string ``;
-                            prefix =prefix.trim();
-                            if prefix.startsWith("Collection of"){
-                                prefix = prefix.substring(14,prefix.length());
-                                prefix = "CollectionOf"+prefix;
-                            }
-                            if prefix.endsWith("Type"){
-                                prefix = prefix.substring(0,prefix.length()-4);
-                            }
-                            schema.title = prefix+"Wrapper";
+                    ResponseHeader app = content["application/json"] ?: {};
+                    ResponseSchema schema = app.schema ?: {};
+                    if !isODATA4 {
+                        ResponseProperties properties = schema.properties["d"] ?: {properties: ()};
+                        string sanitizedTitle = properties.title ?: "";
+                        sanitizedTitle = sanitizedTitle.trim();
+                        if sanitizedTitle.startsWith("Collection of") {
+                            sanitizedTitle = "CollectionOf" + sanitizedTitle.substring(14, sanitizedTitle.length());
                         }
-                        else {
-                            string schemaTitle = schema.title?: string ``;
-                            if schemaTitle.startsWith("Collection of"){
-                                schema.title = "CollectionOf"+schemaTitle.substring(14,schemaTitle.length()-5);
-                            }
+                        if sanitizedTitle.endsWith("Type") {
+                            sanitizedTitle = sanitizedTitle.substring(0, sanitizedTitle.length() - 4);
+                        }
+                        schema.title = sanitizedTitle + "Wrapper";
+                        properties.title = sanitizedTitle;
+                    } else {
+                        string sanitizedTitle = schema.title ?: "";
+                        if sanitizedTitle.startsWith("Collection of") {
+                            schema.title = "CollectionOf" + sanitizedTitle.substring(14, sanitizedTitle.length() - 5);
                         }
                     }
-                }
-                else if item.description == "Retrieved entity" {
+                } else if item.description == "Retrieved entity" {
                     map<ResponseHeader> content = item.content ?: {};
-                    if content.hasKey("application/json"){
-                        ResponseHeader app = content["application/json"] ?: {};
-                        ResponseSchema schema = app.schema ?: {};
-                        string schemaTitle = schema.title ?:string `` ;
-                        if schemaTitle.endsWith("Type"){
-                            schema.title = schemaTitle.substring(0,schemaTitle.length()-4);
-                        }
-                    } 
+                    ResponseHeader app = content["application/json"] ?: {};
+                    ResponseSchema schema = app.schema ?: {};
+                    string sanitizedTitle = schema.title ?: "";
+                    if sanitizedTitle.endsWith("Type") {
+                        sanitizedTitle = sanitizedTitle.substring(0, sanitizedTitle.length() - 4);
+                    }
+                    schema.title = sanitizedTitle + "Wrapper";
                 }
             }
         }
         if value.post != () {
             Post postPath = value.post ?: {parameters: []};
             map<ResponseCode> responses = postPath.responses ?: {};
-            foreach [string,ResponseCode] [_,item] in responses.entries() {
-                if item.description == "Created entity" || item.description == "Success"{
-                    map<ResponseHeader> content = item.content ?: {};
-                    if content.hasKey("application/json"){
-                        ResponseHeader app = content["application/json"] ?: {};
-                        ResponseSchema schema = app.schema ?: {};
-                        string schemaTitle = schema.title ?: string ``;
-                        if schemaTitle == "Wrapper"{
-                            schemaTitle = key.substring(1,key.length())+"Wrapper";
-                            schema.title = schemaTitle;
-                        }
-                        else if schemaTitle.endsWith("Type") {
-                            schema.title = schemaTitle.substring(0,schemaTitle.length()-4);
-                        }
-                    }
+            foreach [string, ResponseCode] [_, item] in responses.entries() {
+                map<ResponseHeader> content = item.content ?: {};
+                ResponseHeader app = content["application/json"] ?: {};
+                ResponseSchema schema = app.schema ?: {};
+                string schemaTitle = schema.title ?: "";
+                if schemaTitle == "Wrapper" {
+                    schema.title = key.substring(1, key.length()) + "Wrapper";
+                    schema.title = schemaTitle;
+                } else if schemaTitle.endsWith("Type") {
+                    schema.title = schemaTitle.substring(0, schemaTitle.length() - 4);
                 }
-
             }
         }
     }
