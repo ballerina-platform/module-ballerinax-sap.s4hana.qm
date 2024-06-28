@@ -466,7 +466,12 @@ function sanitizeResponseSchemaNames(string specPath) returns error? {
                     schema.title = key.substring(1, key.length()) + "Wrapper";
                     schema.title = schemaTitle;
                 } else if schemaTitle.endsWith("Type") {
-                    schema.title = schemaTitle.substring(0, schemaTitle.length() - 4);
+                    schemaTitle = schemaTitle.substring(0, schemaTitle.length() - 4);
+                    if !isODATA4 {
+                        schema.title = schemaTitle + "Wrapper";
+                    } else {
+                        schema.title = schemaTitle;
+                    }
                 }
             }
         }
