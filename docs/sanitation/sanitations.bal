@@ -147,7 +147,14 @@ function sanitizeEnumParamters(string specPath) returns error? {
     }
 
     map<ParametersItem> selectedParameters = {};
-    map<EnumSchema> selectedSchemas = {};
+    map<EnumSchema> schemasLookup = {};
+    [string, EnumSchema][] selectedSchemas = [];
+    int selectedSchemaIndex = 0;
+    record {|
+        int index;
+        string possibleDuplicateKey1;
+        string possibleDuplicateKey2;
+    |}[] possibleDuplicateSchemaIndex = [];
 
     map<Path> paths = spec.paths;
     foreach var [key, value] in paths.entries() {
@@ -172,25 +179,62 @@ function sanitizeEnumParamters(string specPath) returns error? {
             if items.'enum is () {
                 continue;
             }
-            string sanitizedParamName = getSanitizedParameterName(key, param.name ?: "", isODATA4);
-
-            selectedSchemas[sanitizedParamName] = check param.schema.cloneWithType(EnumSchema);
-            selectedParameters[sanitizedParamName] = {
+            [string, string, string] sanitizedParamName = getSanitizedParameterName(key, param.name ?: "", isODATA4);
+            schemasLookup[sanitizedParamName[0]] = check param.schema.cloneWithType(EnumSchema);
+            selectedSchemas.push([sanitizedParamName[0], <EnumSchema>schemasLookup[sanitizedParamName[0]]]);
+            selectedParameters[sanitizedParamName[0]] = {
                 name: param.name,
                 'in: param.'in,
                 description: param.description,
                 explode: param.explode,
                 schema: {
-                    "$ref": "#/components/schemas/" + sanitizedParamName
+                    "$ref": "#/components/schemas/" + sanitizedParamName[0]
                 }
             };
             parameters[i] = {
-                \$ref: "#/components/parameters/" + sanitizedParamName
+                \$ref: "#/components/parameters/" + sanitizedParamName[0]
             };
+            if sanitizedParamName[1] != "" {
+                possibleDuplicateSchemaIndex.push({
+                    index: selectedSchemaIndex,
+                    possibleDuplicateKey1: sanitizedParamName[1],
+                    possibleDuplicateKey2: sanitizedParamName[2]
+                });
+            }
+            selectedSchemaIndex += 1;
         }
     }
 
-    foreach var [schemaName, value] in selectedSchemas.entries() {
+    map<EnumSchema> uniqueSchemas = {};
+    int j = 0;
+    foreach int i in 0 ... selectedSchemas.length() - 1 {
+        if i == possibleDuplicateSchemaIndex[j].index {
+            string duplicateKey = possibleDuplicateSchemaIndex[j].possibleDuplicateKey1;
+            EnumSchema? possibleDuplicateSchema = schemasLookup[duplicateKey];
+            if possibleDuplicateSchema is () {
+                duplicateKey = possibleDuplicateSchemaIndex[j].possibleDuplicateKey2;
+                possibleDuplicateSchema = schemasLookup[duplicateKey];
+            }
+            if possibleDuplicateSchema !is () {
+                if selectedSchemas[i][1].items.'enum.length() == possibleDuplicateSchema.items.'enum.length() {
+                    boolean isEqual = possibleDuplicateSchema.items.'enum.every(val => selectedSchemas[i][1].items.'enum.indexOf(val) != ());
+                    if isEqual {
+                        selectedParameters[selectedSchemas[i][0]].schema = {
+                            "$ref": "#/components/schemas/" + duplicateKey
+                        };
+                        j += 1;
+                        continue;
+                    }
+                }
+            }
+            uniqueSchemas[selectedSchemas[i][0]] = selectedSchemas[i][1];
+            j += 1;
+        } else {
+            uniqueSchemas[selectedSchemas[i][0]] = selectedSchemas[i][1];
+        }
+    }
+
+    foreach var [schemaName, value] in uniqueSchemas.entries() {
         spec.components.schemas[schemaName] = value.toJson();
     }
 
@@ -202,9 +246,11 @@ function sanitizeEnumParamters(string specPath) returns error? {
 
 }
 
-function getSanitizedParameterName(string key, string paramName, boolean isODATA4) returns string {
+function getSanitizedParameterName(string key, string paramName, boolean isODATA4) returns [string, string, string] {
 
     string parameterName = "";
+    string possibleDuplicateKey1 = "";
+    string possibleDuplicateKey2 = "";
 
     regexp:RegExp pathRegex;
     if isODATA4 {
@@ -216,7 +262,7 @@ function getSanitizedParameterName(string key, string paramName, boolean isODATA
     regexp:Groups? groups = pathRegex.findGroups(key);
     if groups is () {
         // Can be requestApproval/ batch query path
-        return "";
+        return ["", "", ""];
     }
 
     match (groups.length()) {
@@ -234,6 +280,7 @@ function getSanitizedParameterName(string key, string paramName, boolean isODATA
             regexp:Span? basePath = groups[1];
             if basePath !is () {
                 parameterName += basePath.substring().concat("ByKey");
+                possibleDuplicateKey1 = basePath.substring();
             }
         }
         4 => {
@@ -247,38 +294,44 @@ function getSanitizedParameterName(string key, string paramName, boolean isODATA
                     resourcePathString = resourcePathString.substring(3);
                 }
                 resourcePathString = resourcePathString.substring(0, 1).toUpperAscii() + resourcePathString.substring(1);
+                possibleDuplicateKey1 = resourcePathString;
 
                 regexp:Span? basePath = groups[1];
                 if basePath is () {
-                    return "";
+                    return ["", "", ""];
                 }
                 parameterName += resourcePathString.concat("Of", basePath.substring());
+                possibleDuplicateKey2 = basePath.substring() + resourcePathString;
             }
         }
     }
 
+    string postfix = "";
     match (paramName) {
         "$filter" => {
-            parameterName += "FilterOptions";
+            postfix = "FilterOptions";
         }
         "$select" => {
-            parameterName += "SelectOptions";
+            postfix = "SelectOptions";
         }
         "$expand" => {
-            parameterName += "ExpandOptions";
+            postfix = "ExpandOptions";
         }
         "$search" => {
-            parameterName += "SearchOptions";
+            postfix = "SearchOptions";
         }
         "$orderby" => {
-            parameterName += "OrderByOptions";
+            postfix = "OrderByOptions";
         }
         _ => {
             io:println("Error: Invalid parameter name: " + parameterName);
         }
     }
 
-    return parameterName;
+    parameterName += postfix;
+    possibleDuplicateKey1 = possibleDuplicateKey1 == "" ? "" : possibleDuplicateKey1 + postfix;
+    possibleDuplicateKey2 = possibleDuplicateKey2 == "" ? "" : possibleDuplicateKey2 + postfix;
+    return [parameterName, possibleDuplicateKey1, possibleDuplicateKey2];
 }
 
 function sanitizeSchemaNames(string apiName, string specPath) returns error? {
