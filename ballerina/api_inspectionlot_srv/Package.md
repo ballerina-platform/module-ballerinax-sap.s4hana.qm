@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-
+The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamless integration with the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INFORECORD_PROCESS_SRV/overview).In the SAP system, you process quality inspections on the basis of inspection lots. The data relating to a quality inspection is grouped into several entities. With this service it is possible, for example, to update inspection lot header data or to create inspection results and usage decisions.
 
 ## Setup guide
 
@@ -13,7 +13,7 @@ designed for large-scale enterprises by SAP SE.
 
    ![Display Scenarios](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap/main/docs/setup/3-1-display-scenarios.png)
 
-3. In the search bar, type `` and select the corresponding scenario from the results.
+3. In the search bar, type `Quality Inspection Process Integration` and select the corresponding scenario from the results.
 
    ![Search Sales Order](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap/main/docs/setup/3-2-search-sales-order.png)
 
@@ -42,7 +42,7 @@ To use the `sap.s4hana.api_inspectionlot_srv` connector in your Ballerina applic
 Import the `sap.s4hana.api_inspectionlot_srv` module.
 
 ```ballerina
-
+import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionlot
 ```
 
 ### Step 2: Instantiate a new connector
@@ -54,7 +54,7 @@ configurable string hostname = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-
+inspectionlot:Client inspectionlotClient = check new (
     hostname = hostname,
     config = {
         auth: {
@@ -70,7 +70,7 @@ configurable string password = ?;
 Now, utilize the available connector operations.
 
 ```ballerina
-
+inspectionlot:Wrapper createdInspectionlot = check inspectionlotClient->createA_Inspectionlot();
 ```
 
 ### Step 4: Run the Ballerina application
