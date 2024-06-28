@@ -33,6 +33,7 @@ type Schema record {
 type ParametersItem record {
     string name?;
     string 'in?;
+    boolean required?;
     string description?;
     boolean explode?;
     Schema schema?;
@@ -53,6 +54,7 @@ type EnumSchema record {
 type EnumParametersItem record {
     string name;
     string 'in;
+    boolean required?;
     string description;
     Schema schema;
     boolean explode;
@@ -70,6 +72,7 @@ type Post record {
     string summary?;
     string description?;
     string[] tags?;
+    json requestBody?;
     ParametersItem[] parameters?;
     map<ResponseCode> responses?;
 };
@@ -392,7 +395,9 @@ function sanitizeResponseSchemaNames(string specPath) returns error? {
                     if sanitizedTitle.endsWith("Type") {
                         sanitizedTitle = sanitizedTitle.substring(0, sanitizedTitle.length() - 4);
                     }
-                    schema.title = sanitizedTitle + "Wrapper";
+                    if !isODATA4 {
+                        schema.title = sanitizedTitle + "Wrapper";
+                    }
                 }
             }
         }
