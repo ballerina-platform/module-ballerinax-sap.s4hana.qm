@@ -8,7 +8,7 @@ on:
         description: Select Connector
         required: true
         options:
-          - qm
+          - api_inspectionlot_srv
 
 jobs:
   call_workflow:

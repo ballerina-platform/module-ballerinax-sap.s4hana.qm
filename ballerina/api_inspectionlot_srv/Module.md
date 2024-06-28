@@ -35,11 +35,11 @@ designed for large-scale enterprises by SAP SE.
 
 ## Quickstart
 
-To use the `sap.s4hana.procurement` connector in your Ballerina application, modify the `.bal` file as follows:
+To use the `sap.s4hana.api_inspectionlot_srv` connector in your Ballerina application, modify the `.bal` file as follows:
 
 ### Step 1: Import the module
 
-Import the `sap.s4hana.procurement` module.
+Import the `sap.s4hana.api_inspectionlot_srv` module.
 
 ```ballerina
 

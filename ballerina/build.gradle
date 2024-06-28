@@ -85,7 +85,7 @@ task clean {
 }
 
 task build {
-    build.dependsOn ':qm-ballerina:qm:build'
+    build.dependsOn ':qm-ballerina:api_inspectionlot_srv:build'
 }
 
 publishToMavenLocal.dependsOn build

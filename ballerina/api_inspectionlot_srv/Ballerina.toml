@@ -1,11 +1,11 @@
 [package]
 org = "ballerinax"
-name = "sap.s4hana.qm"
+name = "sap.s4hana.api_inspectionlot_srv"
 version = "1.0.0"
 distribution = "2201.9.0"
 authors = ["Ballerina"]
 keywords = ["Business Management/ERP", "Cost/Paid", "Vendor/SAP", "Production Planning", "PP"]
-export = ["sap.s4hana.qm"]
+export = ["sap.s4hana.api_inspectionlot_srv"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.qm"
 icon = "../icon.png"
 license = ["Apache-2.0"]
