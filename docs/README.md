@@ -16,7 +16,12 @@ _Edition_: Swan Lake
    `Api_sales_contract_srvA_Salesorder` -> `A_Salesorder`
    `com\.sap\.gateway\.srvd_a2x\.api_defect\.v0001\.Defect_Type` -> `Defect`
 
-3. Add operation Ids. This is more user-friendly with SAP-specific scripts. The logic for parameter sanitization is
+3. Improve response schema names by removing unnecessary prefixes and suffixes and renaming them to be more descriptive.
+   `wrapper` -> `A_InspectionlotWrapper`
+   `Collection of A_InspectionlotType` -> `CollectionOfA_Inspectionlot`
+
+
+4. Add operation Ids. This is more user-friendly with SAP-specific scripts. The logic for parameter sanitization is
    reused, making it less complicated for the tool. The pattern is as follows:
    `${HTTP Method}${The Resource Name}Of${Base Path Name}`
    `/salesorder(asdad)/to_Item` => `getTo_ItemOfSalesorder`
