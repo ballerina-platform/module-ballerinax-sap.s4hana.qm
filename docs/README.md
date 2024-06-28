@@ -20,7 +20,6 @@ _Edition_: Swan Lake
    `wrapper` -> `A_InspectionlotWrapper`
    `Collection of A_InspectionlotType` -> `CollectionOfA_Inspectionlot`
 
-
 4. Add operation Ids. This is more user-friendly with SAP-specific scripts. The logic for parameter sanitization is
    reused, making it less complicated for the tool. The pattern is as follows:
    `${HTTP Method}${The Resource Name}Of${Base Path Name}`
