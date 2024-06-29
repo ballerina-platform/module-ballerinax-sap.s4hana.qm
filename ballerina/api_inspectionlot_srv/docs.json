@@ -3,5 +3,5 @@
   "communication-scenario": "Quality Inspection Process Integration",
   "import-statement": "import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionlot",
   "client-init": "inspectionlot:Client inspectionlotClient = check new (",
-  "api-invocation": "inspectionlot:Wrapper createdInspectionlot = check inspectionlotClient->createA_Inspectionlot();"
+  "api-invocation": "inspectionlot:A_InspectionLotWrapper createdInspectionlot = check inspectionlotClient->createA_Inspectionlot();"
 }

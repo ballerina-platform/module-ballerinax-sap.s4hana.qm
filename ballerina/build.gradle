@@ -85,7 +85,8 @@ task clean {
 }
 
 task build {
-    build.dependsOn ':qm-ballerina:api_inspectionlot_srv:build'
+    dependsOn(updateDocumentationFiles)
+    dependsOn(':qm-ballerina:api_inspectionlot_srv:commitTomlFiles')
 }
 
 publishToMavenLocal.dependsOn build
