@@ -130,6 +130,7 @@
   "paths": {
     "/A_InspectionCharacteristic": {
       "get": {
+        "operationId": "listA_InspectionCharacteristics",
         "summary": "Reads inspection characteristics.",
         "description": "Retrieves inspection characteristics created for inspection operations.",
         "tags": [
@@ -232,6 +233,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionCharacteristic",
         "summary": "Reads a specific inspection characteristic.",
         "description": "Retrieves a single inspection characteristic by its key fields (inspection lot, current node number from order counter, inspection characteristic).",
         "tags": [
@@ -302,6 +304,7 @@
         }
       ],
       "get": {
+        "operationId": "listInspResultValuesOfA_InspectionCharacteristic",
         "summary": "Reads single inspection results for an inspection characteristic.",
         "description": "Retrieves single inspection results for an inspection characteristic of an inspection lot or inspection point by following the corresponding association.",
         "tags": [
@@ -368,6 +371,7 @@
         }
       },
       "post": {
+        "operationId": "createInspResultValueOfA_InspectionCharacteristic",
         "summary": "Creates a single inspection result for an inspection characteristic.",
         "description": "Creates a single inspection result for an inspection characteristic of an inspection lot or inspection point by following the corresponding association.",
         "tags": [
@@ -442,6 +446,7 @@
         }
       ],
       "get": {
+        "operationId": "listInspSmplResultsOfA_InspectionCharacteristic",
         "summary": "Reads a summarized inspection result for an inspection characteristic of an inspection point.",
         "description": "Retrieves a summarized inspection result for an inspection characteristic of an inspection point by following the corresponding association.",
         "tags": [
@@ -508,6 +513,7 @@
         }
       },
       "post": {
+        "operationId": "createInspSmplResultOfA_InspectionCharacteristic",
         "summary": "Creates a summarized inspection result for an inspection characteristic of an inspection point.",
         "description": "Creates a summarized inspection result for an inspection characteristic of an inspection point by following the corresponding association.",
         "tags": [
@@ -550,6 +556,7 @@
     },
     "/A_InspectionLot": {
       "get": {
+        "operationId": "listA_InspectionLots",
         "summary": "Reads inspection lots with data at header level.",
         "description": "Retrieves inspection lots with data at inspection lot header level, for example, material, plant, inspection type, and inspection lot origin.",
         "tags": [
@@ -618,6 +625,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspectionLot",
         "summary": "Creates an inspection lot.",
         "description": "Creates an inspection lot of origin 89 (Miscellaneous). If an inspection specification, for example a plan, can be determined, inspection operations and characteristics are created as well.",
         "tags": [
@@ -671,6 +679,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionLot",
         "summary": "Reads the header data of a specific inspection lot.",
         "description": "Retrieves a specific inspection lot with data at inspection lot header level, for example, material, plant, inspection type, and inspection lot origin.",
         "tags": [
@@ -707,6 +716,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspectionLot",
         "summary": "Updates the header data of a specific inspection lot.",
         "description": "Updates the header data of a specific inspection lot, for example, material, plant, inspection type, or inspection lot origin.",
         "tags": [
@@ -753,6 +763,7 @@
         }
       ],
       "get": {
+        "operationId": "getInspectionLotWithStatusOfA_InspectionLot",
         "summary": "Reads status information for an inspection lot.",
         "description": "Retrieves inspection lot status information for a specific inspection lot by following the corresponding association.",
         "tags": [
@@ -789,6 +800,7 @@
     },
     "/A_InspectionLotWithStatus": {
       "get": {
+        "operationId": "listA_InspectionLotWithStatuses",
         "summary": "Reads inspection lot status information.",
         "description": "Retrieves inspection lot status information, for example, whether results are confirmed or defects are recorded.",
         "tags": [
@@ -868,6 +880,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionLotWithStatus",
         "summary": "Reads inspection lot status information by its key.",
         "description": "Retrieves the inspection lot status information of a specific inspection lot, for example, whether results are confirmed or defects are recorded.",
         "tags": [
@@ -903,6 +916,7 @@
     },
     "/A_InspectionOperation": {
       "get": {
+        "operationId": "listA_InspectionOperations",
         "summary": "Reads inspection operations.",
         "description": "Retrieves inspection operations including data from the inspection plan.",
         "tags": [
@@ -992,6 +1006,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionOperation",
         "summary": "Reads a specific inspection operation.",
         "description": "Retrieves a single inspection operation by its key fields (inspection lot, current node number from order counter).",
         "tags": [
@@ -1027,6 +1042,7 @@
     },
     "/A_InspectionResult": {
       "get": {
+        "operationId": "listA_InspectionResults",
         "summary": "Reads summarized inspection results.",
         "description": "Retrieves summarized inspection results recorded for inspection characteristics.",
         "tags": [
@@ -1092,6 +1108,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspectionResult",
         "summary": "Creates a summarized inspection result.",
         "description": "Creates a summarized inspection result for an inspection characteristic.",
         "tags": [
@@ -1165,6 +1182,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionResult",
         "summary": "Reads a specific summarized inspection result for an inspection characteristic.",
         "description": "Retrieves a single summarized inspection result for an inspection characteristic by its key fields (inspection lot, current node number of order counter, inspection characteristic).",
         "tags": [
@@ -1198,6 +1216,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspectionResult",
         "summary": "Updates a specific summarized inspection result for an inspection characteristic.",
         "description": "Updates a single summarized inspection result for an inspection characteristic. You need to provide values for the key fields (inspection lot, current node number of order counter,  inspection characteristic).",
         "tags": [
@@ -1232,6 +1251,7 @@
     },
     "/A_InspectionResultValue": {
       "get": {
+        "operationId": "listA_InspectionResultValues",
         "summary": "Reads single inspection result values.",
         "description": "Retrieves single inspection results recorded for inspection characteristics or inspection point characteristics.",
         "tags": [
@@ -1297,6 +1317,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspectionResultValue",
         "summary": "Not supported.",
         "description": "This operation is not supported. To create a single inspection result for an inspection characteristic, you execute a POST request against the URI addressing the association-related entity set A_InspectionResultValue for the specified characteristic.",
         "tags": [
@@ -1380,6 +1401,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionResultValue",
         "summary": "Reads a specific single inspection result value.",
         "description": "Retrieves a specific single inspection result recorded for an inspection characteristic or an inspection point characteristic by its key fields (inspection lot, current node number of order counter, inspection characteristic, number of the individual result).",
         "tags": [
@@ -1413,6 +1435,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspectionResultValue",
         "summary": "Updates a specific single inspection result value.",
         "description": "Updates a specific single inspection result recorded for an inspection characteristic or an inspection point characteristic. You need to provide values for the key fields (inspection lot, current node number of order counter, inspection characteristic, number of the individual result).",
         "tags": [
@@ -1447,6 +1470,7 @@
     },
     "/A_InspectionSubset": {
       "get": {
+        "operationId": "listA_InspectionSubsets",
         "summary": "Reads inspection points.",
         "description": "Retrieves inspection point records of the type \"freely defined\".",
         "tags": [
@@ -1512,6 +1536,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspectionSubset",
         "summary": "Creates an inspection point and related inspection point characteristics.",
         "description": "Creates an inspection point record of the type \"freely defined\", together with the related inspection point characteristic records.",
         "tags": [
@@ -1585,6 +1610,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionSubset",
         "summary": "Reads a specific inspection point.",
         "description": "Retrieves a single inspection point by its key fields (inspection lot, current node number from order counter, inspection point number).",
         "tags": [
@@ -1618,6 +1644,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspectionSubset",
         "summary": "Updates a specific inspection point.",
         "description": "Updates a single inspection point. You need to provide values for the key fields (inspection lot, current node number from order counter, inspection point number).",
         "tags": [
@@ -1652,6 +1679,7 @@
     },
     "/A_InspLotMatlDocItem": {
       "get": {
+        "operationId": "listA_InspLotMatlDocItems",
         "summary": "Reads stock postings for inspection lots in the form of material document items.",
         "description": "Reads material document items for inspection lots to get an overview of the stock postings for inspection lots.",
         "tags": [
@@ -1720,6 +1748,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspLotMatlDocItem",
         "summary": "Creates a stock posting for an inspection lot in the form of a material document item.",
         "description": "Creates a material document item for an inspection lot, which includes stock posting data and a list of serial numbers if the inspection lot has serialized materials.",
         "tags": [
@@ -1783,6 +1812,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspLotMatlDocItem",
         "summary": "Reads a specific stock posting for an inspection lot.",
         "description": "Retrieves a single material document item by its key fields (inspection lot, line number in list of inspection lot material document items).",
         "tags": [
@@ -1843,6 +1873,7 @@
         }
       ],
       "get": {
+        "operationId": "listInspLotMatlDocItmSrlNmbrsOfA_InspLotMatlDocItem",
         "summary": "Reads a specific stock posting with serial numbers posted for an inspection lot.",
         "description": "Retrieves a specific stock posting including serial numbers to get an overview of the stock posting and the serial numbers posted with it.",
         "tags": [
@@ -1911,6 +1942,7 @@
     },
     "/A_InspLotMatlDocItmSrlNmbr": {
       "get": {
+        "operationId": "listA_InspLotMatlDocItmSrlNmbrs",
         "summary": "Reads information on serial numbers for stock postings for inspection lots.",
         "description": "Reads information on serial numbers for stock postings for inspection lots, for example, its equipment number.",
         "tags": [
@@ -2010,6 +2042,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspLotMatlDocItmSrlNmbr",
         "summary": "Reads information on a specific serial number for a stock posting for an inspection lot.",
         "description": "Retrieves information on a single serial number by its key fields (inspection lot, line number in list of inspection lot material document items, equipment).",
         "tags": [
@@ -2045,6 +2078,7 @@
     },
     "/A_InspLotSerialNumber": {
       "get": {
+        "operationId": "listA_InspLotSerialNumbers",
         "summary": "Reads serial numbers for inspection lots.",
         "description": "Reads serial numbers for inspection lots with serialized parts or materials.",
         "tags": [
@@ -2134,6 +2168,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspLotSerialNumber",
         "summary": "Reads a specific serial number for an inspection lot.",
         "description": "Retrieves a single serial number by its key fields (inspection lot, serial number).",
         "tags": [
@@ -2169,6 +2204,7 @@
     },
     "/A_InspLotUsageDecision": {
       "get": {
+        "operationId": "listA_InspLotUsageDecisions",
         "summary": "Reads usage decisions made for inspection lots.",
         "description": "Retrieves usage decisions that were made for inspection lots.",
         "tags": [
@@ -2234,6 +2270,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspLotUsageDecision",
         "summary": "Creates a usage decision.",
         "description": "Creates a usage decision record for an inspection lot.",
         "tags": [
@@ -2287,6 +2324,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspLotUsageDecision",
         "summary": "Reads a specific usage decision for an inspection lot.",
         "description": "Retrieves a single usage decision by its key field inspection lot.",
         "tags": [
@@ -2320,6 +2358,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspLotUsageDecision",
         "summary": "Updates a specific usage decision for an inspection lot.",
         "description": "Updates a single usage decision. You need to provide a value for the key field inspection lot.",
         "tags": [
@@ -2354,6 +2393,7 @@
     },
     "/A_InspSampleCharacteristic": {
       "get": {
+        "operationId": "listA_InspSampleCharacteristics",
         "summary": "Reads inspection characteristics of inspection points.",
         "description": "Retrieves inspection characteristics of inspection points.",
         "tags": [
@@ -2463,6 +2503,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspSampleCharacteristic",
         "summary": "Reads a specific inspection characteristic of an inspection point.",
         "description": "Retrieves a single inspection characteristic of an inspection point by its key fields (inspection lot, current node number of order counter, inspection characteristic).",
         "tags": [
@@ -2498,6 +2539,7 @@
     },
     "/A_InspSampleResult": {
       "get": {
+        "operationId": "listA_InspSampleResults",
         "summary": "Reads summarized inspection results recorded for inspection points.",
         "description": "Retrieves summarized inspection results recorded for inspection characteristics of inspection points.",
         "tags": [
@@ -2563,6 +2605,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspSampleResult",
         "summary": "Not supported.",
         "description": "This operation is not supported. To create a summarized inspection result for an inspection characteristic of an inspection point, you execute a POST request against the URI addressing the association-related entity set A_InspSampleResult for the specified characteristic and inspection point.",
         "tags": [
@@ -2646,6 +2689,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspSampleResult",
         "summary": "Reads a specific summarized inspection result recorded for an inspection point.",
         "description": "Retrieves a single summarized inspection result recorded for an inspection point by its key fields (inspection lot, current node number of order counter, inspection characteristic, inspection point).",
         "tags": [
@@ -2679,6 +2723,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspSampleResult",
         "summary": "Updates a specific summarized inspection result recorded for an inspection point.",
         "description": "Updates a single summarized inspection result recorded for an inspection point. You need to provide values for the key fields (inspection lot, current node number of order counter, inspection characteristic, inspection point).",
         "tags": [
@@ -2713,6 +2758,7 @@
     },
     "/A_InspectionSubsetTrigger_valuation": {
       "post": {
+        "operationId": "createA_InspectionSubsetTrigger_valuation",
         "summary": "Triggers the automatic valuation of an inspection point.",
         "description": "Triggers the automatic valuation of an inspection point. As a prerequisite, the inspection point must be in a state that allows automatic valuation.",
         "tags": [
@@ -2778,6 +2824,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
