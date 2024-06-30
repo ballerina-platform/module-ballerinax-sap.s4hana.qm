@@ -65,7 +65,7 @@ function initializeClientsForS4HanaServer() returns error? {
 @test:Config {
 }
 function testGetA_InspectionLot() returns error? {
-    A_InspectionLotWrapper inspectionlot = check s4HanaClient->getA_InspectionLot("010000002600");
+    CollectionOfA_InspectionLotWrapper inspectionlot = check s4HanaClient->listA_InspectionLots({});
     test:assertTrue(inspectionlot.d !is (), "The purchasing info record is expected to be non-empty.");
 }
 
@@ -73,9 +73,10 @@ function testGetA_InspectionLot() returns error? {
 @test:Config {
 }
 function testCreateInspectionlot() returns error? {
-    A_InspectionLotWrapper|error purchasingInfoRecord = s4HanaClient->createA_InspectionLot({
-    InspectionLot: ""});
-    test:assertTrue(purchasingInfoRecord is error, "The purchasing info record response expected to be 500");
-    error e = <error>purchasingInfoRecord;
+    A_InspectionLotWrapper|error createdInspectionlot = s4HanaClient->createA_InspectionLot({
+        InspectionLot: "10000002600" 
+    });
+    test:assertTrue(createdInspectionlot is error, "The purchasing info record response expected to be 500");
+    error e = <error>createdInspectionlot;
     test:assertEquals(e.detail()["statusCode"], 500, "Expected 500 status code");
 }

@@ -33,6 +33,13 @@ listener http:Listener ep0 = new (9090,
 );
 
 service /sap/opu/odata/sap/API_INSPECTIONLOT_SRV on ep0 {
+
+resource function head .() returns http:Response {
+        http:Response res = new;
+        res.statusCode = 200;
+        res.setHeader("X-CSRF-TOKEN", "Quality-Inspection-Process-Integration");
+        return res;
+}
     # Reads inspection lots with data at header level.
     #
     # + \$top - Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)
@@ -48,36 +55,10 @@ service /sap/opu/odata/sap/API_INSPECTIONLOT_SRV on ep0 {
     resource function get A_InspectionLot(int? \$top, int? \$skip, string? \$filter, "allpages"|"none"? \$inlinecount, A_InspectionLotOrderByOptions? \$orderby, A_InspectionLotSelectOptions? \$select, A_InspectionLotExpandOptions? \$expand) returns CollectionOfA_InspectionLotWrapper|http:Response {
         return {
             "d": {
-                "__metadata": {
-                    "id": "<host>/sap/opu/odata/sap/API_INSPECTIONLOT_SRV/A_InspectionLot('10000002600')",
-                    "uri": "<host>/sap/opu/odata/sap/API_INSPECTIONLOT_SRV/A_InspectionLot('10000002600')",
-                    "type": "API_INSPECTIONLOT_SRV.A_InspectionLotType",
-                    "etag": "W/\"datetimeoffset'2019-07-15T14%3A42%3A12Z'\""
-                },
                 "InspectionLot": "10000002600",
                 "Material": "QM001",
                 "Batch": "",
-                "Plant": "1710",
-                "InspectionLotOrigin": "01",
-                "OrderInternalBillOfOperations": "1000002001",
-                "ManufacturingOrder": "",
-                "InspectionLotText": "Inspection lot short text",
-                "InspectionLotType": "01",
-                "InspectionLotQuantity": "10",
-                "InspectionLotActualQuantity": "10",
-                "InspectionLotDefectiveQuantity": "0",
-                "InspectionLotQuantityUnit": "PC",
-                "InspLotCreatedOnLocalDate": "/Date(1563148800000)/",
-                "InspSubsetFieldCombination": "",
-                "InspLotNmbrOpenLongTermCharc": 0,
-                "StatusObject": "QL010000002600",
-                "StatusObjectCategory": "QL1",
-                "InspectionLotObjectText": "QM Regular",
-                "to_InspectionLotWithStatus": {
-                    "__deferred": {
-                        "uri": "<host>/sap/opu/odata/sap/API_INSPECTIONLOT_SRV/A_InspectionLot('10000002600')/to_InspectionLotWithStatus"
-                    }
-                }
+                "Plant": "1710"
             }
         };
     }
