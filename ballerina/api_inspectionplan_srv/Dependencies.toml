@@ -333,7 +333,7 @@ modules = [
 
 [[package]]
 org = "ballerinax"
-name = "sap.s4hana.api_inspectionlot_srv"
+name = "sap.s4hana.api_inspectionplan_srv"
 version = "1.0.0"
 dependencies = [
 	{org = "ballerina", name = "constraint"},
@@ -346,7 +346,7 @@ dependencies = [
 	{org = "ballerinax", name = "sap"}
 ]
 modules = [
-	{org = "ballerinax", packageName = "sap.s4hana.api_inspectionlot_srv", moduleName = "sap.s4hana.api_inspectionlot_srv"},
-	{org = "ballerinax", packageName = "sap.s4hana.api_inspectionlot_srv", moduleName = "sap.s4hana.api_inspectionlot_srv.mock"}
+	{org = "ballerinax", packageName = "sap.s4hana.api_inspectionplan_srv", moduleName = "sap.s4hana.api_inspectionplan_srv"},
+	{org = "ballerinax", packageName = "sap.s4hana.api_inspectionplan_srv", moduleName = "sap.s4hana.api_inspectionplan_srv.mock"}
 ]
 
