@@ -97,6 +97,7 @@
   "paths": {
     "/A_InspectionMethod": {
       "get": {
+        "operationId": "listA_InspectionMethods",
         "summary": "Reads a set of inspection methods.",
         "description": "Reads a set of inspection methods with administrative data, control indicators, catalog data, and quantitative data.",
         "tags": [
@@ -199,6 +200,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionMethod",
         "summary": "Reads a specific inspection method.",
         "description": "Reads a specific inspection method with administrative data, control indicators, catalog data, and quantitative data.",
         "tags": [
@@ -269,6 +271,7 @@
         }
       ],
       "get": {
+        "operationId": "listTextsOfA_InspectionMethod",
         "summary": "Reads inspection methods with text associations.",
         "description": "Reads one or more inspection methods with associations to the related inspection method texts.",
         "tags": [
@@ -340,6 +343,7 @@
     },
     "/A_InspectionMethodText": {
       "get": {
+        "operationId": "listA_InspectionMethodTexts",
         "summary": "Reads all inspection method texts.",
         "description": "Reads all inspection method texts.",
         "tags": [
@@ -452,6 +456,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionMethodText",
         "summary": "Reads the text of an inspection method in a specific language.",
         "description": "Reads the short text of a specific inspection method in a specific language.",
         "tags": [
@@ -532,6 +537,7 @@
         }
       ],
       "get": {
+        "operationId": "getInspectionMethodOfA_InspectionMethodText",
         "summary": "Reads inspection method texts with associations to inspection methods.",
         "description": "Reads one or more inspection method texts with associations to the related inspection method.",
         "tags": [
@@ -571,6 +577,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
