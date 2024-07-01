@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seamless integration with the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview).Inspection plans help you to describe how a quality inspection of one or several materials is to take place. In the inspection plan, you define the sequence of inspection operations and the range of specifications available for inspecting inspection characteristics.
+The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection method is a master data record that describes the procedure for performing the quality inspection of a characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.
 
 ## Setup guide
 
@@ -35,14 +35,14 @@ The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seaml
 
 ## Quickstart
 
-To use the `sap.s4hana.api_inspectionplan_srv` connector in your Ballerina application, modify the `.bal` file as follows:
+To use the `sap.s4hana.api_inspectionmethod_srv` connector in your Ballerina application, modify the `.bal` file as follows:
 
 ### Step 1: Import the module
 
-Import the `sap.s4hana.api_inspectionplan_srv` module.
+Import the `sap.s4hana.api_inspectionmethod_srv` module.
 
 ```ballerina
-import ballerinax/sap.s4hana.api_inspectionplan_srv as inspectionplan;
+import ballerinax/sap.s4hana.api_inspectionmethod_srv as inspectionmethod;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -54,7 +54,7 @@ configurable string hostname = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-inspectionplan:Client inspectionplanClient = check new (
+inspectionmethod:Client inspectionmethodClient = check new (
     hostname = hostname,
     config = {
         auth: {
@@ -70,7 +70,7 @@ inspectionplan:Client inspectionplanClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionplan:CollectionOfA_InspectionPlanWrapper listOfInspectionplans = check inspectionplanClient->listA_InspectionPlans();
+inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionmethods = check inspectionmethodClient->listA_InspectionMethods();
 ```
 
 ### Step 4: Run the Ballerina application
