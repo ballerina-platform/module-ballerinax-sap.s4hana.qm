@@ -84,6 +84,7 @@
   "paths": {
     "/QualityFirstArticleInspection": {
       "get": {
+        "operationId": "listQualityFirstArticleInspections",
         "summary": "Get entities from QualityFirstArticleInspection",
         "tags": [
           "First Article Inspection Data"
@@ -151,6 +152,7 @@
         }
       },
       "post": {
+        "operationId": "createQualityFirstArticleInspection",
         "summary": "Add new entity to QualityFirstArticleInspection",
         "tags": [
           "First Article Inspection Data"
@@ -223,6 +225,7 @@
         }
       ],
       "get": {
+        "operationId": "getQualityFirstArticleInspection",
         "summary": "Get entity from QualityFirstArticleInspection by key",
         "tags": [
           "First Article Inspection Data"
@@ -258,6 +261,7 @@
         }
       },
       "patch": {
+        "operationId": "patchQualityFirstArticleInspection",
         "summary": "Update entity in QualityFirstArticleInspection",
         "tags": [
           "First Article Inspection Data"
@@ -289,6 +293,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteQualityFirstArticleInspection",
         "summary": "Delete entity from QualityFirstArticleInspection",
         "tags": [
           "First Article Inspection Data"
@@ -337,6 +342,7 @@
         }
       ],
       "get": {
+        "operationId": "getQltyInProcurementOfQualityFirstArticleInspection",
         "summary": "Get related to_QltyInProcurement",
         "tags": [
           "First Article Inspection Data",
@@ -375,6 +381,7 @@
     },
     "/QualityInProcurement": {
       "get": {
+        "operationId": "listQualityInProcurements",
         "summary": "Get entities from QualityInProcurement",
         "tags": [
           "Quality Info Record Data"
@@ -442,6 +449,7 @@
         }
       },
       "post": {
+        "operationId": "createQualityInProcurement",
         "summary": "Add new entity to QualityInProcurement",
         "tags": [
           "Quality Info Record Data"
@@ -504,6 +512,7 @@
         }
       ],
       "get": {
+        "operationId": "getQualityInProcurement",
         "summary": "Get entity from QualityInProcurement by key",
         "tags": [
           "Quality Info Record Data"
@@ -539,6 +548,7 @@
         }
       },
       "patch": {
+        "operationId": "patchQualityInProcurement",
         "summary": "Update entity in QualityInProcurement",
         "tags": [
           "Quality Info Record Data"
@@ -570,6 +580,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteQualityInProcurement",
         "summary": "Delete entity from QualityInProcurement",
         "tags": [
           "Quality Info Record Data"
@@ -608,6 +619,7 @@
         }
       ],
       "get": {
+        "operationId": "listQltyFirstArticleInspsOfQualityInProcurement",
         "summary": "Get entities from related to_QltyFirstArticleInsp",
         "tags": [
           "Quality Info Record Data",
@@ -676,6 +688,7 @@
         }
       },
       "post": {
+        "operationId": "createQltyFirstArticleInspOfQualityInProcurement",
         "summary": "Add new entity to related to_QltyFirstArticleInsp",
         "tags": [
           "Quality Info Record Data",
@@ -717,6 +730,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
