@@ -121,288 +121,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecification desc",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationVersion desc",
-                  "InspectionSpecificationPlant",
-                  "InspectionSpecificationPlant desc",
-                  "Plant",
-                  "Plant desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "InspectionSpecificationSrchTxt",
-                  "InspectionSpecificationSrchTxt desc",
-                  "InspSpecGlobalName",
-                  "InspSpecGlobalName desc",
-                  "InspectionSpecificationStatus",
-                  "InspectionSpecificationStatus desc",
-                  "InspSpecTransferType",
-                  "InspSpecTransferType desc",
-                  "InspSpecCreatedByUser",
-                  "InspSpecCreatedByUser desc",
-                  "InspSpecCreationDate",
-                  "InspSpecCreationDate desc",
-                  "InspSpecChangedByUser",
-                  "InspSpecChangedByUser desc",
-                  "InspSpecChangeDate",
-                  "InspSpecChangeDate desc",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsQuantitative desc",
-                  "InspSpecCharacteristicType",
-                  "InspSpecCharacteristicType desc",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsMeasuredValueRqd desc",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsSelectedSetRequired desc",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsUpperLimitRequired desc",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsLowerLimitRequired desc",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspSpecIsTargetValueInLimit desc",
-                  "InspectionScope",
-                  "InspectionScope desc",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecIsLongTermInspection desc",
-                  "InspSpecRecordingType",
-                  "InspSpecRecordingType desc",
-                  "InspResultIsDocumentationRqd",
-                  "InspResultIsDocumentationRqd desc",
-                  "InspSpecCharcCategory",
-                  "InspSpecCharcCategory desc",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsDefectsRecgAutomatic desc",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsSampleQtyAdditive desc",
-                  "InspSpecIsDestructive",
-                  "InspSpecIsDestructive desc",
-                  "InspSpecResultCalculation",
-                  "InspSpecResultCalculation desc",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsSamplingProcedRqd desc",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecIsScrapRelevant desc",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsTestEquipmentRqd desc",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsChgDocRequired desc",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecIsControlChartUsed desc",
-                  "InspSpecPrintControl",
-                  "InspSpecPrintControl desc",
-                  "InspSpecImportanceCode",
-                  "InspSpecImportanceCode desc",
-                  "InspectorQualification",
-                  "InspectorQualification desc",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField1 desc",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField2 desc",
-                  "InspSpecInformationField3",
-                  "InspSpecInformationField3 desc",
-                  "QltyMstrDataAuthorizationGroup",
-                  "QltyMstrDataAuthorizationGroup desc",
-                  "InspToleranceSpecification",
-                  "InspToleranceSpecification desc",
-                  "InspSpecDecimalPlaces",
-                  "InspSpecDecimalPlaces desc",
-                  "InspectionSpecificationUnit",
-                  "InspectionSpecificationUnit desc",
-                  "InspSpecificationUnitTechName",
-                  "InspSpecificationUnitTechName desc",
-                  "InspSpecificationUnitISOCode",
-                  "InspSpecificationUnitISOCode desc",
-                  "InspSpecificationUnitSAPCode",
-                  "InspSpecificationUnitSAPCode desc",
-                  "InspSpecTargetValue",
-                  "InspSpecTargetValue desc",
-                  "InspSpecHasTargetValue",
-                  "InspSpecHasTargetValue desc",
-                  "InspSpecLowerLimit",
-                  "InspSpecLowerLimit desc",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecHasLowerLimit desc",
-                  "InspSpecLowerPlausibilityLimit",
-                  "InspSpecLowerPlausibilityLimit desc",
-                  "InspSpecHasLowrPlausibilityLmt",
-                  "InspSpecHasLowrPlausibilityLmt desc",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecFirstLowerSpecLimit desc",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit desc",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecSecondLowerSpecLimit desc",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit desc",
-                  "InspSpecLowerSpecLimitChange",
-                  "InspSpecLowerSpecLimitChange desc",
-                  "InspSpecHasLowrSpecLimitChange",
-                  "InspSpecHasLowrSpecLimitChange desc",
-                  "InspSpecUpperLimit",
-                  "InspSpecUpperLimit desc",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecHasUpperLimit desc",
-                  "InspSpecUpperPlausibilityLimit",
-                  "InspSpecUpperPlausibilityLimit desc",
-                  "InspSpecHasUprPlausibilityLmt",
-                  "InspSpecHasUprPlausibilityLmt desc",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecFirstUpperSpecLimit desc",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit desc",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecSecondUpperSpecLimit desc",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit desc",
-                  "InspSpecUpperSpecLimitChange",
-                  "InspSpecUpperSpecLimitChange desc",
-                  "InspSpecHasUprSpecLimitChange",
-                  "InspSpecHasUprSpecLimitChange desc",
-                  "InspSpecToleranceChgValidFrom",
-                  "InspSpecToleranceChgValidFrom desc",
-                  "InspSpecToleranceChgValidTo",
-                  "InspSpecToleranceChgValidTo desc",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeGrpRejection desc",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeRejection desc",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnUpper desc",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper desc",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeGrpRjcnLower desc",
-                  "InspSpecDefectCodeRjcnLower",
-                  "InspSpecDefectCodeRjcnLower desc",
-                  "CharacteristicInternalID",
-                  "CharacteristicInternalID desc",
-                  "DefectFractionEstimationProced",
-                  "DefectFractionEstimationProced desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Plant",
-                  "ValidityStartDate",
-                  "InspectionSpecificationSrchTxt",
-                  "InspSpecGlobalName",
-                  "InspectionSpecificationStatus",
-                  "InspSpecTransferType",
-                  "InspSpecCreatedByUser",
-                  "InspSpecCreationDate",
-                  "InspSpecChangedByUser",
-                  "InspSpecChangeDate",
-                  "InspSpecIsQuantitative",
-                  "InspSpecCharacteristicType",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspectionScope",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecRecordingType",
-                  "InspResultIsDocumentationRqd",
-                  "InspSpecCharcCategory",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsDestructive",
-                  "InspSpecResultCalculation",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecPrintControl",
-                  "InspSpecImportanceCode",
-                  "InspectorQualification",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspToleranceSpecification",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecificationUnitTechName",
-                  "InspSpecificationUnitISOCode",
-                  "InspSpecificationUnitSAPCode",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecLowerPlausibilityLimit",
-                  "InspSpecHasLowrPlausibilityLmt",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecLowerSpecLimitChange",
-                  "InspSpecHasLowrSpecLimitChange",
-                  "InspSpecUpperLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecUpperPlausibilityLimit",
-                  "InspSpecHasUprPlausibilityLmt",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecUpperSpecLimitChange",
-                  "InspSpecHasUprSpecLimitChange",
-                  "InspSpecToleranceChgValidFrom",
-                  "InspSpecToleranceChgValidTo",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeRjcnLower",
-                  "CharacteristicInternalID",
-                  "DefectFractionEstimationProced",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationExpandOptions"
           }
         ],
         "responses": {
@@ -411,11 +136,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionSpecificationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionSpecificationType",
+                      "title": "CollectionOfA_InspectionSpecification",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -424,7 +149,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType"
+                            "$ref": "#/components/schemas/A_InspectionSpecification"
                           }
                         }
                       }
@@ -481,115 +206,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Plant",
-                  "ValidityStartDate",
-                  "InspectionSpecificationSrchTxt",
-                  "InspSpecGlobalName",
-                  "InspectionSpecificationStatus",
-                  "InspSpecTransferType",
-                  "InspSpecCreatedByUser",
-                  "InspSpecCreationDate",
-                  "InspSpecChangedByUser",
-                  "InspSpecChangeDate",
-                  "InspSpecIsQuantitative",
-                  "InspSpecCharacteristicType",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspectionScope",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecRecordingType",
-                  "InspResultIsDocumentationRqd",
-                  "InspSpecCharcCategory",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsDestructive",
-                  "InspSpecResultCalculation",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecPrintControl",
-                  "InspSpecImportanceCode",
-                  "InspectorQualification",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspToleranceSpecification",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecificationUnitTechName",
-                  "InspSpecificationUnitISOCode",
-                  "InspSpecificationUnitSAPCode",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecLowerPlausibilityLimit",
-                  "InspSpecHasLowrPlausibilityLmt",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecLowerSpecLimitChange",
-                  "InspSpecHasLowrSpecLimitChange",
-                  "InspSpecUpperLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecUpperPlausibilityLimit",
-                  "InspSpecHasUprPlausibilityLmt",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecUpperSpecLimitChange",
-                  "InspSpecHasUprSpecLimitChange",
-                  "InspSpecToleranceChgValidFrom",
-                  "InspSpecToleranceChgValidTo",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeRjcnLower",
-                  "CharacteristicInternalID",
-                  "DefectFractionEstimationProced",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationByKeySelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationByKeyExpandOptions"
           }
         ],
         "responses": {
@@ -598,11 +218,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionSpecificationType",
+                  "title": "A_InspectionSpecificationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType"
+                      "$ref": "#/components/schemas/A_InspectionSpecification"
                     }
                   }
                 }
@@ -674,66 +294,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecification desc",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationVersion desc",
-                  "InspectionSpecificationPlant",
-                  "InspectionSpecificationPlant desc",
-                  "Language",
-                  "Language desc",
-                  "InspectionSpecificationText",
-                  "InspectionSpecificationText desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionSpecificationOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Language",
-                  "InspectionSpecificationText",
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionSpecificationSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionSpecificationExpandOptions"
           }
         ],
         "responses": {
@@ -742,11 +309,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionSpecificationTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionSpecificationTextType",
+                      "title": "CollectionOfA_InspectionSpecificationText",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -755,7 +322,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType"
+                            "$ref": "#/components/schemas/A_InspectionSpecificationText"
                           }
                         }
                       }
@@ -797,66 +364,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecification desc",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationVersion desc",
-                  "InspectionSpecificationPlant",
-                  "InspectionSpecificationPlant desc",
-                  "Language",
-                  "Language desc",
-                  "InspectionSpecificationText",
-                  "InspectionSpecificationText desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationTextOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Language",
-                  "InspectionSpecificationText",
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationTextSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationTextExpandOptions"
           }
         ],
         "responses": {
@@ -865,11 +379,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionSpecificationTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionSpecificationTextType",
+                      "title": "CollectionOfA_InspectionSpecificationText",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -878,7 +392,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType"
+                            "$ref": "#/components/schemas/A_InspectionSpecificationText"
                           }
                         }
                       }
@@ -945,41 +459,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Language",
-                  "InspectionSpecificationText",
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationTextByKeySelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionSpecification"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionSpecificationTextByKeyExpandOptions"
           }
         ],
         "responses": {
@@ -988,11 +471,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionSpecificationTextType",
+                  "title": "A_InspectionSpecificationTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType"
+                      "$ref": "#/components/schemas/A_InspectionSpecificationText"
                     }
                   }
                 }
@@ -1057,115 +540,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "Plant",
-                  "ValidityStartDate",
-                  "InspectionSpecificationSrchTxt",
-                  "InspSpecGlobalName",
-                  "InspectionSpecificationStatus",
-                  "InspSpecTransferType",
-                  "InspSpecCreatedByUser",
-                  "InspSpecCreationDate",
-                  "InspSpecChangedByUser",
-                  "InspSpecChangeDate",
-                  "InspSpecIsQuantitative",
-                  "InspSpecCharacteristicType",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspectionScope",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecRecordingType",
-                  "InspResultIsDocumentationRqd",
-                  "InspSpecCharcCategory",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsDestructive",
-                  "InspSpecResultCalculation",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecPrintControl",
-                  "InspSpecImportanceCode",
-                  "InspectorQualification",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspToleranceSpecification",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecificationUnitTechName",
-                  "InspSpecificationUnitISOCode",
-                  "InspSpecificationUnitSAPCode",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecLowerPlausibilityLimit",
-                  "InspSpecHasLowrPlausibilityLmt",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecLowerSpecLimitChange",
-                  "InspSpecHasLowrSpecLimitChange",
-                  "InspSpecUpperLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecUpperPlausibilityLimit",
-                  "InspSpecHasUprPlausibilityLmt",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecUpperSpecLimitChange",
-                  "InspSpecHasUprSpecLimitChange",
-                  "InspSpecToleranceChgValidFrom",
-                  "InspSpecToleranceChgValidTo",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeRjcnLower",
-                  "CharacteristicInternalID",
-                  "DefectFractionEstimationProced",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/InspectionSpecificationOfA_InspectionSpecificationTextSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/InspectionSpecificationOfA_InspectionSpecificationTextExpandOptions"
           }
         ],
         "responses": {
@@ -1174,11 +552,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionSpecificationType",
+                  "title": "A_InspectionSpecificationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType"
+                      "$ref": "#/components/schemas/A_InspectionSpecification"
                     }
                   }
                 }
@@ -1231,7 +609,7 @@
   },
   "components": {
     "schemas": {
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType": {
+      "A_InspectionSpecification": {
         "type": "object",
         "properties": {
           "InspectionSpecification": {
@@ -1859,7 +1237,7 @@
               "results": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType"
+                  "$ref": "#/components/schemas/A_InspectionSpecificationText"
                 }
               }
             }
@@ -1867,7 +1245,7 @@
         },
         "title": "Master Inspection Characteristics"
       },
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType-create": {
+      "CreateA_InspectionSpecification": {
         "type": "object",
         "properties": {
           "InspectionSpecification": {
@@ -2495,7 +1873,7 @@
               "results": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType-create"
+                  "$ref": "#/components/schemas/CreateA_InspectionSpecificationText"
                 }
               }
             }
@@ -2508,7 +1886,7 @@
         ],
         "title": "Master Inspection Characteristics (for create)"
       },
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType-update": {
+      "UpdateA_InspectionSpecification": {
         "type": "object",
         "properties": {
           "Plant": {
@@ -3116,7 +2494,7 @@
         },
         "title": "Master Inspection Characteristics (for update)"
       },
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType": {
+      "A_InspectionSpecificationText": {
         "type": "object",
         "properties": {
           "InspectionSpecification": {
@@ -3149,12 +2527,12 @@
             "description": "Text of Master Inspection Characteristic"
           },
           "to_InspectionSpecification": {
-            "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType"
+            "$ref": "#/components/schemas/A_InspectionSpecification"
           }
         },
         "title": "Master Inspection Characteristic Texts"
       },
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType-create": {
+      "CreateA_InspectionSpecificationText": {
         "type": "object",
         "properties": {
           "InspectionSpecification": {
@@ -3187,7 +2565,7 @@
             "description": "Text of Master Inspection Characteristic"
           },
           "to_InspectionSpecification": {
-            "$ref": "#/components/schemas/API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationType-create"
+            "$ref": "#/components/schemas/CreateA_InspectionSpecification"
           }
         },
         "required": [
@@ -3198,7 +2576,7 @@
         ],
         "title": "Master Inspection Characteristic Texts (for create)"
       },
-      "API_MASTERINSPCHARACTERISTIC_SRV.A_InspectionSpecificationTextType-update": {
+      "UpdateA_InspectionSpecificationText": {
         "type": "object",
         "properties": {
           "InspectionSpecificationText": {
@@ -3253,6 +2631,415 @@
             }
           }
         }
+      },
+      "A_InspectionSpecificationOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionSpecification",
+            "InspectionSpecification desc",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationVersion desc",
+            "InspectionSpecificationPlant",
+            "InspectionSpecificationPlant desc",
+            "Plant",
+            "Plant desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "InspectionSpecificationSrchTxt",
+            "InspectionSpecificationSrchTxt desc",
+            "InspSpecGlobalName",
+            "InspSpecGlobalName desc",
+            "InspectionSpecificationStatus",
+            "InspectionSpecificationStatus desc",
+            "InspSpecTransferType",
+            "InspSpecTransferType desc",
+            "InspSpecCreatedByUser",
+            "InspSpecCreatedByUser desc",
+            "InspSpecCreationDate",
+            "InspSpecCreationDate desc",
+            "InspSpecChangedByUser",
+            "InspSpecChangedByUser desc",
+            "InspSpecChangeDate",
+            "InspSpecChangeDate desc",
+            "InspSpecIsQuantitative",
+            "InspSpecIsQuantitative desc",
+            "InspSpecCharacteristicType",
+            "InspSpecCharacteristicType desc",
+            "InspSpecIsMeasuredValueRqd",
+            "InspSpecIsMeasuredValueRqd desc",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsSelectedSetRequired desc",
+            "InspSpecIsUpperLimitRequired",
+            "InspSpecIsUpperLimitRequired desc",
+            "InspSpecIsLowerLimitRequired",
+            "InspSpecIsLowerLimitRequired desc",
+            "InspSpecIsTargetValueInLimit",
+            "InspSpecIsTargetValueInLimit desc",
+            "InspectionScope",
+            "InspectionScope desc",
+            "InspSpecIsLongTermInspection",
+            "InspSpecIsLongTermInspection desc",
+            "InspSpecRecordingType",
+            "InspSpecRecordingType desc",
+            "InspResultIsDocumentationRqd",
+            "InspResultIsDocumentationRqd desc",
+            "InspSpecCharcCategory",
+            "InspSpecCharcCategory desc",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsDefectsRecgAutomatic desc",
+            "InspSpecIsSampleQtyAdditive",
+            "InspSpecIsSampleQtyAdditive desc",
+            "InspSpecIsDestructive",
+            "InspSpecIsDestructive desc",
+            "InspSpecResultCalculation",
+            "InspSpecResultCalculation desc",
+            "InspSpecIsSamplingProcedRqd",
+            "InspSpecIsSamplingProcedRqd desc",
+            "InspSpecIsScrapRelevant",
+            "InspSpecIsScrapRelevant desc",
+            "InspSpecIsTestEquipmentRqd",
+            "InspSpecIsTestEquipmentRqd desc",
+            "InspSpecIsChgDocRequired",
+            "InspSpecIsChgDocRequired desc",
+            "InspSpecIsControlChartUsed",
+            "InspSpecIsControlChartUsed desc",
+            "InspSpecPrintControl",
+            "InspSpecPrintControl desc",
+            "InspSpecImportanceCode",
+            "InspSpecImportanceCode desc",
+            "InspectorQualification",
+            "InspectorQualification desc",
+            "InspSpecInformationField1",
+            "InspSpecInformationField1 desc",
+            "InspSpecInformationField2",
+            "InspSpecInformationField2 desc",
+            "InspSpecInformationField3",
+            "InspSpecInformationField3 desc",
+            "QltyMstrDataAuthorizationGroup",
+            "QltyMstrDataAuthorizationGroup desc",
+            "InspToleranceSpecification",
+            "InspToleranceSpecification desc",
+            "InspSpecDecimalPlaces",
+            "InspSpecDecimalPlaces desc",
+            "InspectionSpecificationUnit",
+            "InspectionSpecificationUnit desc",
+            "InspSpecificationUnitTechName",
+            "InspSpecificationUnitTechName desc",
+            "InspSpecificationUnitISOCode",
+            "InspSpecificationUnitISOCode desc",
+            "InspSpecificationUnitSAPCode",
+            "InspSpecificationUnitSAPCode desc",
+            "InspSpecTargetValue",
+            "InspSpecTargetValue desc",
+            "InspSpecHasTargetValue",
+            "InspSpecHasTargetValue desc",
+            "InspSpecLowerLimit",
+            "InspSpecLowerLimit desc",
+            "InspSpecHasLowerLimit",
+            "InspSpecHasLowerLimit desc",
+            "InspSpecLowerPlausibilityLimit",
+            "InspSpecLowerPlausibilityLimit desc",
+            "InspSpecHasLowrPlausibilityLmt",
+            "InspSpecHasLowrPlausibilityLmt desc",
+            "InspSpecFirstLowerSpecLimit",
+            "InspSpecFirstLowerSpecLimit desc",
+            "InspSpecHasFirstLowerSpecLimit",
+            "InspSpecHasFirstLowerSpecLimit desc",
+            "InspSpecSecondLowerSpecLimit",
+            "InspSpecSecondLowerSpecLimit desc",
+            "InspSpecHasSecondLowrSpecLimit",
+            "InspSpecHasSecondLowrSpecLimit desc",
+            "InspSpecLowerSpecLimitChange",
+            "InspSpecLowerSpecLimitChange desc",
+            "InspSpecHasLowrSpecLimitChange",
+            "InspSpecHasLowrSpecLimitChange desc",
+            "InspSpecUpperLimit",
+            "InspSpecUpperLimit desc",
+            "InspSpecHasUpperLimit",
+            "InspSpecHasUpperLimit desc",
+            "InspSpecUpperPlausibilityLimit",
+            "InspSpecUpperPlausibilityLimit desc",
+            "InspSpecHasUprPlausibilityLmt",
+            "InspSpecHasUprPlausibilityLmt desc",
+            "InspSpecFirstUpperSpecLimit",
+            "InspSpecFirstUpperSpecLimit desc",
+            "InspSpecHasFirstUpperSpecLimit",
+            "InspSpecHasFirstUpperSpecLimit desc",
+            "InspSpecSecondUpperSpecLimit",
+            "InspSpecSecondUpperSpecLimit desc",
+            "InspSpecHasSecondUprSpecLimit",
+            "InspSpecHasSecondUprSpecLimit desc",
+            "InspSpecUpperSpecLimitChange",
+            "InspSpecUpperSpecLimitChange desc",
+            "InspSpecHasUprSpecLimitChange",
+            "InspSpecHasUprSpecLimitChange desc",
+            "InspSpecToleranceChgValidFrom",
+            "InspSpecToleranceChgValidFrom desc",
+            "InspSpecToleranceChgValidTo",
+            "InspSpecToleranceChgValidTo desc",
+            "InspSpecDefectCodeGrpRejection",
+            "InspSpecDefectCodeGrpRejection desc",
+            "InspSpecDefectCodeRejection",
+            "InspSpecDefectCodeRejection desc",
+            "InspSpecDefectCodeGrpRjcnUpper",
+            "InspSpecDefectCodeGrpRjcnUpper desc",
+            "InspSpecDefectCodeRjcnUpper",
+            "InspSpecDefectCodeRjcnUpper desc",
+            "InspSpecDefectCodeGrpRjcnLower",
+            "InspSpecDefectCodeGrpRjcnLower desc",
+            "InspSpecDefectCodeRjcnLower",
+            "InspSpecDefectCodeRjcnLower desc",
+            "CharacteristicInternalID",
+            "CharacteristicInternalID desc",
+            "DefectFractionEstimationProced",
+            "DefectFractionEstimationProced desc"
+          ]
+        }
+      },
+      "A_InspectionSpecificationSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionSpecification",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationPlant",
+            "Plant",
+            "ValidityStartDate",
+            "InspectionSpecificationSrchTxt",
+            "InspSpecGlobalName",
+            "InspectionSpecificationStatus",
+            "InspSpecTransferType",
+            "InspSpecCreatedByUser",
+            "InspSpecCreationDate",
+            "InspSpecChangedByUser",
+            "InspSpecChangeDate",
+            "InspSpecIsQuantitative",
+            "InspSpecCharacteristicType",
+            "InspSpecIsMeasuredValueRqd",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsUpperLimitRequired",
+            "InspSpecIsLowerLimitRequired",
+            "InspSpecIsTargetValueInLimit",
+            "InspectionScope",
+            "InspSpecIsLongTermInspection",
+            "InspSpecRecordingType",
+            "InspResultIsDocumentationRqd",
+            "InspSpecCharcCategory",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsSampleQtyAdditive",
+            "InspSpecIsDestructive",
+            "InspSpecResultCalculation",
+            "InspSpecIsSamplingProcedRqd",
+            "InspSpecIsScrapRelevant",
+            "InspSpecIsTestEquipmentRqd",
+            "InspSpecIsChgDocRequired",
+            "InspSpecIsControlChartUsed",
+            "InspSpecPrintControl",
+            "InspSpecImportanceCode",
+            "InspectorQualification",
+            "InspSpecInformationField1",
+            "InspSpecInformationField2",
+            "InspSpecInformationField3",
+            "QltyMstrDataAuthorizationGroup",
+            "InspToleranceSpecification",
+            "InspSpecDecimalPlaces",
+            "InspectionSpecificationUnit",
+            "InspSpecificationUnitTechName",
+            "InspSpecificationUnitISOCode",
+            "InspSpecificationUnitSAPCode",
+            "InspSpecTargetValue",
+            "InspSpecHasTargetValue",
+            "InspSpecLowerLimit",
+            "InspSpecHasLowerLimit",
+            "InspSpecLowerPlausibilityLimit",
+            "InspSpecHasLowrPlausibilityLmt",
+            "InspSpecFirstLowerSpecLimit",
+            "InspSpecHasFirstLowerSpecLimit",
+            "InspSpecSecondLowerSpecLimit",
+            "InspSpecHasSecondLowrSpecLimit",
+            "InspSpecLowerSpecLimitChange",
+            "InspSpecHasLowrSpecLimitChange",
+            "InspSpecUpperLimit",
+            "InspSpecHasUpperLimit",
+            "InspSpecUpperPlausibilityLimit",
+            "InspSpecHasUprPlausibilityLmt",
+            "InspSpecFirstUpperSpecLimit",
+            "InspSpecHasFirstUpperSpecLimit",
+            "InspSpecSecondUpperSpecLimit",
+            "InspSpecHasSecondUprSpecLimit",
+            "InspSpecUpperSpecLimitChange",
+            "InspSpecHasUprSpecLimitChange",
+            "InspSpecToleranceChgValidFrom",
+            "InspSpecToleranceChgValidTo",
+            "InspSpecDefectCodeGrpRejection",
+            "InspSpecDefectCodeRejection",
+            "InspSpecDefectCodeGrpRjcnUpper",
+            "InspSpecDefectCodeRjcnUpper",
+            "InspSpecDefectCodeGrpRjcnLower",
+            "InspSpecDefectCodeRjcnLower",
+            "CharacteristicInternalID",
+            "DefectFractionEstimationProced",
+            "to_Text"
+          ]
+        }
+      },
+      "A_InspectionSpecificationExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_Text"
+          ]
+        }
+      },
+      "A_InspectionSpecificationTextOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionSpecification",
+            "InspectionSpecification desc",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationVersion desc",
+            "InspectionSpecificationPlant",
+            "InspectionSpecificationPlant desc",
+            "Language",
+            "Language desc",
+            "InspectionSpecificationText",
+            "InspectionSpecificationText desc"
+          ]
+        }
+      },
+      "A_InspectionSpecificationTextSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionSpecification",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationPlant",
+            "Language",
+            "InspectionSpecificationText",
+            "to_InspectionSpecification"
+          ]
+        }
+      },
+      "A_InspectionSpecificationTextExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_InspectionSpecification"
+          ]
+        }
+      },
+      "InspectionSpecificationOfA_InspectionSpecificationTextSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionSpecification",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationPlant",
+            "Plant",
+            "ValidityStartDate",
+            "InspectionSpecificationSrchTxt",
+            "InspSpecGlobalName",
+            "InspectionSpecificationStatus",
+            "InspSpecTransferType",
+            "InspSpecCreatedByUser",
+            "InspSpecCreationDate",
+            "InspSpecChangedByUser",
+            "InspSpecChangeDate",
+            "InspSpecIsQuantitative",
+            "InspSpecCharacteristicType",
+            "InspSpecIsMeasuredValueRqd",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsUpperLimitRequired",
+            "InspSpecIsLowerLimitRequired",
+            "InspSpecIsTargetValueInLimit",
+            "InspectionScope",
+            "InspSpecIsLongTermInspection",
+            "InspSpecRecordingType",
+            "InspResultIsDocumentationRqd",
+            "InspSpecCharcCategory",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsSampleQtyAdditive",
+            "InspSpecIsDestructive",
+            "InspSpecResultCalculation",
+            "InspSpecIsSamplingProcedRqd",
+            "InspSpecIsScrapRelevant",
+            "InspSpecIsTestEquipmentRqd",
+            "InspSpecIsChgDocRequired",
+            "InspSpecIsControlChartUsed",
+            "InspSpecPrintControl",
+            "InspSpecImportanceCode",
+            "InspectorQualification",
+            "InspSpecInformationField1",
+            "InspSpecInformationField2",
+            "InspSpecInformationField3",
+            "QltyMstrDataAuthorizationGroup",
+            "InspToleranceSpecification",
+            "InspSpecDecimalPlaces",
+            "InspectionSpecificationUnit",
+            "InspSpecificationUnitTechName",
+            "InspSpecificationUnitISOCode",
+            "InspSpecificationUnitSAPCode",
+            "InspSpecTargetValue",
+            "InspSpecHasTargetValue",
+            "InspSpecLowerLimit",
+            "InspSpecHasLowerLimit",
+            "InspSpecLowerPlausibilityLimit",
+            "InspSpecHasLowrPlausibilityLmt",
+            "InspSpecFirstLowerSpecLimit",
+            "InspSpecHasFirstLowerSpecLimit",
+            "InspSpecSecondLowerSpecLimit",
+            "InspSpecHasSecondLowrSpecLimit",
+            "InspSpecLowerSpecLimitChange",
+            "InspSpecHasLowrSpecLimitChange",
+            "InspSpecUpperLimit",
+            "InspSpecHasUpperLimit",
+            "InspSpecUpperPlausibilityLimit",
+            "InspSpecHasUprPlausibilityLmt",
+            "InspSpecFirstUpperSpecLimit",
+            "InspSpecHasFirstUpperSpecLimit",
+            "InspSpecSecondUpperSpecLimit",
+            "InspSpecHasSecondUprSpecLimit",
+            "InspSpecUpperSpecLimitChange",
+            "InspSpecHasUprSpecLimitChange",
+            "InspSpecToleranceChgValidFrom",
+            "InspSpecToleranceChgValidTo",
+            "InspSpecDefectCodeGrpRejection",
+            "InspSpecDefectCodeRejection",
+            "InspSpecDefectCodeGrpRjcnUpper",
+            "InspSpecDefectCodeRjcnUpper",
+            "InspSpecDefectCodeGrpRjcnLower",
+            "InspSpecDefectCodeRjcnLower",
+            "CharacteristicInternalID",
+            "DefectFractionEstimationProced",
+            "to_Text"
+          ]
+        }
+      },
+      "InspectionSpecificationOfA_InspectionSpecificationTextExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_Text"
+          ]
+        }
       }
     },
     "parameters": {
@@ -3285,6 +3072,141 @@
             "allpages",
             "none"
           ]
+        }
+      },
+      "A_InspectionSpecificationOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationOrderByOptions"
+        }
+      },
+      "A_InspectionSpecificationSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationSelectOptions"
+        }
+      },
+      "A_InspectionSpecificationExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationExpandOptions"
+        }
+      },
+      "A_InspectionSpecificationByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationSelectOptions"
+        }
+      },
+      "A_InspectionSpecificationByKeyExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationExpandOptions"
+        }
+      },
+      "TextOfA_InspectionSpecificationOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextOrderByOptions"
+        }
+      },
+      "TextOfA_InspectionSpecificationSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextSelectOptions"
+        }
+      },
+      "TextOfA_InspectionSpecificationExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextExpandOptions"
+        }
+      },
+      "A_InspectionSpecificationTextOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextOrderByOptions"
+        }
+      },
+      "A_InspectionSpecificationTextSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextSelectOptions"
+        }
+      },
+      "A_InspectionSpecificationTextExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextExpandOptions"
+        }
+      },
+      "A_InspectionSpecificationTextByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextSelectOptions"
+        }
+      },
+      "A_InspectionSpecificationTextByKeyExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionSpecificationTextExpandOptions"
+        }
+      },
+      "InspectionSpecificationOfA_InspectionSpecificationTextSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/InspectionSpecificationOfA_InspectionSpecificationTextSelectOptions"
+        }
+      },
+      "InspectionSpecificationOfA_InspectionSpecificationTextExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/InspectionSpecificationOfA_InspectionSpecificationTextExpandOptions"
         }
       }
     },
