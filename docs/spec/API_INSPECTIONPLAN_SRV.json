@@ -108,6 +108,7 @@
   "paths": {
     "/A_InspectionPlan": {
       "get": {
+        "operationId": "listA_InspectionPlans",
         "summary": "Reads all inspection plan headers.",
         "description": "Reads the IDs of all the existing inspection plan headers.",
         "tags": [
@@ -173,6 +174,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspectionPlan",
         "summary": "Creates a new inspection plan header.",
         "description": "Creates an ID for a new inspection plan header.",
         "tags": [
@@ -246,6 +248,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionPlan",
         "summary": "Reads a specific inspection plan header by its key.",
         "description": "Reads the ID of a specific inspection plan header by its key.",
         "tags": [
@@ -279,6 +282,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspectionPlan",
         "summary": "Updates a specific inspection plan header.",
         "description": "Updates the ID of a specific inspection plan header.",
         "tags": [
@@ -311,6 +315,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspectionPlan",
         "summary": "Deletes a specific inspection plan header.",
         "description": "Deletes the ID of a specific inspection plan header.",
         "tags": [
@@ -328,6 +333,7 @@
     },
     "/A_InspPlanDepdntCharc": {
       "get": {
+        "operationId": "listA_InspPlanDepdntCharcs",
         "summary": "Reads all the dependent characteristic specifications in the inspection plan.",
         "description": "Reads the IDs of all the existing dependent characteristic specifications in the inspection plan.",
         "tags": [
@@ -393,6 +399,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspPlanDepdntCharc",
         "summary": "Creates a new dependent characteristic specification in the inspection plan.",
         "description": "Creates an ID for a new dependent characteristic specification in the inspection plan.",
         "tags": [
@@ -526,6 +533,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspPlanDepdntCharc",
         "summary": "Reads a specific dependent characteristic specification by its key.",
         "description": "Reads the ID of a specific dependent characteristic specification by its key.",
         "tags": [
@@ -559,6 +567,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspPlanDepdntCharc",
         "summary": "Updates a specific dependent characteristic specification in the inspection plan.",
         "description": "Updates the ID of a specific dependent characteristic specification in the inspection plan.",
         "tags": [
@@ -591,6 +600,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspPlanDepdntCharc",
         "summary": "Deletes a specific dependent characteristic specification in the inspection plan.",
         "description": "Deletes the ID of a specific dependent characteristic specification in the inspection plan.",
         "tags": [
@@ -608,6 +618,7 @@
     },
     "/A_InspPlanMaterialAssgmt": {
       "get": {
+        "operationId": "listA_InspPlanMaterialAssgmts",
         "summary": "Reads all the material assignments in the inspection plan.",
         "description": "Reads the IDs of all the existing material assignments in the inspection plan.",
         "tags": [
@@ -673,6 +684,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspPlanMaterialAssgmt",
         "summary": "Creates a new material assignment in the inspection plan.",
         "description": "Creates an ID for a new material assignment in the inspection plan.",
         "tags": [
@@ -776,6 +788,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspPlanMaterialAssgmt",
         "summary": "Reads a specific material assignment by its key.",
         "description": "Reads the ID of a specific material assignment by its key.",
         "tags": [
@@ -809,6 +822,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspPlanMaterialAssgmt",
         "summary": "Updates a specific material assignment in the inspection plan.",
         "description": "Updates the ID of a specific material assignment in the inspection plan.",
         "tags": [
@@ -841,6 +855,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspPlanMaterialAssgmt",
         "summary": "Deletes a specific material assignment in the inspection plan.",
         "description": "Deletes the ID of a specific material assignment in the inspection plan.",
         "tags": [
@@ -858,6 +873,7 @@
     },
     "/A_InspPlanOpCharacteristic": {
       "get": {
+        "operationId": "listA_InspPlanOpCharacteristics",
         "summary": "Reads all the characteristics in the inspection plan.",
         "description": "Reads the IDs of all the existing characteristics in the inspection plan.",
         "tags": [
@@ -923,6 +939,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspPlanOpCharacteristic",
         "summary": "Creates a new characteristic in the inspection plan.",
         "description": "Creates an ID for a new characteristic in the inspection plan.",
         "tags": [
@@ -1036,6 +1053,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspPlanOpCharacteristic",
         "summary": "Reads a specific characteristic by its key.",
         "description": "Reads the ID of a specific characteristic by its key.",
         "tags": [
@@ -1069,6 +1087,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspPlanOpCharacteristic",
         "summary": "Updates a specific characteristic in the inspection plan.",
         "description": "Updates the ID of a specific characteristic in the inspection plan.",
         "tags": [
@@ -1101,6 +1120,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspPlanOpCharacteristic",
         "summary": "Deletes a specific characteristic in the inspection plan.",
         "description": "Deletes the ID of a specific characteristic in the inspection plan.",
         "tags": [
@@ -1118,6 +1138,7 @@
     },
     "/A_InspPlanOperation": {
       "get": {
+        "operationId": "listA_InspPlanOperations",
         "summary": "Reads all the operations in the inspection plan.",
         "description": "Reads the IDs of all the existing operations in the inspection plan.",
         "tags": [
@@ -1183,6 +1204,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspPlanOperation",
         "summary": "Creates a new operation in the inspection plan.",
         "description": "Creates an ID for a new operation in the inspection plan.",
         "tags": [
@@ -1276,6 +1298,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspPlanOperation",
         "summary": "Reads a specific operation by its key.",
         "description": "Reads the ID of a specific operation by its key.",
         "tags": [
@@ -1309,6 +1332,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspPlanOperation",
         "summary": "Updates a specific operation in the inspection plan.",
         "description": "Updates the ID of a specific operation in the inspection plan.",
         "tags": [
@@ -1341,6 +1365,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspPlanOperation",
         "summary": "Deletes a specific operation in the inspection plan.",
         "description": "Deletes the ID of a specific operation in the inspection plan.",
         "tags": [
@@ -1358,6 +1383,7 @@
     },
     "/A_InspPlanOpPRT": {
       "get": {
+        "operationId": "listA_InspPlanOpPRTs",
         "summary": "Reads all the production resources/tools in the inspection plan.",
         "description": "Reads the IDs of all the existing production resources/tools in the inspection plan.",
         "tags": [
@@ -1423,6 +1449,7 @@
         }
       },
       "post": {
+        "operationId": "createA_InspPlanOpPRT",
         "summary": "Creates a new production resource/tool in the inspection plan.",
         "description": "Creates an ID for a new production resource/tool in the inspection plan.",
         "tags": [
@@ -1526,6 +1553,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspPlanOpPRT",
         "summary": "Reads a specific production resource/tool by its key.",
         "description": "Reads the ID of a specific production resource/tool by its key.",
         "tags": [
@@ -1559,6 +1587,7 @@
         }
       },
       "patch": {
+        "operationId": "patchA_InspPlanOpPRT",
         "summary": "Updates a specific production resource/tool in the inspection plan.",
         "description": "Updates the ID of a specific production resource/tool in the inspection plan.",
         "tags": [
@@ -1591,6 +1620,7 @@
         }
       },
       "delete": {
+        "operationId": "deleteA_InspPlanOpPRT",
         "summary": "Deletes a specific production resource/tool in the inspection plan.",
         "description": "Deletes the ID of a specific production resource/tool in the inspection plan.",
         "tags": [
@@ -1608,6 +1638,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
