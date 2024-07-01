@@ -22,9 +22,9 @@ plugins {
     id 'io.ballerina.plugin'
 }
 
-description = 'Ballerina - SAP S/4HANA Inspection Lot API'
+description = 'Ballerina - SAP S/4HANA Inspection Plan API'
 
-def packageName = "sap.s4hana.api_inspectionlot_srv"
+def packageName = "sap.s4hana.api_inspectionplan_srv"
 def moduleVersion = project.api_inspectionlot_srvVersion.replace("-SNAPSHOT", "")
 def ballerinaTomlFile = file("${project.projectDir}/Ballerina.toml")
 
@@ -61,10 +61,10 @@ release {
     buildTasks = ['build']
     failOnSnapshotDependencies = true
     versionPropertyFile = '../../gradle.properties'
-    versionProperties = ['api_inspectionlot_srvVersion']
-    tagTemplate = 'api_inspectionlot_srv-v${version}'
+    versionProperties = ['api_inspectionlplan_srvVersion']
+    tagTemplate = 'api_inspectionplan_srv-v${version}'
     git {
-        requireBranch = "release-api_inspectionlot_srv-${moduleVersion}"
+        requireBranch = "release-api_inspectionplan_srv-${moduleVersion}"
         pushToRemote = 'origin'
     }
 }

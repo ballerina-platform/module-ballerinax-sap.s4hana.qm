@@ -16,6 +16,7 @@ on:
         required: true
         options:
           - api_inspectionlot_srv
+          - api_inspectionplan_srv
 
 jobs:
   publish-release:
