@@ -138,7 +138,7 @@ type Specification record {
     json[] security;
 };
 
-public function main(string apiName = "TASKCODE_0001") returns error? {
+public function main(string apiName) returns error? {
     string specPath = string `spec/${apiName}.json`;
     check sanitizeSchemaNames(apiName, specPath);
     check sanitizeEnumParamters(specPath);
@@ -157,7 +157,6 @@ function sanitizeSameParameterNameAndSchemaName(string specPath) returns error? 
     }
 
     map<Path> updatedPaths = {};
-
     map<Path> paths = spec.paths;
     foreach var [key, value] in paths.entries() {
         string reponseSchema = "";
