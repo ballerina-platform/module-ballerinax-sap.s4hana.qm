@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seamless integration with the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview).Inspection plans help you to describe how a quality inspection of one or several materials is to take place. In the inspection plan, you define the sequence of inspection operations and the range of specifications available for inspecting inspection characteristics.
+The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs for seamless integration with the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).A master inspection characteristic is a master data record that describes the quality inspection criteria for materials. This service enables you to retrieve, for example, the settings and the control indicators defined for a master inspection characteristic.
 
 ## Setup guide
 
@@ -35,14 +35,14 @@ The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seaml
 
 ## Quickstart
 
-To use the `sap.s4hana.api_inspectionplan_srv` connector in your Ballerina application, modify the `.bal` file as follows:
+To use the `sap.s4hana.api_masterinspcharacteristic_srv` connector in your Ballerina application, modify the `.bal` file as follows:
 
 ### Step 1: Import the module
 
-Import the `sap.s4hana.api_inspectionplan_srv` module.
+Import the `sap.s4hana.api_masterinspcharacteristic_srv` module.
 
 ```ballerina
-import ballerinax/sap.s4hana.api_inspectionplan_srv as inspectionplan;
+import ballerinax/sap.s4hana.api_masterinspcharacteristic_srv as masterinspchar;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -54,7 +54,7 @@ configurable string hostname = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-inspectionplan:Client inspectionplanClient = check new (
+masterinspchar:Client masterinspcharClient = check new (
     hostname = hostname,
     config = {
         auth: {
@@ -70,7 +70,7 @@ inspectionplan:Client inspectionplanClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionplan:CollectionOfA_InspectionPlanWrapper listOfInspectionplans = check inspectionplanClient->listA_InspectionPlans();
+masterinspchar:CollectionOfA_InspectionSpecificationWrapper listOfInspectionSpecs = check masterinspcharClient->listA_InspectionSpecifications();
 ```
 
 ### Step 4: Run the Ballerina application
