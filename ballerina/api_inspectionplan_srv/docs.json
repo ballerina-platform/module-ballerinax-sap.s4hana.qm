@@ -3,5 +3,5 @@
   "communication-scenario": "Inspection Master Data Integration",
   "import-statement": "import ballerinax/sap.s4hana.api_inspectionplan_srv as inspectionplan;",
   "client-init": "inspectionplan:Client inspectionplanClient = check new (",
-  "api-invocation": "inspectionplan:A_InspectionPlanWrapper createdInspectionplan = check inspectionplanClient->createA_InspectionPlan();"
+  "api-invocation": "inspectionplan:CollectionOfA_InspectionPlanWrapper listOfInspectionplans = check inspectionplanClient->listA_InspectionPlans();"
 }
