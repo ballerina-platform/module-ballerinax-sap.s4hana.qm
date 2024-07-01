@@ -178,6 +178,7 @@ function sanitizeSameParameterNameAndSchemaName(string specPath) returns error? 
         if reponseSchema == "" {
             continue;
         }
+
         string updatedParamName = reponseSchema.substring(0, 1).toLowerAscii() + reponseSchema.substring(1);
         Parameter[] params = value.parameters ?: [];
         foreach int i in 0 ... params.length() - 1 {
@@ -188,9 +189,9 @@ function sanitizeSameParameterNameAndSchemaName(string specPath) returns error? 
             }
         }
 
-        int? updatedKey = key.indexOf("{" + reponseSchema + "}");
-        if updatedKey !is () {
-            string updatedPath = key.substring(0, updatedKey) + "{" + updatedParamName + "}" + key.substring(updatedKey + reponseSchema.length() + 2);
+        int? paramNameIndex = key.indexOf("{" + reponseSchema + "}");
+        if paramNameIndex !is () {
+            string updatedPath = key.substring(0, paramNameIndex) + "{" + updatedParamName + "}" + key.substring(paramNameIndex + reponseSchema.length() + 2);
             updatedPaths[updatedPath] = value;
         } else {
             updatedPaths[key] = value;
