@@ -77,8 +77,17 @@ type Post record {
     map<ResponseCode> responses?;
 };
 
+type Parameter record {
+    string name?;
+    string 'in?;
+    boolean required?;
+    string description?;
+    boolean explode?;
+    json schema?;
+};
+
 type Path record {
-    json[] parameters?;
+    Parameter[] parameters?;
     Get get?;
     Post post?;
 };
@@ -129,11 +138,69 @@ type Specification record {
     json[] security;
 };
 
-public function main(string apiName) returns error? {
+public function main(string apiName = "TASKCODE_0001") returns error? {
     string specPath = string `spec/${apiName}.json`;
     check sanitizeSchemaNames(apiName, specPath);
     check sanitizeEnumParamters(specPath);
     check sanitizeResponseSchemaNames(specPath);
+    // If the param name and schema name are the same, dependently typed functions are not compiled
+    check sanitizeSameParameterNameAndSchemaName(specPath);
+}
+
+function sanitizeSameParameterNameAndSchemaName(string specPath) returns error? {
+    json openAPISpec = check io:fileReadJson(specPath);
+
+    Specification spec = check openAPISpec.cloneWithType(Specification);
+
+    if spec.x\-sap\-api\-type != "ODATAV4" {
+        return;
+    }
+
+    map<Path> updatedPaths = {};
+
+    map<Path> paths = spec.paths;
+    foreach var [key, value] in paths.entries() {
+        string reponseSchema = "";
+        map<ResponseCode> responses = value.get?.responses ?: {};
+        foreach [string, ResponseCode] [_, item] in responses.entries() {
+            if item.description == "Retrieved entity" {
+                map<ResponseHeader> content = item.content ?: {};
+                ResponseHeader app = content["application/json"] ?: {};
+                ResponseSchema schema = app.schema ?: {};
+                string? schemaRef = <string?>schema["$ref"];
+                if schemaRef is () {
+                    continue;
+                }
+                reponseSchema = schemaRef.substring(21);
+                break;
+            }
+        }
+
+        if reponseSchema == "" {
+            continue;
+        }
+        string updatedParamName = reponseSchema.substring(0, 1).toLowerAscii() + reponseSchema.substring(1);
+        Parameter[] params = value.parameters ?: [];
+        foreach int i in 0 ... params.length() - 1 {
+            string paramName = params[i].name ?: "";
+            if paramName == reponseSchema {
+                params[i].name = updatedParamName;
+                break;
+            }
+        }
+
+        int? updatedKey = key.indexOf("{" + reponseSchema + "}");
+        if updatedKey !is () {
+            string updatedPath = key.substring(0, updatedKey) + "{" + updatedParamName + "}" + key.substring(updatedKey + reponseSchema.length() + 2);
+            updatedPaths[updatedPath] = value;
+        } else {
+            updatedPaths[key] = value;
+        }
+    }
+
+    spec.paths = updatedPaths;
+
+    check io:fileWriteJson(specPath, spec.toJson());
 }
 
 function sanitizeEnumParamters(string specPath) returns error? {
@@ -147,7 +214,14 @@ function sanitizeEnumParamters(string specPath) returns error? {
     }
 
     map<ParametersItem> selectedParameters = {};
-    map<EnumSchema> selectedSchemas = {};
+    map<EnumSchema> schemasLookup = {};
+    [string, EnumSchema][] selectedSchemas = [];
+    int selectedSchemaIndex = 0;
+    record {|
+        int index;
+        string possibleDuplicateKey1;
+        string possibleDuplicateKey2;
+    |}[] possibleDuplicateSchemaIndex = [];
 
     map<Path> paths = spec.paths;
     foreach var [key, value] in paths.entries() {
@@ -172,25 +246,62 @@ function sanitizeEnumParamters(string specPath) returns error? {
             if items.'enum is () {
                 continue;
             }
-            string sanitizedParamName = getSanitizedParameterName(key, param.name ?: "", isODATA4);
-
-            selectedSchemas[sanitizedParamName] = check param.schema.cloneWithType(EnumSchema);
-            selectedParameters[sanitizedParamName] = {
+            [string, string, string] sanitizedParamName = getSanitizedParameterName(key, param.name ?: "", isODATA4);
+            schemasLookup[sanitizedParamName[0]] = check param.schema.cloneWithType(EnumSchema);
+            selectedSchemas.push([sanitizedParamName[0], <EnumSchema>schemasLookup[sanitizedParamName[0]]]);
+            selectedParameters[sanitizedParamName[0]] = {
                 name: param.name,
                 'in: param.'in,
                 description: param.description,
                 explode: param.explode,
                 schema: {
-                    "$ref": "#/components/schemas/" + sanitizedParamName
+                    "$ref": "#/components/schemas/" + sanitizedParamName[0]
                 }
             };
             parameters[i] = {
-                \$ref: "#/components/parameters/" + sanitizedParamName
+                \$ref: "#/components/parameters/" + sanitizedParamName[0]
             };
+            if sanitizedParamName[1] != "" {
+                possibleDuplicateSchemaIndex.push({
+                    index: selectedSchemaIndex,
+                    possibleDuplicateKey1: sanitizedParamName[1],
+                    possibleDuplicateKey2: sanitizedParamName[2]
+                });
+            }
+            selectedSchemaIndex += 1;
         }
     }
 
-    foreach var [schemaName, value] in selectedSchemas.entries() {
+    map<EnumSchema> uniqueSchemas = {};
+    int j = 0;
+    foreach int i in 0 ... selectedSchemas.length() - 1 {
+        if i == possibleDuplicateSchemaIndex[j].index {
+            string duplicateKey = possibleDuplicateSchemaIndex[j].possibleDuplicateKey1;
+            EnumSchema? possibleDuplicateSchema = schemasLookup[duplicateKey];
+            if possibleDuplicateSchema is () {
+                duplicateKey = possibleDuplicateSchemaIndex[j].possibleDuplicateKey2;
+                possibleDuplicateSchema = schemasLookup[duplicateKey];
+            }
+            if possibleDuplicateSchema !is () {
+                if selectedSchemas[i][1].items.'enum.length() == possibleDuplicateSchema.items.'enum.length() {
+                    boolean isEqual = possibleDuplicateSchema.items.'enum.every(val => selectedSchemas[i][1].items.'enum.indexOf(val) != ());
+                    if isEqual {
+                        selectedParameters[selectedSchemas[i][0]].schema = {
+                            "$ref": "#/components/schemas/" + duplicateKey
+                        };
+                        j += 1;
+                        continue;
+                    }
+                }
+            }
+            uniqueSchemas[selectedSchemas[i][0]] = selectedSchemas[i][1];
+            j += 1;
+        } else {
+            uniqueSchemas[selectedSchemas[i][0]] = selectedSchemas[i][1];
+        }
+    }
+
+    foreach var [schemaName, value] in uniqueSchemas.entries() {
         spec.components.schemas[schemaName] = value.toJson();
     }
 
@@ -202,13 +313,15 @@ function sanitizeEnumParamters(string specPath) returns error? {
 
 }
 
-function getSanitizedParameterName(string key, string paramName, boolean isODATA4) returns string {
+function getSanitizedParameterName(string key, string paramName, boolean isODATA4) returns [string, string, string] {
 
     string parameterName = "";
+    string possibleDuplicateKey1 = "";
+    string possibleDuplicateKey2 = "";
 
     regexp:RegExp pathRegex;
     if isODATA4 {
-        pathRegex = re `^/([^/]+)?(/[^{]+)?(/[^/{]+)?(/.*)?$`;
+        pathRegex = re `/([^{]*)(\{.*\})?(/.*)?`;
     } else {
         pathRegex = re `/([^(]*)(\(.*\))?(/.*)?`;
     }
@@ -216,7 +329,7 @@ function getSanitizedParameterName(string key, string paramName, boolean isODATA
     regexp:Groups? groups = pathRegex.findGroups(key);
     if groups is () {
         // Can be requestApproval/ batch query path
-        return "";
+        return ["", "", ""];
     }
 
     match (groups.length()) {
@@ -231,54 +344,79 @@ function getSanitizedParameterName(string key, string paramName, boolean isODATA
             }
         }
         3 => {
-            regexp:Span? basePath = groups[1];
-            if basePath !is () {
-                parameterName += basePath.substring().concat("ByKey");
+            regexp:Span? basePathSpan = groups[1];
+            if basePathSpan !is () {
+                string basePath = basePathSpan.substring();
+                if isODATA4 {
+                    basePath = basePath.substring(0, basePath.length() - 1);
+                }
+                parameterName += basePath.concat("ByKey");
+                possibleDuplicateKey1 = basePath;
             }
         }
         4 => {
             regexp:Span? resourcePath = groups[3];
-            if resourcePath !is () {
-                string resourcePathString = resourcePath.substring();
+            string resourcePathString = resourcePath is () ? "" : resourcePath.substring();
+
+            // SAP__self.MarkDefectAsResolved
+            if resourcePathString.startsWith("/SAP__self.") {
+                parameterName += resourcePathString.substring(11);
+                parameterName = parameterName.substring(0, 1).toUpperAscii() + parameterName.substring(1);
+            }
+
+            if resourcePathString != "" {
                 if resourcePathString.startsWith("/") {
                     resourcePathString = resourcePathString.substring(1);
                 }
                 if resourcePathString.startsWith("to_") {
                     resourcePathString = resourcePathString.substring(3);
                 }
-                resourcePathString = resourcePathString.substring(0, 1).toUpperAscii() + resourcePathString.substring(1);
-
-                regexp:Span? basePath = groups[1];
-                if basePath is () {
-                    return "";
+                if resourcePathString.startsWith("_") {
+                    resourcePathString = resourcePathString.substring(1);
                 }
-                parameterName += resourcePathString.concat("Of", basePath.substring());
+                resourcePathString = resourcePathString.substring(0, 1).toUpperAscii() + resourcePathString.substring(1);
+                possibleDuplicateKey1 = resourcePathString;
+
+                regexp:Span? basePathSpan = groups[1];
+                if basePathSpan is () {
+                    return ["", "", ""];
+                }
+                string basePath = basePathSpan.substring();
+                if isODATA4 {
+                    basePath = basePath.substring(0, basePath.length() - 1);
+                }
+                parameterName += resourcePathString.concat("Of", basePath);
+                possibleDuplicateKey2 = basePath + resourcePathString;
             }
         }
     }
 
+    string postfix = "";
     match (paramName) {
         "$filter" => {
-            parameterName += "FilterOptions";
+            postfix = "FilterOptions";
         }
         "$select" => {
-            parameterName += "SelectOptions";
+            postfix = "SelectOptions";
         }
         "$expand" => {
-            parameterName += "ExpandOptions";
+            postfix = "ExpandOptions";
         }
         "$search" => {
-            parameterName += "SearchOptions";
+            postfix = "SearchOptions";
         }
         "$orderby" => {
-            parameterName += "OrderByOptions";
+            postfix = "OrderByOptions";
         }
         _ => {
             io:println("Error: Invalid parameter name: " + parameterName);
         }
     }
 
-    return parameterName;
+    parameterName += postfix;
+    possibleDuplicateKey1 = possibleDuplicateKey1 == "" ? "" : possibleDuplicateKey1 + postfix;
+    possibleDuplicateKey2 = possibleDuplicateKey2 == "" ? "" : possibleDuplicateKey2 + postfix;
+    return [parameterName, possibleDuplicateKey1, possibleDuplicateKey2];
 }
 
 function sanitizeSchemaNames(string apiName, string specPath) returns error? {
@@ -413,7 +551,12 @@ function sanitizeResponseSchemaNames(string specPath) returns error? {
                     schema.title = key.substring(1, key.length()) + "Wrapper";
                     schema.title = schemaTitle;
                 } else if schemaTitle.endsWith("Type") {
-                    schema.title = schemaTitle.substring(0, schemaTitle.length() - 4);
+                    schemaTitle = schemaTitle.substring(0, schemaTitle.length() - 4);
+                    if !isODATA4 {
+                        schema.title = schemaTitle + "Wrapper";
+                    } else {
+                        schema.title = schemaTitle;
+                    }
                 }
             }
         }
