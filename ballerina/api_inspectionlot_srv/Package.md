@@ -70,7 +70,7 @@ inspectionlot:Client inspectionlotClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionlot:Wrapper createdInspectionlot = check inspectionlotClient->createA_Inspectionlot();
+inspectionlot:A_InspectionLotWrapper createdInspectionlot = check inspectionlotClient->createA_Inspectionlot();
 ```
 
 ### Step 4: Run the Ballerina application
