@@ -34,12 +34,13 @@ listener http:Listener ep0 = new (9090,
 
 service /sap/opu/odata/sap/API_INSPECTIONLOT_SRV on ep0 {
 
-resource function head .() returns http:Response {
+    resource function head .() returns http:Response {
         http:Response res = new;
         res.statusCode = 200;
         res.setHeader("X-CSRF-TOKEN", "Quality-Inspection-Process-Integration");
         return res;
-}
+    }
+
     # Reads inspection lots with data at header level.
     #
     # + \$top - Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)

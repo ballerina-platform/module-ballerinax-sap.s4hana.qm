@@ -74,7 +74,7 @@ function testGetA_InspectionLot() returns error? {
 }
 function testCreateInspectionlot() returns error? {
     A_InspectionLotWrapper|error createdInspectionlot = s4HanaClient->createA_InspectionLot({
-        InspectionLot: "10000002600" 
+        InspectionLot: "10000002600"
     });
     test:assertTrue(createdInspectionlot is error, "The purchasing info record response expected to be 500");
     error e = <error>createdInspectionlot;
