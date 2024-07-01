@@ -1,7 +1,7 @@
 {
-  "description": "",
-  "communication-scenario": "",
-  "import-statement": "",
-  "client-init": "",
-  "api-invocation": ""
+  "description": "The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). The data related to a quality info record and first article inspection has one entity type each. For read operations, filter information must be sent according to the OData protocol.",
+  "communication-scenario": "Quality Info Record Integration",
+  "import-statement": "import ballerinax/sap.s4hana.api_qualityinforecord_srv as qltyinforecd;",
+  "client-init": "qltyinforecd:Client qltyInfoRecClient = check new (",
+  "api-invocation": "qltyinforecd:Wrapper CollectionOfQualityFirstArticleInspectionWrapper = check qltyInfoRecClient->listQltyFirstArticleInspsOfQualityInProcurement();"
 }
