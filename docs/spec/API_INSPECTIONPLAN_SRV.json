@@ -132,126 +132,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "BillOfOperationsDesc",
-                  "BillOfOperationsDesc desc",
-                  "Plant",
-                  "Plant desc",
-                  "BillOfOperationsUsage",
-                  "BillOfOperationsUsage desc",
-                  "BillOfOperationsStatus",
-                  "BillOfOperationsStatus desc",
-                  "ResponsiblePlannerGroup",
-                  "ResponsiblePlannerGroup desc",
-                  "MinimumLotSizeQuantity",
-                  "MinimumLotSizeQuantity desc",
-                  "MaximumLotSizeQuantity",
-                  "MaximumLotSizeQuantity desc",
-                  "BillOfOperationsUnit",
-                  "BillOfOperationsUnit desc",
-                  "ReplacedBillOfOperations",
-                  "ReplacedBillOfOperations desc",
-                  "IsMarkedForDeletion",
-                  "IsMarkedForDeletion desc",
-                  "InspPlanHasMultipleSpec",
-                  "InspPlanHasMultipleSpec desc",
-                  "InspSubsetFieldCombination",
-                  "InspSubsetFieldCombination desc",
-                  "InspectionPartialLotAssignment",
-                  "InspectionPartialLotAssignment desc",
-                  "SmplDrawingProcedure",
-                  "SmplDrawingProcedure desc",
-                  "SmplDrawingProcedureVersion",
-                  "SmplDrawingProcedureVersion desc",
-                  "InspectionLotDynamicLevel",
-                  "InspectionLotDynamicLevel desc",
-                  "InspLotDynamicRule",
-                  "InspLotDynamicRule desc",
-                  "InspExternalNumberingOfValues",
-                  "InspExternalNumberingOfValues desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionPlanOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "IsDeleted",
-                  "BillOfOperationsDesc",
-                  "Plant",
-                  "BillOfOperationsUsage",
-                  "BillOfOperationsStatus",
-                  "ResponsiblePlannerGroup",
-                  "MinimumLotSizeQuantity",
-                  "MaximumLotSizeQuantity",
-                  "BillOfOperationsUnit",
-                  "ReplacedBillOfOperations",
-                  "IsMarkedForDeletion",
-                  "InspPlanHasMultipleSpec",
-                  "InspSubsetFieldCombination",
-                  "InspectionPartialLotAssignment",
-                  "SmplDrawingProcedure",
-                  "SmplDrawingProcedureVersion",
-                  "InspectionLotDynamicLevel",
-                  "InspLotDynamicRule",
-                  "InspExternalNumberingOfValues",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "ChangeNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionPlanSelectOptions"
           }
         ],
         "responses": {
@@ -260,11 +144,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionPlanWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionPlanType",
+                      "title": "CollectionOfA_InspectionPlan",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -273,7 +157,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspectionPlanType"
+                            "$ref": "#/components/schemas/A_InspectionPlan"
                           }
                         }
                       }
@@ -300,7 +184,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspectionPlanType-create"
+                "$ref": "#/components/schemas/CreateA_InspectionPlan"
               }
             }
           }
@@ -311,11 +195,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionPlanType",
+                  "title": "A_InspectionPlanWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspectionPlanType"
+                      "$ref": "#/components/schemas/A_InspectionPlan"
                     }
                   }
                 }
@@ -369,51 +253,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "IsDeleted",
-                  "BillOfOperationsDesc",
-                  "Plant",
-                  "BillOfOperationsUsage",
-                  "BillOfOperationsStatus",
-                  "ResponsiblePlannerGroup",
-                  "MinimumLotSizeQuantity",
-                  "MaximumLotSizeQuantity",
-                  "BillOfOperationsUnit",
-                  "ReplacedBillOfOperations",
-                  "IsMarkedForDeletion",
-                  "InspPlanHasMultipleSpec",
-                  "InspSubsetFieldCombination",
-                  "InspectionPartialLotAssignment",
-                  "SmplDrawingProcedure",
-                  "SmplDrawingProcedureVersion",
-                  "InspectionLotDynamicLevel",
-                  "InspLotDynamicRule",
-                  "InspExternalNumberingOfValues",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "ChangeNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionPlanByKeySelectOptions"
           }
         ],
         "responses": {
@@ -422,11 +262,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionPlanType",
+                  "title": "A_InspectionPlanWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspectionPlanType"
+                      "$ref": "#/components/schemas/A_InspectionPlan"
                     }
                   }
                 }
@@ -454,7 +294,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspectionPlanType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspectionPlan"
                   }
                 }
               }
@@ -512,234 +352,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "BOOOperationInternalID",
-                  "BOOOperationInternalID desc",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOpInternalVersionCounter desc",
-                  "BOOCharacteristic",
-                  "BOOCharacteristic desc",
-                  "BOOCharacteristicVersion",
-                  "BOOCharacteristicVersion desc",
-                  "BOODpndantCharcSpec",
-                  "BOODpndantCharcSpec desc",
-                  "BOODpndantCharcSpecVers",
-                  "BOODpndantCharcSpecVers desc",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsQuantitative desc",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsDefectsRecgAutomatic desc",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsSelectedSetRequired desc",
-                  "InspectionSpecificationText",
-                  "InspectionSpecificationText desc",
-                  "InspSpecIsDefectRecordingRqd",
-                  "InspSpecIsDefectRecordingRqd desc",
-                  "ProdnRsceToolItemNumber",
-                  "ProdnRsceToolItemNumber desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "Supplier",
-                  "Supplier desc",
-                  "Customer",
-                  "Customer desc",
-                  "BOOSearchText",
-                  "BOOSearchText desc",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObject desc",
-                  "MultipleSpecificationObjType",
-                  "MultipleSpecificationObjType desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "BOOOperationPRTInternalID",
-                  "BOOOperationPRTInternalID desc",
-                  "Material",
-                  "Material desc",
-                  "Plant",
-                  "Plant desc",
-                  "BillOfOperationsVariant",
-                  "BillOfOperationsVariant desc",
-                  "BOOToMaterialInternalID",
-                  "BOOToMaterialInternalID desc",
-                  "InspSpecDecimalPlaces",
-                  "InspSpecDecimalPlaces desc",
-                  "InspectionSpecificationUnit",
-                  "InspectionSpecificationUnit desc",
-                  "InspSpecTargetValue",
-                  "InspSpecTargetValue desc",
-                  "InspSpecHasTargetValue",
-                  "InspSpecHasTargetValue desc",
-                  "InspSpecUpperLimit",
-                  "InspSpecUpperLimit desc",
-                  "InspSpecLowerLimit",
-                  "InspSpecLowerLimit desc",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecHasUpperLimit desc",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecHasLowerLimit desc",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecNumberOfClasses desc",
-                  "InspSpecClassWidthQty",
-                  "InspSpecClassWidthQty desc",
-                  "InspSpecHasClassWidth",
-                  "InspSpecHasClassWidth desc",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecClassMidpointQty desc",
-                  "InspSpecHasClassMidpoint",
-                  "InspSpecHasClassMidpoint desc",
-                  "SelectedCodeSet",
-                  "SelectedCodeSet desc",
-                  "SelectedCodeSetPlant",
-                  "SelectedCodeSetPlant desc",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalCatalog2 desc",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalSelectedSet2 desc",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAdditionalCodeGroup2 desc",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAddlSeldCodeSetPlant2 desc",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalCatalog3 desc",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalSelectedSet3 desc",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAdditionalCodeGroup3 desc",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAddlSeldCodeSetPlant3 desc",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalCatalog4 desc",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalSelectedSet4 desc",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAdditionalCodeGroup4 desc",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAddlSeldCodeSetPlant4 desc",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalCatalog5 desc",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalSelectedSet5 desc",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAdditionalCodeGroup5 desc",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "InspSpecAddlSeldCodeSetPlant5 desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "BillOfOperationsVersion",
-                  "BillOfOperationsVersion desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanDepdntCharcOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "BOOOperationInternalID",
-                  "BOOOpInternalVersionCounter",
-                  "BOOCharacteristic",
-                  "BOOCharacteristicVersion",
-                  "BOODpndantCharcSpec",
-                  "BOODpndantCharcSpecVers",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspectionSpecificationText",
-                  "InspSpecIsDefectRecordingRqd",
-                  "ProdnRsceToolItemNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "Supplier",
-                  "Customer",
-                  "BOOSearchText",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObjType",
-                  "IsDeleted",
-                  "BOOOperationPRTInternalID",
-                  "Material",
-                  "Plant",
-                  "BillOfOperationsVariant",
-                  "BOOToMaterialInternalID",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecUpperLimit",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecClassWidthQty",
-                  "InspSpecHasClassWidth",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecHasClassMidpoint",
-                  "SelectedCodeSet",
-                  "SelectedCodeSetPlant",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "BillOfOperationsVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanDepdntCharcSelectOptions"
           }
         ],
         "responses": {
@@ -748,11 +364,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspPlanDepdntCharcWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspPlanDepdntCharcType",
+                      "title": "CollectionOfA_InspPlanDepdntCharc",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -761,7 +377,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType"
+                            "$ref": "#/components/schemas/A_InspPlanDepdntCharc"
                           }
                         }
                       }
@@ -788,7 +404,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType-create"
+                "$ref": "#/components/schemas/CreateA_InspPlanDepdntCharc"
               }
             }
           }
@@ -799,11 +415,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanDepdntCharcType",
+                  "title": "A_InspPlanDepdntCharcWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType"
+                      "$ref": "#/components/schemas/A_InspPlanDepdntCharc"
                     }
                   }
                 }
@@ -917,87 +533,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "BOOOperationInternalID",
-                  "BOOOpInternalVersionCounter",
-                  "BOOCharacteristic",
-                  "BOOCharacteristicVersion",
-                  "BOODpndantCharcSpec",
-                  "BOODpndantCharcSpecVers",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspectionSpecificationText",
-                  "InspSpecIsDefectRecordingRqd",
-                  "ProdnRsceToolItemNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "Supplier",
-                  "Customer",
-                  "BOOSearchText",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObjType",
-                  "IsDeleted",
-                  "BOOOperationPRTInternalID",
-                  "Material",
-                  "Plant",
-                  "BillOfOperationsVariant",
-                  "BOOToMaterialInternalID",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecUpperLimit",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecClassWidthQty",
-                  "InspSpecHasClassWidth",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecHasClassMidpoint",
-                  "SelectedCodeSet",
-                  "SelectedCodeSetPlant",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "BillOfOperationsVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanDepdntCharcByKeySelectOptions"
           }
         ],
         "responses": {
@@ -1006,11 +542,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanDepdntCharcType",
+                  "title": "A_InspPlanDepdntCharcWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType"
+                      "$ref": "#/components/schemas/A_InspPlanDepdntCharc"
                     }
                   }
                 }
@@ -1038,7 +574,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspPlanDepdntCharc"
                   }
                 }
               }
@@ -1096,99 +632,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Material",
-                  "Material desc",
-                  "Plant",
-                  "Plant desc",
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "InspPlanMatlAssignment",
-                  "InspPlanMatlAssignment desc",
-                  "InspPlanMatlAssgmtIntVersion",
-                  "InspPlanMatlAssgmtIntVersion desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "Supplier",
-                  "Supplier desc",
-                  "Customer",
-                  "Customer desc",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObject desc",
-                  "MultipleSpecificationObjType",
-                  "MultipleSpecificationObjType desc",
-                  "BOOSearchText",
-                  "BOOSearchText desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanMaterialAssgmtOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "Material",
-                  "Plant",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspPlanMatlAssignment",
-                  "InspPlanMatlAssgmtIntVersion",
-                  "InspectionPlanInternalVersion",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "IsDeleted",
-                  "Supplier",
-                  "Customer",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObjType",
-                  "BOOSearchText",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanMaterialAssgmtSelectOptions"
           }
         ],
         "responses": {
@@ -1197,11 +644,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspPlanMaterialAssgmtWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspPlanMaterialAssgmtType",
+                      "title": "CollectionOfA_InspPlanMaterialAssgmt",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -1210,7 +657,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType"
+                            "$ref": "#/components/schemas/A_InspPlanMaterialAssgmt"
                           }
                         }
                       }
@@ -1237,7 +684,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType-create"
+                "$ref": "#/components/schemas/CreateA_InspPlanMaterialAssgmt"
               }
             }
           }
@@ -1248,11 +695,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanMaterialAssgmtType",
+                  "title": "A_InspPlanMaterialAssgmtWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType"
+                      "$ref": "#/components/schemas/A_InspPlanMaterialAssgmt"
                     }
                   }
                 }
@@ -1336,42 +783,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "Material",
-                  "Plant",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspPlanMatlAssignment",
-                  "InspPlanMatlAssgmtIntVersion",
-                  "InspectionPlanInternalVersion",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "IsDeleted",
-                  "Supplier",
-                  "Customer",
-                  "MultipleSpecificationObject",
-                  "MultipleSpecificationObjType",
-                  "BOOSearchText",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanMaterialAssgmtByKeySelectOptions"
           }
         ],
         "responses": {
@@ -1380,11 +792,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanMaterialAssgmtType",
+                  "title": "A_InspPlanMaterialAssgmtWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType"
+                      "$ref": "#/components/schemas/A_InspPlanMaterialAssgmt"
                     }
                   }
                 }
@@ -1412,7 +824,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspPlanMaterialAssgmt"
                   }
                 }
               }
@@ -1470,363 +882,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "BOOOperationInternalID",
-                  "BOOOperationInternalID desc",
-                  "BOOCharacteristic",
-                  "BOOCharacteristic desc",
-                  "BOOCharacteristicVersion",
-                  "BOOCharacteristicVersion desc",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOpInternalVersionCounter desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "BOOOperationPRTInternalID",
-                  "BOOOperationPRTInternalID desc",
-                  "InspectionMethod",
-                  "InspectionMethod desc",
-                  "InspectionMethodVersion",
-                  "InspectionMethodVersion desc",
-                  "InspectionMethodPlant",
-                  "InspectionMethodPlant desc",
-                  "InspSpecImportanceCode",
-                  "InspSpecImportanceCode desc",
-                  "InspectorQualification",
-                  "InspectorQualification desc",
-                  "InspectionSpecification",
-                  "InspectionSpecification desc",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationVersion desc",
-                  "InspectionSpecificationPlant",
-                  "InspectionSpecificationPlant desc",
-                  "BOOCharcHasInspSpecReference",
-                  "BOOCharcHasInspSpecReference desc",
-                  "ProdnRsceToolItemNumber",
-                  "ProdnRsceToolItemNumber desc",
-                  "InspSpecControlIndicators",
-                  "InspSpecControlIndicators desc",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsQuantitative desc",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsMeasuredValueRqd desc",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsSelectedSetRequired desc",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsUpperLimitRequired desc",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsLowerLimitRequired desc",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspSpecIsTargetValueInLimit desc",
-                  "InspectionScope",
-                  "InspectionScope desc",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecIsLongTermInspection desc",
-                  "InspSpecRecordingType",
-                  "InspSpecRecordingType desc",
-                  "InspResultIsDocumentationRqd",
-                  "InspResultIsDocumentationRqd desc",
-                  "InspSpecCharcCategory",
-                  "InspSpecCharcCategory desc",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsSampleQtyAdditive desc",
-                  "InspSpecIsDestructive",
-                  "InspSpecIsDestructive desc",
-                  "InspSpecResultCalculation",
-                  "InspSpecResultCalculation desc",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsSamplingProcedRqd desc",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecIsScrapRelevant desc",
-                  "InspSpecHasFixedCtrlIndicators",
-                  "InspSpecHasFixedCtrlIndicators desc",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsTestEquipmentRqd desc",
-                  "InspSpecIsDefectRecordingRqd",
-                  "InspSpecIsDefectRecordingRqd desc",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsDefectsRecgAutomatic desc",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsChgDocRequired desc",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecIsControlChartUsed desc",
-                  "InspSpecPrintControl",
-                  "InspSpecPrintControl desc",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecFirstUpperSpecLimit desc",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit desc",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecFirstLowerSpecLimit desc",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit desc",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecSecondUpperSpecLimit desc",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit desc",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecSecondLowerSpecLimit desc",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit desc",
-                  "InspSpecInputProcedure",
-                  "InspSpecInputProcedure desc",
-                  "InspSpecHasFormula",
-                  "InspSpecHasFormula desc",
-                  "InspSpecFormula1",
-                  "InspSpecFormula1 desc",
-                  "InspSpecFormula2",
-                  "InspSpecFormula2 desc",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecNumberOfClasses desc",
-                  "InspSpecClassWidthQty",
-                  "InspSpecClassWidthQty desc",
-                  "InspSpecHasClassWidth",
-                  "InspSpecHasClassWidth desc",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecClassMidpointQty desc",
-                  "InspSpecHasClassMidpoint",
-                  "InspSpecHasClassMidpoint desc",
-                  "InspToleranceSpecification",
-                  "InspToleranceSpecification desc",
-                  "InspSpecDecimalPlaces",
-                  "InspSpecDecimalPlaces desc",
-                  "InspectionSpecificationUnit",
-                  "InspectionSpecificationUnit desc",
-                  "InspSpecTargetValue",
-                  "InspSpecTargetValue desc",
-                  "InspSpecHasTargetValue",
-                  "InspSpecHasTargetValue desc",
-                  "InspSpecUpperLimit",
-                  "InspSpecUpperLimit desc",
-                  "InspSpecLowerLimit",
-                  "InspSpecLowerLimit desc",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecHasLowerLimit desc",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecHasUpperLimit desc",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeGrpRejection desc",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeRejection desc",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnUpper desc",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper desc",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeGrpRjcnLower desc",
-                  "InspSpecDefectCodeRjcnLower",
-                  "InspSpecDefectCodeRjcnLower desc",
-                  "SelectedCodeSet",
-                  "SelectedCodeSet desc",
-                  "SelectedCodeSetPlant",
-                  "SelectedCodeSetPlant desc",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalCatalog2 desc",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalSelectedSet2 desc",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAdditionalCodeGroup2 desc",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAddlSeldCodeSetPlant2 desc",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalCatalog3 desc",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalSelectedSet3 desc",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAdditionalCodeGroup3 desc",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAddlSeldCodeSetPlant3 desc",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalCatalog4 desc",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalSelectedSet4 desc",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAdditionalCodeGroup4 desc",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAddlSeldCodeSetPlant4 desc",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalCatalog5 desc",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalSelectedSet5 desc",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAdditionalCodeGroup5 desc",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "InspSpecAddlSeldCodeSetPlant5 desc",
-                  "SamplingProcedure",
-                  "SamplingProcedure desc",
-                  "InspCharacteristicSampleUnit",
-                  "InspCharacteristicSampleUnit desc",
-                  "BOOCharcSampleQuantity",
-                  "BOOCharcSampleQuantity desc",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField1 desc",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField2 desc",
-                  "InspSpecInformationField3",
-                  "InspSpecInformationField3 desc",
-                  "InspectionSpecificationText",
-                  "InspectionSpecificationText desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "BillOfOperationsVersion",
-                  "BillOfOperationsVersion desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpCharacteristicOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "BOOOperationInternalID",
-                  "BOOCharacteristic",
-                  "BOOCharacteristicVersion",
-                  "BOOOpInternalVersionCounter",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlan",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "IsDeleted",
-                  "BOOOperationPRTInternalID",
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "InspectionMethodPlant",
-                  "InspSpecImportanceCode",
-                  "InspectorQualification",
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "BOOCharcHasInspSpecReference",
-                  "ProdnRsceToolItemNumber",
-                  "InspSpecControlIndicators",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspectionScope",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecRecordingType",
-                  "InspResultIsDocumentationRqd",
-                  "InspSpecCharcCategory",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsDestructive",
-                  "InspSpecResultCalculation",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecHasFixedCtrlIndicators",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsDefectRecordingRqd",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecPrintControl",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecInputProcedure",
-                  "InspSpecHasFormula",
-                  "InspSpecFormula1",
-                  "InspSpecFormula2",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecClassWidthQty",
-                  "InspSpecHasClassWidth",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecHasClassMidpoint",
-                  "InspToleranceSpecification",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecUpperLimit",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeRjcnLower",
-                  "SelectedCodeSet",
-                  "SelectedCodeSetPlant",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "SamplingProcedure",
-                  "InspCharacteristicSampleUnit",
-                  "BOOCharcSampleQuantity",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField3",
-                  "InspectionSpecificationText",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "BillOfOperationsVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpCharacteristicSelectOptions"
           }
         ],
         "responses": {
@@ -1835,11 +894,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspPlanOpCharacteristicWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspPlanOpCharacteristicType",
+                      "title": "CollectionOfA_InspPlanOpCharacteristic",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -1848,7 +907,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType"
+                            "$ref": "#/components/schemas/A_InspPlanOpCharacteristic"
                           }
                         }
                       }
@@ -1875,7 +934,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType-create"
+                "$ref": "#/components/schemas/CreateA_InspPlanOpCharacteristic"
               }
             }
           }
@@ -1886,11 +945,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOpCharacteristicType",
+                  "title": "A_InspPlanOpCharacteristicWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType"
+                      "$ref": "#/components/schemas/A_InspPlanOpCharacteristic"
                     }
                   }
                 }
@@ -1984,130 +1043,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "BOOOperationInternalID",
-                  "BOOCharacteristic",
-                  "BOOCharacteristicVersion",
-                  "BOOOpInternalVersionCounter",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlan",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ChangeNumber",
-                  "IsDeleted",
-                  "BOOOperationPRTInternalID",
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "InspectionMethodPlant",
-                  "InspSpecImportanceCode",
-                  "InspectorQualification",
-                  "InspectionSpecification",
-                  "InspectionSpecificationVersion",
-                  "InspectionSpecificationPlant",
-                  "BOOCharcHasInspSpecReference",
-                  "ProdnRsceToolItemNumber",
-                  "InspSpecControlIndicators",
-                  "InspSpecIsQuantitative",
-                  "InspSpecIsMeasuredValueRqd",
-                  "InspSpecIsSelectedSetRequired",
-                  "InspSpecIsUpperLimitRequired",
-                  "InspSpecIsLowerLimitRequired",
-                  "InspSpecIsTargetValueInLimit",
-                  "InspectionScope",
-                  "InspSpecIsLongTermInspection",
-                  "InspSpecRecordingType",
-                  "InspResultIsDocumentationRqd",
-                  "InspSpecCharcCategory",
-                  "InspSpecIsSampleQtyAdditive",
-                  "InspSpecIsDestructive",
-                  "InspSpecResultCalculation",
-                  "InspSpecIsSamplingProcedRqd",
-                  "InspSpecIsScrapRelevant",
-                  "InspSpecHasFixedCtrlIndicators",
-                  "InspSpecIsTestEquipmentRqd",
-                  "InspSpecIsDefectRecordingRqd",
-                  "InspSpecIsDefectsRecgAutomatic",
-                  "InspSpecIsChgDocRequired",
-                  "InspSpecIsControlChartUsed",
-                  "InspSpecPrintControl",
-                  "InspSpecFirstUpperSpecLimit",
-                  "InspSpecHasFirstUpperSpecLimit",
-                  "InspSpecFirstLowerSpecLimit",
-                  "InspSpecHasFirstLowerSpecLimit",
-                  "InspSpecSecondUpperSpecLimit",
-                  "InspSpecHasSecondUprSpecLimit",
-                  "InspSpecSecondLowerSpecLimit",
-                  "InspSpecHasSecondLowrSpecLimit",
-                  "InspSpecInputProcedure",
-                  "InspSpecHasFormula",
-                  "InspSpecFormula1",
-                  "InspSpecFormula2",
-                  "InspSpecNumberOfClasses",
-                  "InspSpecClassWidthQty",
-                  "InspSpecHasClassWidth",
-                  "InspSpecClassMidpointQty",
-                  "InspSpecHasClassMidpoint",
-                  "InspToleranceSpecification",
-                  "InspSpecDecimalPlaces",
-                  "InspectionSpecificationUnit",
-                  "InspSpecTargetValue",
-                  "InspSpecHasTargetValue",
-                  "InspSpecUpperLimit",
-                  "InspSpecLowerLimit",
-                  "InspSpecHasLowerLimit",
-                  "InspSpecHasUpperLimit",
-                  "InspSpecDefectCodeGrpRejection",
-                  "InspSpecDefectCodeRejection",
-                  "InspSpecDefectCodeGrpRjcnUpper",
-                  "InspSpecDefectCodeRjcnUpper",
-                  "InspSpecDefectCodeGrpRjcnLower",
-                  "InspSpecDefectCodeRjcnLower",
-                  "SelectedCodeSet",
-                  "SelectedCodeSetPlant",
-                  "InspSpecAdditionalCatalog2",
-                  "InspSpecAdditionalSelectedSet2",
-                  "InspSpecAdditionalCodeGroup2",
-                  "InspSpecAddlSeldCodeSetPlant2",
-                  "InspSpecAdditionalCatalog3",
-                  "InspSpecAdditionalSelectedSet3",
-                  "InspSpecAdditionalCodeGroup3",
-                  "InspSpecAddlSeldCodeSetPlant3",
-                  "InspSpecAdditionalCatalog4",
-                  "InspSpecAdditionalSelectedSet4",
-                  "InspSpecAdditionalCodeGroup4",
-                  "InspSpecAddlSeldCodeSetPlant4",
-                  "InspSpecAdditionalCatalog5",
-                  "InspSpecAdditionalSelectedSet5",
-                  "InspSpecAdditionalCodeGroup5",
-                  "InspSpecAddlSeldCodeSetPlant5",
-                  "SamplingProcedure",
-                  "InspCharacteristicSampleUnit",
-                  "BOOCharcSampleQuantity",
-                  "InspSpecInformationField1",
-                  "InspSpecInformationField2",
-                  "InspSpecInformationField3",
-                  "InspectionSpecificationText",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "BillOfOperationsVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpCharacteristicByKeySelectOptions"
           }
         ],
         "responses": {
@@ -2116,11 +1052,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOpCharacteristicType",
+                  "title": "A_InspPlanOpCharacteristicWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType"
+                      "$ref": "#/components/schemas/A_InspPlanOpCharacteristic"
                     }
                   }
                 }
@@ -2148,7 +1084,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspPlanOpCharacteristic"
                   }
                 }
               }
@@ -2206,135 +1142,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "BOOOperationInternalID",
-                  "BOOOperationInternalID desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOpInternalVersionCounter desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "WorkCenterInternalID",
-                  "WorkCenterInternalID desc",
-                  "WorkCenterTypeCode",
-                  "WorkCenterTypeCode desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "IsImplicitlyDeleted",
-                  "IsImplicitlyDeleted desc",
-                  "OperationExternalID",
-                  "OperationExternalID desc",
-                  "Operation",
-                  "Operation desc",
-                  "OperationText",
-                  "OperationText desc",
-                  "Plant",
-                  "Plant desc",
-                  "OperationControlProfile",
-                  "OperationControlProfile desc",
-                  "OperationStandardTextCode",
-                  "OperationStandardTextCode desc",
-                  "BillOfOperationsRefType",
-                  "BillOfOperationsRefType desc",
-                  "BillOfOperationsRefGroup",
-                  "BillOfOperationsRefGroup desc",
-                  "BillOfOperationsRefVariant",
-                  "BillOfOperationsRefVariant desc",
-                  "InspResultRecordingView",
-                  "InspResultRecordingView desc",
-                  "InspSbstCompletionConfirmation",
-                  "InspSbstCompletionConfirmation desc",
-                  "InspSbstHasNoTimeOrQuantity",
-                  "InspSbstHasNoTimeOrQuantity desc",
-                  "OperationReferenceQuantity",
-                  "OperationReferenceQuantity desc",
-                  "OperationUnit",
-                  "OperationUnit desc",
-                  "OpQtyToBaseQtyDnmntr",
-                  "OpQtyToBaseQtyDnmntr desc",
-                  "OpQtyToBaseQtyNmrtr",
-                  "OpQtyToBaseQtyNmrtr desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOperationOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "BOOOperationInternalID",
-                  "InspectionPlanInternalVersion",
-                  "BOOOpInternalVersionCounter",
-                  "InspectionPlan",
-                  "WorkCenterInternalID",
-                  "WorkCenterTypeCode",
-                  "IsDeleted",
-                  "IsImplicitlyDeleted",
-                  "OperationExternalID",
-                  "Operation",
-                  "OperationText",
-                  "Plant",
-                  "OperationControlProfile",
-                  "OperationStandardTextCode",
-                  "BillOfOperationsRefType",
-                  "BillOfOperationsRefGroup",
-                  "BillOfOperationsRefVariant",
-                  "InspResultRecordingView",
-                  "InspSbstCompletionConfirmation",
-                  "InspSbstHasNoTimeOrQuantity",
-                  "OperationReferenceQuantity",
-                  "OperationUnit",
-                  "OpQtyToBaseQtyDnmntr",
-                  "OpQtyToBaseQtyNmrtr",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "ChangedDateTime",
-                  "ChangeNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOperationSelectOptions"
           }
         ],
         "responses": {
@@ -2343,11 +1154,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspPlanOperationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspPlanOperationType",
+                      "title": "CollectionOfA_InspPlanOperation",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -2356,7 +1167,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOperationType"
+                            "$ref": "#/components/schemas/A_InspPlanOperation"
                           }
                         }
                       }
@@ -2383,7 +1194,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOperationType-create"
+                "$ref": "#/components/schemas/CreateA_InspPlanOperation"
               }
             }
           }
@@ -2394,11 +1205,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOperationType",
+                  "title": "A_InspPlanOperationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOperationType"
+                      "$ref": "#/components/schemas/A_InspPlanOperation"
                     }
                   }
                 }
@@ -2472,54 +1283,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "BOOOperationInternalID",
-                  "InspectionPlanInternalVersion",
-                  "BOOOpInternalVersionCounter",
-                  "InspectionPlan",
-                  "WorkCenterInternalID",
-                  "WorkCenterTypeCode",
-                  "IsDeleted",
-                  "IsImplicitlyDeleted",
-                  "OperationExternalID",
-                  "Operation",
-                  "OperationText",
-                  "Plant",
-                  "OperationControlProfile",
-                  "OperationStandardTextCode",
-                  "BillOfOperationsRefType",
-                  "BillOfOperationsRefGroup",
-                  "BillOfOperationsRefVariant",
-                  "InspResultRecordingView",
-                  "InspSbstCompletionConfirmation",
-                  "InspSbstHasNoTimeOrQuantity",
-                  "OperationReferenceQuantity",
-                  "OperationUnit",
-                  "OpQtyToBaseQtyDnmntr",
-                  "OpQtyToBaseQtyNmrtr",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "ChangedDateTime",
-                  "ChangeNumber",
-                  "ValidityStartDate",
-                  "ValidityEndDate"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOperationByKeySelectOptions"
           }
         ],
         "responses": {
@@ -2528,11 +1292,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOperationType",
+                  "title": "A_InspPlanOperationWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOperationType"
+                      "$ref": "#/components/schemas/A_InspPlanOperation"
                     }
                   }
                 }
@@ -2560,7 +1324,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOperationType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspPlanOperation"
                   }
                 }
               }
@@ -2618,180 +1382,10 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionPlanGroup",
-                  "InspectionPlanGroup desc",
-                  "InspectionPlan",
-                  "InspectionPlan desc",
-                  "InspectionPlanInternalVersion",
-                  "InspectionPlanInternalVersion desc",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOpInternalVersionCounter desc",
-                  "BOOOperationInternalID",
-                  "BOOOperationInternalID desc",
-                  "BOOOperationPRTInternalID",
-                  "BOOOperationPRTInternalID desc",
-                  "BillOfOperationsSequence",
-                  "BillOfOperationsSequence desc",
-                  "BillOfOperationsType",
-                  "BillOfOperationsType desc",
-                  "ValidityStartDate",
-                  "ValidityStartDate desc",
-                  "ValidityEndDate",
-                  "ValidityEndDate desc",
-                  "ProductionResourceType",
-                  "ProductionResourceType desc",
-                  "ProductionResourceInternalID",
-                  "ProductionResourceInternalID desc",
-                  "ProdnRsceToolCategoryName",
-                  "ProdnRsceToolCategoryName desc",
-                  "ProductionResourceTool",
-                  "ProductionResourceTool desc",
-                  "ProductionResourceToolDesc",
-                  "ProductionResourceToolDesc desc",
-                  "ProdnRsceToolCategory",
-                  "ProdnRsceToolCategory desc",
-                  "Equipment",
-                  "Equipment desc",
-                  "EquipmentName",
-                  "EquipmentName desc",
-                  "ChangeNumber",
-                  "ChangeNumber desc",
-                  "ProdnRsceToolItemNumber",
-                  "ProdnRsceToolItemNumber desc",
-                  "ProdnRsceToolControlProfile",
-                  "ProdnRsceToolControlProfile desc",
-                  "ProdnRsceToolStandardTextCode",
-                  "ProdnRsceToolStandardTextCode desc",
-                  "ProdnRsceToolText",
-                  "ProdnRsceToolText desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "IsDeleted",
-                  "IsDeleted desc",
-                  "IsImplicitlyDeleted",
-                  "IsImplicitlyDeleted desc",
-                  "ProdnRsceToolStdWorkQtyUnit",
-                  "ProdnRsceToolStdWorkQtyUnit desc",
-                  "ProdnRsceToolStandardWorkQty",
-                  "ProdnRsceToolStandardWorkQty desc",
-                  "ProdnRsceToolTotQtyCalcFormula",
-                  "ProdnRsceToolTotQtyCalcFormula desc",
-                  "ProdnRsceToolUsageQuantityUnit",
-                  "ProdnRsceToolUsageQuantityUnit desc",
-                  "ProdnRsceToolUsageQuantity",
-                  "ProdnRsceToolUsageQuantity desc",
-                  "ProdnRsceToolUsageQtyCalcFmla",
-                  "ProdnRsceToolUsageQtyCalcFmla desc",
-                  "StartDateOffsetReferenceCode",
-                  "StartDateOffsetReferenceCode desc",
-                  "StartDateOffsetDurationUnit",
-                  "StartDateOffsetDurationUnit desc",
-                  "StartDateOffsetDuration",
-                  "StartDateOffsetDuration desc",
-                  "EndDateOffsetReferenceCode",
-                  "EndDateOffsetReferenceCode desc",
-                  "EndDateOffsetDurationUnit",
-                  "EndDateOffsetDurationUnit desc",
-                  "EndDateOffsetDuration",
-                  "EndDateOffsetDuration desc",
-                  "BillOfOperationsVersion",
-                  "BillOfOperationsVersion desc",
-                  "Plant",
-                  "Plant desc",
-                  "DocumentInfoRecord",
-                  "DocumentInfoRecord desc",
-                  "DocumentType",
-                  "DocumentType desc",
-                  "DocumentPart",
-                  "DocumentPart desc",
-                  "DocumentVersion",
-                  "DocumentVersion desc",
-                  "ChangedDateTime",
-                  "ChangedDateTime desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpPRTOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOperationInternalID",
-                  "BOOOperationPRTInternalID",
-                  "BillOfOperationsSequence",
-                  "BillOfOperationsType",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ProductionResourceType",
-                  "ProductionResourceInternalID",
-                  "ProdnRsceToolCategoryName",
-                  "ProductionResourceTool",
-                  "ProductionResourceToolDesc",
-                  "ProdnRsceToolCategory",
-                  "Equipment",
-                  "EquipmentName",
-                  "ChangeNumber",
-                  "ProdnRsceToolItemNumber",
-                  "ProdnRsceToolControlProfile",
-                  "ProdnRsceToolStandardTextCode",
-                  "ProdnRsceToolText",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "IsDeleted",
-                  "IsImplicitlyDeleted",
-                  "ProdnRsceToolStdWorkQtyUnit",
-                  "ProdnRsceToolStandardWorkQty",
-                  "ProdnRsceToolTotQtyCalcFormula",
-                  "ProdnRsceToolUsageQuantityUnit",
-                  "ProdnRsceToolUsageQuantity",
-                  "ProdnRsceToolUsageQtyCalcFmla",
-                  "StartDateOffsetReferenceCode",
-                  "StartDateOffsetDurationUnit",
-                  "StartDateOffsetDuration",
-                  "EndDateOffsetReferenceCode",
-                  "EndDateOffsetDurationUnit",
-                  "EndDateOffsetDuration",
-                  "BillOfOperationsVersion",
-                  "Plant",
-                  "DocumentInfoRecord",
-                  "DocumentType",
-                  "DocumentPart",
-                  "DocumentVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpPRTSelectOptions"
           }
         ],
         "responses": {
@@ -2800,11 +1394,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspPlanOpPRTWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspPlanOpPRTType",
+                      "title": "CollectionOfA_InspPlanOpPRT",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -2813,7 +1407,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType"
+                            "$ref": "#/components/schemas/A_InspPlanOpPRT"
                           }
                         }
                       }
@@ -2840,7 +1434,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType-create"
+                "$ref": "#/components/schemas/CreateA_InspPlanOpPRT"
               }
             }
           }
@@ -2851,11 +1445,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOpPRTType",
+                  "title": "A_InspPlanOpPRTWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType"
+                      "$ref": "#/components/schemas/A_InspPlanOpPRT"
                     }
                   }
                 }
@@ -2939,69 +1533,7 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Delete_mc",
-                  "Update_mc",
-                  "InspectionPlanGroup",
-                  "InspectionPlan",
-                  "InspectionPlanInternalVersion",
-                  "BOOOpInternalVersionCounter",
-                  "BOOOperationInternalID",
-                  "BOOOperationPRTInternalID",
-                  "BillOfOperationsSequence",
-                  "BillOfOperationsType",
-                  "ValidityStartDate",
-                  "ValidityEndDate",
-                  "ProductionResourceType",
-                  "ProductionResourceInternalID",
-                  "ProdnRsceToolCategoryName",
-                  "ProductionResourceTool",
-                  "ProductionResourceToolDesc",
-                  "ProdnRsceToolCategory",
-                  "Equipment",
-                  "EquipmentName",
-                  "ChangeNumber",
-                  "ProdnRsceToolItemNumber",
-                  "ProdnRsceToolControlProfile",
-                  "ProdnRsceToolStandardTextCode",
-                  "ProdnRsceToolText",
-                  "CreationDate",
-                  "CreatedByUser",
-                  "LastChangeDate",
-                  "LastChangedByUser",
-                  "IsDeleted",
-                  "IsImplicitlyDeleted",
-                  "ProdnRsceToolStdWorkQtyUnit",
-                  "ProdnRsceToolStandardWorkQty",
-                  "ProdnRsceToolTotQtyCalcFormula",
-                  "ProdnRsceToolUsageQuantityUnit",
-                  "ProdnRsceToolUsageQuantity",
-                  "ProdnRsceToolUsageQtyCalcFmla",
-                  "StartDateOffsetReferenceCode",
-                  "StartDateOffsetDurationUnit",
-                  "StartDateOffsetDuration",
-                  "EndDateOffsetReferenceCode",
-                  "EndDateOffsetDurationUnit",
-                  "EndDateOffsetDuration",
-                  "BillOfOperationsVersion",
-                  "Plant",
-                  "DocumentInfoRecord",
-                  "DocumentType",
-                  "DocumentPart",
-                  "DocumentVersion",
-                  "ChangedDateTime"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspPlanOpPRTByKeySelectOptions"
           }
         ],
         "responses": {
@@ -3010,11 +1542,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspPlanOpPRTType",
+                  "title": "A_InspPlanOpPRTWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType"
+                      "$ref": "#/components/schemas/A_InspPlanOpPRT"
                     }
                   }
                 }
@@ -3042,7 +1574,7 @@
                 "type": "object",
                 "properties": {
                   "d": {
-                    "$ref": "#/components/schemas/API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType-update"
+                    "$ref": "#/components/schemas/UpdateA_InspPlanOpPRT"
                   }
                 }
               }
@@ -3114,7 +1646,7 @@
   },
   "components": {
     "schemas": {
-      "API_INSPECTIONPLAN_SRV.A_InspectionPlanType": {
+      "A_InspectionPlan": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -3339,7 +1871,7 @@
         },
         "title": "Inspection Plan Headers"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspectionPlanType-create": {
+      "CreateA_InspectionPlan": {
         "type": "object",
         "properties": {
           "InspectionPlanGroup": {
@@ -3505,7 +2037,7 @@
         ],
         "title": "Inspection Plan Headers (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspectionPlanType-update": {
+      "UpdateA_InspectionPlan": {
         "type": "object",
         "properties": {
           "BillOfOperationsDesc": {
@@ -3646,7 +2178,7 @@
         },
         "title": "Inspection Plan Headers (for update)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType": {
+      "A_InspPlanDepdntCharc": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -4146,7 +2678,7 @@
         },
         "title": "Dependent Charc Spec Assignments"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType-create": {
+      "CreateA_InspPlanDepdntCharc": {
         "type": "object",
         "properties": {
           "InspSpecIsQuantitative": {
@@ -4542,7 +3074,7 @@
         },
         "title": "Dependent Charc Spec Assignments (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanDepdntCharcType-update": {
+      "UpdateA_InspPlanDepdntCharc": {
         "type": "object",
         "properties": {
           "InspSpecIsQuantitative": {
@@ -4938,7 +3470,7 @@
         },
         "title": "Dependent Charc Spec Assignments (for update)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType": {
+      "A_InspPlanMaterialAssgmt": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -5090,7 +3622,7 @@
         },
         "title": "Material Assignments"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType-create": {
+      "CreateA_InspPlanMaterialAssgmt": {
         "type": "object",
         "properties": {
           "Material": {
@@ -5164,7 +3696,7 @@
         ],
         "title": "Material Assignments (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanMaterialAssgmtType-update": {
+      "UpdateA_InspPlanMaterialAssgmt": {
         "type": "object",
         "properties": {
           "ValidityStartDate": {
@@ -5217,7 +3749,7 @@
         },
         "title": "Material Assignments (for update)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType": {
+      "A_InspPlanOpCharacteristic": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -6050,7 +4582,7 @@
         },
         "title": "Characteristic Assignments"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType-create": {
+      "CreateA_InspPlanOpCharacteristic": {
         "type": "object",
         "properties": {
           "ValidityStartDate": {
@@ -6790,7 +5322,7 @@
         },
         "title": "Characteristic Assignments (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpCharacteristicType-update": {
+      "UpdateA_InspPlanOpCharacteristic": {
         "type": "object",
         "properties": {
           "ValidityEndDate": {
@@ -7517,7 +6049,7 @@
         },
         "title": "Characteristic Assignments (for update)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOperationType": {
+      "A_InspPlanOperation": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -7762,7 +6294,7 @@
         },
         "title": "Inspection Plan Operations"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOperationType-create": {
+      "CreateA_InspPlanOperation": {
         "type": "object",
         "properties": {
           "WorkCenterInternalID": {
@@ -7922,7 +6454,7 @@
         ],
         "title": "Inspection Plan Operations (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOperationType-update": {
+      "UpdateA_InspPlanOperation": {
         "type": "object",
         "properties": {
           "WorkCenterInternalID": {
@@ -8071,7 +6603,7 @@
         },
         "title": "Inspection Plan Operations (for update)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType": {
+      "A_InspPlanOpPRT": {
         "type": "object",
         "properties": {
           "Delete_mc": {
@@ -8428,7 +6960,7 @@
         },
         "title": "PRT Assignments"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType-create": {
+      "CreateA_InspPlanOpPRT": {
         "type": "object",
         "properties": {
           "BillOfOperationsSequence": {
@@ -8705,7 +7237,7 @@
         },
         "title": "PRT Assignments (for create)"
       },
-      "API_INSPECTIONPLAN_SRV.A_InspPlanOpPRTType-update": {
+      "UpdateA_InspPlanOpPRT": {
         "type": "object",
         "properties": {
           "BillOfOperationsSequence": {
@@ -9024,6 +7556,1047 @@
             }
           }
         }
+      },
+      "A_InspectionPlanOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "BillOfOperationsDesc",
+            "BillOfOperationsDesc desc",
+            "Plant",
+            "Plant desc",
+            "BillOfOperationsUsage",
+            "BillOfOperationsUsage desc",
+            "BillOfOperationsStatus",
+            "BillOfOperationsStatus desc",
+            "ResponsiblePlannerGroup",
+            "ResponsiblePlannerGroup desc",
+            "MinimumLotSizeQuantity",
+            "MinimumLotSizeQuantity desc",
+            "MaximumLotSizeQuantity",
+            "MaximumLotSizeQuantity desc",
+            "BillOfOperationsUnit",
+            "BillOfOperationsUnit desc",
+            "ReplacedBillOfOperations",
+            "ReplacedBillOfOperations desc",
+            "IsMarkedForDeletion",
+            "IsMarkedForDeletion desc",
+            "InspPlanHasMultipleSpec",
+            "InspPlanHasMultipleSpec desc",
+            "InspSubsetFieldCombination",
+            "InspSubsetFieldCombination desc",
+            "InspectionPartialLotAssignment",
+            "InspectionPartialLotAssignment desc",
+            "SmplDrawingProcedure",
+            "SmplDrawingProcedure desc",
+            "SmplDrawingProcedureVersion",
+            "SmplDrawingProcedureVersion desc",
+            "InspectionLotDynamicLevel",
+            "InspectionLotDynamicLevel desc",
+            "InspLotDynamicRule",
+            "InspLotDynamicRule desc",
+            "InspExternalNumberingOfValues",
+            "InspExternalNumberingOfValues desc",
+            "CreationDate",
+            "CreationDate desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspectionPlanSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "InspectionPlan",
+            "InspectionPlanInternalVersion",
+            "IsDeleted",
+            "BillOfOperationsDesc",
+            "Plant",
+            "BillOfOperationsUsage",
+            "BillOfOperationsStatus",
+            "ResponsiblePlannerGroup",
+            "MinimumLotSizeQuantity",
+            "MaximumLotSizeQuantity",
+            "BillOfOperationsUnit",
+            "ReplacedBillOfOperations",
+            "IsMarkedForDeletion",
+            "InspPlanHasMultipleSpec",
+            "InspSubsetFieldCombination",
+            "InspectionPartialLotAssignment",
+            "SmplDrawingProcedure",
+            "SmplDrawingProcedureVersion",
+            "InspectionLotDynamicLevel",
+            "InspLotDynamicRule",
+            "InspExternalNumberingOfValues",
+            "CreationDate",
+            "CreatedByUser",
+            "LastChangeDate",
+            "LastChangedByUser",
+            "ChangeNumber",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ChangedDateTime"
+          ]
+        }
+      },
+      "A_InspPlanDepdntCharcOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "BOOOperationInternalID",
+            "BOOOperationInternalID desc",
+            "BOOOpInternalVersionCounter",
+            "BOOOpInternalVersionCounter desc",
+            "BOOCharacteristic",
+            "BOOCharacteristic desc",
+            "BOOCharacteristicVersion",
+            "BOOCharacteristicVersion desc",
+            "BOODpndantCharcSpec",
+            "BOODpndantCharcSpec desc",
+            "BOODpndantCharcSpecVers",
+            "BOODpndantCharcSpecVers desc",
+            "InspSpecIsQuantitative",
+            "InspSpecIsQuantitative desc",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsDefectsRecgAutomatic desc",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsSelectedSetRequired desc",
+            "InspectionSpecificationText",
+            "InspectionSpecificationText desc",
+            "InspSpecIsDefectRecordingRqd",
+            "InspSpecIsDefectRecordingRqd desc",
+            "ProdnRsceToolItemNumber",
+            "ProdnRsceToolItemNumber desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "Supplier",
+            "Supplier desc",
+            "Customer",
+            "Customer desc",
+            "BOOSearchText",
+            "BOOSearchText desc",
+            "MultipleSpecificationObject",
+            "MultipleSpecificationObject desc",
+            "MultipleSpecificationObjType",
+            "MultipleSpecificationObjType desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "BOOOperationPRTInternalID",
+            "BOOOperationPRTInternalID desc",
+            "Material",
+            "Material desc",
+            "Plant",
+            "Plant desc",
+            "BillOfOperationsVariant",
+            "BillOfOperationsVariant desc",
+            "BOOToMaterialInternalID",
+            "BOOToMaterialInternalID desc",
+            "InspSpecDecimalPlaces",
+            "InspSpecDecimalPlaces desc",
+            "InspectionSpecificationUnit",
+            "InspectionSpecificationUnit desc",
+            "InspSpecTargetValue",
+            "InspSpecTargetValue desc",
+            "InspSpecHasTargetValue",
+            "InspSpecHasTargetValue desc",
+            "InspSpecUpperLimit",
+            "InspSpecUpperLimit desc",
+            "InspSpecLowerLimit",
+            "InspSpecLowerLimit desc",
+            "InspSpecHasUpperLimit",
+            "InspSpecHasUpperLimit desc",
+            "InspSpecHasLowerLimit",
+            "InspSpecHasLowerLimit desc",
+            "InspSpecNumberOfClasses",
+            "InspSpecNumberOfClasses desc",
+            "InspSpecClassWidthQty",
+            "InspSpecClassWidthQty desc",
+            "InspSpecHasClassWidth",
+            "InspSpecHasClassWidth desc",
+            "InspSpecClassMidpointQty",
+            "InspSpecClassMidpointQty desc",
+            "InspSpecHasClassMidpoint",
+            "InspSpecHasClassMidpoint desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "InspSpecAdditionalCatalog2",
+            "InspSpecAdditionalCatalog2 desc",
+            "InspSpecAdditionalSelectedSet2",
+            "InspSpecAdditionalSelectedSet2 desc",
+            "InspSpecAdditionalCodeGroup2",
+            "InspSpecAdditionalCodeGroup2 desc",
+            "InspSpecAddlSeldCodeSetPlant2",
+            "InspSpecAddlSeldCodeSetPlant2 desc",
+            "InspSpecAdditionalCatalog3",
+            "InspSpecAdditionalCatalog3 desc",
+            "InspSpecAdditionalSelectedSet3",
+            "InspSpecAdditionalSelectedSet3 desc",
+            "InspSpecAdditionalCodeGroup3",
+            "InspSpecAdditionalCodeGroup3 desc",
+            "InspSpecAddlSeldCodeSetPlant3",
+            "InspSpecAddlSeldCodeSetPlant3 desc",
+            "InspSpecAdditionalCatalog4",
+            "InspSpecAdditionalCatalog4 desc",
+            "InspSpecAdditionalSelectedSet4",
+            "InspSpecAdditionalSelectedSet4 desc",
+            "InspSpecAdditionalCodeGroup4",
+            "InspSpecAdditionalCodeGroup4 desc",
+            "InspSpecAddlSeldCodeSetPlant4",
+            "InspSpecAddlSeldCodeSetPlant4 desc",
+            "InspSpecAdditionalCatalog5",
+            "InspSpecAdditionalCatalog5 desc",
+            "InspSpecAdditionalSelectedSet5",
+            "InspSpecAdditionalSelectedSet5 desc",
+            "InspSpecAdditionalCodeGroup5",
+            "InspSpecAdditionalCodeGroup5 desc",
+            "InspSpecAddlSeldCodeSetPlant5",
+            "InspSpecAddlSeldCodeSetPlant5 desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "CreationDate",
+            "CreationDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "BillOfOperationsVersion",
+            "BillOfOperationsVersion desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspPlanDepdntCharcSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "InspectionPlan",
+            "InspectionPlanInternalVersion",
+            "BOOOperationInternalID",
+            "BOOOpInternalVersionCounter",
+            "BOOCharacteristic",
+            "BOOCharacteristicVersion",
+            "BOODpndantCharcSpec",
+            "BOODpndantCharcSpecVers",
+            "InspSpecIsQuantitative",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsSelectedSetRequired",
+            "InspectionSpecificationText",
+            "InspSpecIsDefectRecordingRqd",
+            "ProdnRsceToolItemNumber",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ChangeNumber",
+            "Supplier",
+            "Customer",
+            "BOOSearchText",
+            "MultipleSpecificationObject",
+            "MultipleSpecificationObjType",
+            "IsDeleted",
+            "BOOOperationPRTInternalID",
+            "Material",
+            "Plant",
+            "BillOfOperationsVariant",
+            "BOOToMaterialInternalID",
+            "InspSpecDecimalPlaces",
+            "InspectionSpecificationUnit",
+            "InspSpecTargetValue",
+            "InspSpecHasTargetValue",
+            "InspSpecUpperLimit",
+            "InspSpecLowerLimit",
+            "InspSpecHasUpperLimit",
+            "InspSpecHasLowerLimit",
+            "InspSpecNumberOfClasses",
+            "InspSpecClassWidthQty",
+            "InspSpecHasClassWidth",
+            "InspSpecClassMidpointQty",
+            "InspSpecHasClassMidpoint",
+            "SelectedCodeSet",
+            "SelectedCodeSetPlant",
+            "InspSpecAdditionalCatalog2",
+            "InspSpecAdditionalSelectedSet2",
+            "InspSpecAdditionalCodeGroup2",
+            "InspSpecAddlSeldCodeSetPlant2",
+            "InspSpecAdditionalCatalog3",
+            "InspSpecAdditionalSelectedSet3",
+            "InspSpecAdditionalCodeGroup3",
+            "InspSpecAddlSeldCodeSetPlant3",
+            "InspSpecAdditionalCatalog4",
+            "InspSpecAdditionalSelectedSet4",
+            "InspSpecAdditionalCodeGroup4",
+            "InspSpecAddlSeldCodeSetPlant4",
+            "InspSpecAdditionalCatalog5",
+            "InspSpecAdditionalSelectedSet5",
+            "InspSpecAdditionalCodeGroup5",
+            "InspSpecAddlSeldCodeSetPlant5",
+            "CreatedByUser",
+            "CreationDate",
+            "LastChangedByUser",
+            "LastChangeDate",
+            "BillOfOperationsVersion",
+            "ChangedDateTime"
+          ]
+        }
+      },
+      "A_InspPlanMaterialAssgmtOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Material",
+            "Material desc",
+            "Plant",
+            "Plant desc",
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "InspPlanMatlAssignment",
+            "InspPlanMatlAssignment desc",
+            "InspPlanMatlAssgmtIntVersion",
+            "InspPlanMatlAssgmtIntVersion desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "CreationDate",
+            "CreationDate desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "Supplier",
+            "Supplier desc",
+            "Customer",
+            "Customer desc",
+            "MultipleSpecificationObject",
+            "MultipleSpecificationObject desc",
+            "MultipleSpecificationObjType",
+            "MultipleSpecificationObjType desc",
+            "BOOSearchText",
+            "BOOSearchText desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspPlanMaterialAssgmtSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "Material",
+            "Plant",
+            "InspectionPlanGroup",
+            "InspectionPlan",
+            "InspPlanMatlAssignment",
+            "InspPlanMatlAssgmtIntVersion",
+            "InspectionPlanInternalVersion",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ChangeNumber",
+            "CreationDate",
+            "CreatedByUser",
+            "LastChangeDate",
+            "LastChangedByUser",
+            "IsDeleted",
+            "Supplier",
+            "Customer",
+            "MultipleSpecificationObject",
+            "MultipleSpecificationObjType",
+            "BOOSearchText",
+            "ChangedDateTime"
+          ]
+        }
+      },
+      "A_InspPlanOpCharacteristicOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "BOOOperationInternalID",
+            "BOOOperationInternalID desc",
+            "BOOCharacteristic",
+            "BOOCharacteristic desc",
+            "BOOCharacteristicVersion",
+            "BOOCharacteristicVersion desc",
+            "BOOOpInternalVersionCounter",
+            "BOOOpInternalVersionCounter desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "BOOOperationPRTInternalID",
+            "BOOOperationPRTInternalID desc",
+            "InspectionMethod",
+            "InspectionMethod desc",
+            "InspectionMethodVersion",
+            "InspectionMethodVersion desc",
+            "InspectionMethodPlant",
+            "InspectionMethodPlant desc",
+            "InspSpecImportanceCode",
+            "InspSpecImportanceCode desc",
+            "InspectorQualification",
+            "InspectorQualification desc",
+            "InspectionSpecification",
+            "InspectionSpecification desc",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationVersion desc",
+            "InspectionSpecificationPlant",
+            "InspectionSpecificationPlant desc",
+            "BOOCharcHasInspSpecReference",
+            "BOOCharcHasInspSpecReference desc",
+            "ProdnRsceToolItemNumber",
+            "ProdnRsceToolItemNumber desc",
+            "InspSpecControlIndicators",
+            "InspSpecControlIndicators desc",
+            "InspSpecIsQuantitative",
+            "InspSpecIsQuantitative desc",
+            "InspSpecIsMeasuredValueRqd",
+            "InspSpecIsMeasuredValueRqd desc",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsSelectedSetRequired desc",
+            "InspSpecIsUpperLimitRequired",
+            "InspSpecIsUpperLimitRequired desc",
+            "InspSpecIsLowerLimitRequired",
+            "InspSpecIsLowerLimitRequired desc",
+            "InspSpecIsTargetValueInLimit",
+            "InspSpecIsTargetValueInLimit desc",
+            "InspectionScope",
+            "InspectionScope desc",
+            "InspSpecIsLongTermInspection",
+            "InspSpecIsLongTermInspection desc",
+            "InspSpecRecordingType",
+            "InspSpecRecordingType desc",
+            "InspResultIsDocumentationRqd",
+            "InspResultIsDocumentationRqd desc",
+            "InspSpecCharcCategory",
+            "InspSpecCharcCategory desc",
+            "InspSpecIsSampleQtyAdditive",
+            "InspSpecIsSampleQtyAdditive desc",
+            "InspSpecIsDestructive",
+            "InspSpecIsDestructive desc",
+            "InspSpecResultCalculation",
+            "InspSpecResultCalculation desc",
+            "InspSpecIsSamplingProcedRqd",
+            "InspSpecIsSamplingProcedRqd desc",
+            "InspSpecIsScrapRelevant",
+            "InspSpecIsScrapRelevant desc",
+            "InspSpecHasFixedCtrlIndicators",
+            "InspSpecHasFixedCtrlIndicators desc",
+            "InspSpecIsTestEquipmentRqd",
+            "InspSpecIsTestEquipmentRqd desc",
+            "InspSpecIsDefectRecordingRqd",
+            "InspSpecIsDefectRecordingRqd desc",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsDefectsRecgAutomatic desc",
+            "InspSpecIsChgDocRequired",
+            "InspSpecIsChgDocRequired desc",
+            "InspSpecIsControlChartUsed",
+            "InspSpecIsControlChartUsed desc",
+            "InspSpecPrintControl",
+            "InspSpecPrintControl desc",
+            "InspSpecFirstUpperSpecLimit",
+            "InspSpecFirstUpperSpecLimit desc",
+            "InspSpecHasFirstUpperSpecLimit",
+            "InspSpecHasFirstUpperSpecLimit desc",
+            "InspSpecFirstLowerSpecLimit",
+            "InspSpecFirstLowerSpecLimit desc",
+            "InspSpecHasFirstLowerSpecLimit",
+            "InspSpecHasFirstLowerSpecLimit desc",
+            "InspSpecSecondUpperSpecLimit",
+            "InspSpecSecondUpperSpecLimit desc",
+            "InspSpecHasSecondUprSpecLimit",
+            "InspSpecHasSecondUprSpecLimit desc",
+            "InspSpecSecondLowerSpecLimit",
+            "InspSpecSecondLowerSpecLimit desc",
+            "InspSpecHasSecondLowrSpecLimit",
+            "InspSpecHasSecondLowrSpecLimit desc",
+            "InspSpecInputProcedure",
+            "InspSpecInputProcedure desc",
+            "InspSpecHasFormula",
+            "InspSpecHasFormula desc",
+            "InspSpecFormula1",
+            "InspSpecFormula1 desc",
+            "InspSpecFormula2",
+            "InspSpecFormula2 desc",
+            "InspSpecNumberOfClasses",
+            "InspSpecNumberOfClasses desc",
+            "InspSpecClassWidthQty",
+            "InspSpecClassWidthQty desc",
+            "InspSpecHasClassWidth",
+            "InspSpecHasClassWidth desc",
+            "InspSpecClassMidpointQty",
+            "InspSpecClassMidpointQty desc",
+            "InspSpecHasClassMidpoint",
+            "InspSpecHasClassMidpoint desc",
+            "InspToleranceSpecification",
+            "InspToleranceSpecification desc",
+            "InspSpecDecimalPlaces",
+            "InspSpecDecimalPlaces desc",
+            "InspectionSpecificationUnit",
+            "InspectionSpecificationUnit desc",
+            "InspSpecTargetValue",
+            "InspSpecTargetValue desc",
+            "InspSpecHasTargetValue",
+            "InspSpecHasTargetValue desc",
+            "InspSpecUpperLimit",
+            "InspSpecUpperLimit desc",
+            "InspSpecLowerLimit",
+            "InspSpecLowerLimit desc",
+            "InspSpecHasLowerLimit",
+            "InspSpecHasLowerLimit desc",
+            "InspSpecHasUpperLimit",
+            "InspSpecHasUpperLimit desc",
+            "InspSpecDefectCodeGrpRejection",
+            "InspSpecDefectCodeGrpRejection desc",
+            "InspSpecDefectCodeRejection",
+            "InspSpecDefectCodeRejection desc",
+            "InspSpecDefectCodeGrpRjcnUpper",
+            "InspSpecDefectCodeGrpRjcnUpper desc",
+            "InspSpecDefectCodeRjcnUpper",
+            "InspSpecDefectCodeRjcnUpper desc",
+            "InspSpecDefectCodeGrpRjcnLower",
+            "InspSpecDefectCodeGrpRjcnLower desc",
+            "InspSpecDefectCodeRjcnLower",
+            "InspSpecDefectCodeRjcnLower desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "InspSpecAdditionalCatalog2",
+            "InspSpecAdditionalCatalog2 desc",
+            "InspSpecAdditionalSelectedSet2",
+            "InspSpecAdditionalSelectedSet2 desc",
+            "InspSpecAdditionalCodeGroup2",
+            "InspSpecAdditionalCodeGroup2 desc",
+            "InspSpecAddlSeldCodeSetPlant2",
+            "InspSpecAddlSeldCodeSetPlant2 desc",
+            "InspSpecAdditionalCatalog3",
+            "InspSpecAdditionalCatalog3 desc",
+            "InspSpecAdditionalSelectedSet3",
+            "InspSpecAdditionalSelectedSet3 desc",
+            "InspSpecAdditionalCodeGroup3",
+            "InspSpecAdditionalCodeGroup3 desc",
+            "InspSpecAddlSeldCodeSetPlant3",
+            "InspSpecAddlSeldCodeSetPlant3 desc",
+            "InspSpecAdditionalCatalog4",
+            "InspSpecAdditionalCatalog4 desc",
+            "InspSpecAdditionalSelectedSet4",
+            "InspSpecAdditionalSelectedSet4 desc",
+            "InspSpecAdditionalCodeGroup4",
+            "InspSpecAdditionalCodeGroup4 desc",
+            "InspSpecAddlSeldCodeSetPlant4",
+            "InspSpecAddlSeldCodeSetPlant4 desc",
+            "InspSpecAdditionalCatalog5",
+            "InspSpecAdditionalCatalog5 desc",
+            "InspSpecAdditionalSelectedSet5",
+            "InspSpecAdditionalSelectedSet5 desc",
+            "InspSpecAdditionalCodeGroup5",
+            "InspSpecAdditionalCodeGroup5 desc",
+            "InspSpecAddlSeldCodeSetPlant5",
+            "InspSpecAddlSeldCodeSetPlant5 desc",
+            "SamplingProcedure",
+            "SamplingProcedure desc",
+            "InspCharacteristicSampleUnit",
+            "InspCharacteristicSampleUnit desc",
+            "BOOCharcSampleQuantity",
+            "BOOCharcSampleQuantity desc",
+            "InspSpecInformationField1",
+            "InspSpecInformationField1 desc",
+            "InspSpecInformationField2",
+            "InspSpecInformationField2 desc",
+            "InspSpecInformationField3",
+            "InspSpecInformationField3 desc",
+            "InspectionSpecificationText",
+            "InspectionSpecificationText desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "CreationDate",
+            "CreationDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "BillOfOperationsVersion",
+            "BillOfOperationsVersion desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspPlanOpCharacteristicSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "BOOOperationInternalID",
+            "BOOCharacteristic",
+            "BOOCharacteristicVersion",
+            "BOOOpInternalVersionCounter",
+            "InspectionPlanInternalVersion",
+            "InspectionPlan",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ChangeNumber",
+            "IsDeleted",
+            "BOOOperationPRTInternalID",
+            "InspectionMethod",
+            "InspectionMethodVersion",
+            "InspectionMethodPlant",
+            "InspSpecImportanceCode",
+            "InspectorQualification",
+            "InspectionSpecification",
+            "InspectionSpecificationVersion",
+            "InspectionSpecificationPlant",
+            "BOOCharcHasInspSpecReference",
+            "ProdnRsceToolItemNumber",
+            "InspSpecControlIndicators",
+            "InspSpecIsQuantitative",
+            "InspSpecIsMeasuredValueRqd",
+            "InspSpecIsSelectedSetRequired",
+            "InspSpecIsUpperLimitRequired",
+            "InspSpecIsLowerLimitRequired",
+            "InspSpecIsTargetValueInLimit",
+            "InspectionScope",
+            "InspSpecIsLongTermInspection",
+            "InspSpecRecordingType",
+            "InspResultIsDocumentationRqd",
+            "InspSpecCharcCategory",
+            "InspSpecIsSampleQtyAdditive",
+            "InspSpecIsDestructive",
+            "InspSpecResultCalculation",
+            "InspSpecIsSamplingProcedRqd",
+            "InspSpecIsScrapRelevant",
+            "InspSpecHasFixedCtrlIndicators",
+            "InspSpecIsTestEquipmentRqd",
+            "InspSpecIsDefectRecordingRqd",
+            "InspSpecIsDefectsRecgAutomatic",
+            "InspSpecIsChgDocRequired",
+            "InspSpecIsControlChartUsed",
+            "InspSpecPrintControl",
+            "InspSpecFirstUpperSpecLimit",
+            "InspSpecHasFirstUpperSpecLimit",
+            "InspSpecFirstLowerSpecLimit",
+            "InspSpecHasFirstLowerSpecLimit",
+            "InspSpecSecondUpperSpecLimit",
+            "InspSpecHasSecondUprSpecLimit",
+            "InspSpecSecondLowerSpecLimit",
+            "InspSpecHasSecondLowrSpecLimit",
+            "InspSpecInputProcedure",
+            "InspSpecHasFormula",
+            "InspSpecFormula1",
+            "InspSpecFormula2",
+            "InspSpecNumberOfClasses",
+            "InspSpecClassWidthQty",
+            "InspSpecHasClassWidth",
+            "InspSpecClassMidpointQty",
+            "InspSpecHasClassMidpoint",
+            "InspToleranceSpecification",
+            "InspSpecDecimalPlaces",
+            "InspectionSpecificationUnit",
+            "InspSpecTargetValue",
+            "InspSpecHasTargetValue",
+            "InspSpecUpperLimit",
+            "InspSpecLowerLimit",
+            "InspSpecHasLowerLimit",
+            "InspSpecHasUpperLimit",
+            "InspSpecDefectCodeGrpRejection",
+            "InspSpecDefectCodeRejection",
+            "InspSpecDefectCodeGrpRjcnUpper",
+            "InspSpecDefectCodeRjcnUpper",
+            "InspSpecDefectCodeGrpRjcnLower",
+            "InspSpecDefectCodeRjcnLower",
+            "SelectedCodeSet",
+            "SelectedCodeSetPlant",
+            "InspSpecAdditionalCatalog2",
+            "InspSpecAdditionalSelectedSet2",
+            "InspSpecAdditionalCodeGroup2",
+            "InspSpecAddlSeldCodeSetPlant2",
+            "InspSpecAdditionalCatalog3",
+            "InspSpecAdditionalSelectedSet3",
+            "InspSpecAdditionalCodeGroup3",
+            "InspSpecAddlSeldCodeSetPlant3",
+            "InspSpecAdditionalCatalog4",
+            "InspSpecAdditionalSelectedSet4",
+            "InspSpecAdditionalCodeGroup4",
+            "InspSpecAddlSeldCodeSetPlant4",
+            "InspSpecAdditionalCatalog5",
+            "InspSpecAdditionalSelectedSet5",
+            "InspSpecAdditionalCodeGroup5",
+            "InspSpecAddlSeldCodeSetPlant5",
+            "SamplingProcedure",
+            "InspCharacteristicSampleUnit",
+            "BOOCharcSampleQuantity",
+            "InspSpecInformationField1",
+            "InspSpecInformationField2",
+            "InspSpecInformationField3",
+            "InspectionSpecificationText",
+            "CreatedByUser",
+            "CreationDate",
+            "LastChangedByUser",
+            "LastChangeDate",
+            "BillOfOperationsVersion",
+            "ChangedDateTime"
+          ]
+        }
+      },
+      "A_InspPlanOperationOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "BOOOperationInternalID",
+            "BOOOperationInternalID desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "BOOOpInternalVersionCounter",
+            "BOOOpInternalVersionCounter desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "WorkCenterInternalID",
+            "WorkCenterInternalID desc",
+            "WorkCenterTypeCode",
+            "WorkCenterTypeCode desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "IsImplicitlyDeleted",
+            "IsImplicitlyDeleted desc",
+            "OperationExternalID",
+            "OperationExternalID desc",
+            "Operation",
+            "Operation desc",
+            "OperationText",
+            "OperationText desc",
+            "Plant",
+            "Plant desc",
+            "OperationControlProfile",
+            "OperationControlProfile desc",
+            "OperationStandardTextCode",
+            "OperationStandardTextCode desc",
+            "BillOfOperationsRefType",
+            "BillOfOperationsRefType desc",
+            "BillOfOperationsRefGroup",
+            "BillOfOperationsRefGroup desc",
+            "BillOfOperationsRefVariant",
+            "BillOfOperationsRefVariant desc",
+            "InspResultRecordingView",
+            "InspResultRecordingView desc",
+            "InspSbstCompletionConfirmation",
+            "InspSbstCompletionConfirmation desc",
+            "InspSbstHasNoTimeOrQuantity",
+            "InspSbstHasNoTimeOrQuantity desc",
+            "OperationReferenceQuantity",
+            "OperationReferenceQuantity desc",
+            "OperationUnit",
+            "OperationUnit desc",
+            "OpQtyToBaseQtyDnmntr",
+            "OpQtyToBaseQtyDnmntr desc",
+            "OpQtyToBaseQtyNmrtr",
+            "OpQtyToBaseQtyNmrtr desc",
+            "CreationDate",
+            "CreationDate desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc"
+          ]
+        }
+      },
+      "A_InspPlanOperationSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "BOOOperationInternalID",
+            "InspectionPlanInternalVersion",
+            "BOOOpInternalVersionCounter",
+            "InspectionPlan",
+            "WorkCenterInternalID",
+            "WorkCenterTypeCode",
+            "IsDeleted",
+            "IsImplicitlyDeleted",
+            "OperationExternalID",
+            "Operation",
+            "OperationText",
+            "Plant",
+            "OperationControlProfile",
+            "OperationStandardTextCode",
+            "BillOfOperationsRefType",
+            "BillOfOperationsRefGroup",
+            "BillOfOperationsRefVariant",
+            "InspResultRecordingView",
+            "InspSbstCompletionConfirmation",
+            "InspSbstHasNoTimeOrQuantity",
+            "OperationReferenceQuantity",
+            "OperationUnit",
+            "OpQtyToBaseQtyDnmntr",
+            "OpQtyToBaseQtyNmrtr",
+            "CreationDate",
+            "CreatedByUser",
+            "LastChangeDate",
+            "LastChangedByUser",
+            "ChangedDateTime",
+            "ChangeNumber",
+            "ValidityStartDate",
+            "ValidityEndDate"
+          ]
+        }
+      },
+      "A_InspPlanOpPRTOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "BOOOpInternalVersionCounter",
+            "BOOOpInternalVersionCounter desc",
+            "BOOOperationInternalID",
+            "BOOOperationInternalID desc",
+            "BOOOperationPRTInternalID",
+            "BOOOperationPRTInternalID desc",
+            "BillOfOperationsSequence",
+            "BillOfOperationsSequence desc",
+            "BillOfOperationsType",
+            "BillOfOperationsType desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ProductionResourceType",
+            "ProductionResourceType desc",
+            "ProductionResourceInternalID",
+            "ProductionResourceInternalID desc",
+            "ProdnRsceToolCategoryName",
+            "ProdnRsceToolCategoryName desc",
+            "ProductionResourceTool",
+            "ProductionResourceTool desc",
+            "ProductionResourceToolDesc",
+            "ProductionResourceToolDesc desc",
+            "ProdnRsceToolCategory",
+            "ProdnRsceToolCategory desc",
+            "Equipment",
+            "Equipment desc",
+            "EquipmentName",
+            "EquipmentName desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "ProdnRsceToolItemNumber",
+            "ProdnRsceToolItemNumber desc",
+            "ProdnRsceToolControlProfile",
+            "ProdnRsceToolControlProfile desc",
+            "ProdnRsceToolStandardTextCode",
+            "ProdnRsceToolStandardTextCode desc",
+            "ProdnRsceToolText",
+            "ProdnRsceToolText desc",
+            "CreationDate",
+            "CreationDate desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "IsImplicitlyDeleted",
+            "IsImplicitlyDeleted desc",
+            "ProdnRsceToolStdWorkQtyUnit",
+            "ProdnRsceToolStdWorkQtyUnit desc",
+            "ProdnRsceToolStandardWorkQty",
+            "ProdnRsceToolStandardWorkQty desc",
+            "ProdnRsceToolTotQtyCalcFormula",
+            "ProdnRsceToolTotQtyCalcFormula desc",
+            "ProdnRsceToolUsageQuantityUnit",
+            "ProdnRsceToolUsageQuantityUnit desc",
+            "ProdnRsceToolUsageQuantity",
+            "ProdnRsceToolUsageQuantity desc",
+            "ProdnRsceToolUsageQtyCalcFmla",
+            "ProdnRsceToolUsageQtyCalcFmla desc",
+            "StartDateOffsetReferenceCode",
+            "StartDateOffsetReferenceCode desc",
+            "StartDateOffsetDurationUnit",
+            "StartDateOffsetDurationUnit desc",
+            "StartDateOffsetDuration",
+            "StartDateOffsetDuration desc",
+            "EndDateOffsetReferenceCode",
+            "EndDateOffsetReferenceCode desc",
+            "EndDateOffsetDurationUnit",
+            "EndDateOffsetDurationUnit desc",
+            "EndDateOffsetDuration",
+            "EndDateOffsetDuration desc",
+            "BillOfOperationsVersion",
+            "BillOfOperationsVersion desc",
+            "Plant",
+            "Plant desc",
+            "DocumentInfoRecord",
+            "DocumentInfoRecord desc",
+            "DocumentType",
+            "DocumentType desc",
+            "DocumentPart",
+            "DocumentPart desc",
+            "DocumentVersion",
+            "DocumentVersion desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspPlanOpPRTSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "InspectionPlan",
+            "InspectionPlanInternalVersion",
+            "BOOOpInternalVersionCounter",
+            "BOOOperationInternalID",
+            "BOOOperationPRTInternalID",
+            "BillOfOperationsSequence",
+            "BillOfOperationsType",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ProductionResourceType",
+            "ProductionResourceInternalID",
+            "ProdnRsceToolCategoryName",
+            "ProductionResourceTool",
+            "ProductionResourceToolDesc",
+            "ProdnRsceToolCategory",
+            "Equipment",
+            "EquipmentName",
+            "ChangeNumber",
+            "ProdnRsceToolItemNumber",
+            "ProdnRsceToolControlProfile",
+            "ProdnRsceToolStandardTextCode",
+            "ProdnRsceToolText",
+            "CreationDate",
+            "CreatedByUser",
+            "LastChangeDate",
+            "LastChangedByUser",
+            "IsDeleted",
+            "IsImplicitlyDeleted",
+            "ProdnRsceToolStdWorkQtyUnit",
+            "ProdnRsceToolStandardWorkQty",
+            "ProdnRsceToolTotQtyCalcFormula",
+            "ProdnRsceToolUsageQuantityUnit",
+            "ProdnRsceToolUsageQuantity",
+            "ProdnRsceToolUsageQtyCalcFmla",
+            "StartDateOffsetReferenceCode",
+            "StartDateOffsetDurationUnit",
+            "StartDateOffsetDuration",
+            "EndDateOffsetReferenceCode",
+            "EndDateOffsetDurationUnit",
+            "EndDateOffsetDuration",
+            "BillOfOperationsVersion",
+            "Plant",
+            "DocumentInfoRecord",
+            "DocumentType",
+            "DocumentPart",
+            "DocumentVersion",
+            "ChangedDateTime"
+          ]
+        }
       }
     },
     "parameters": {
@@ -9056,6 +8629,168 @@
             "allpages",
             "none"
           ]
+        }
+      },
+      "A_InspectionPlanOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanOrderByOptions"
+        }
+      },
+      "A_InspectionPlanSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanSelectOptions"
+        }
+      },
+      "A_InspectionPlanByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanSelectOptions"
+        }
+      },
+      "A_InspPlanDepdntCharcOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanDepdntCharcOrderByOptions"
+        }
+      },
+      "A_InspPlanDepdntCharcSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanDepdntCharcSelectOptions"
+        }
+      },
+      "A_InspPlanDepdntCharcByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanDepdntCharcSelectOptions"
+        }
+      },
+      "A_InspPlanMaterialAssgmtOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanMaterialAssgmtOrderByOptions"
+        }
+      },
+      "A_InspPlanMaterialAssgmtSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanMaterialAssgmtSelectOptions"
+        }
+      },
+      "A_InspPlanMaterialAssgmtByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanMaterialAssgmtSelectOptions"
+        }
+      },
+      "A_InspPlanOpCharacteristicOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpCharacteristicOrderByOptions"
+        }
+      },
+      "A_InspPlanOpCharacteristicSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpCharacteristicSelectOptions"
+        }
+      },
+      "A_InspPlanOpCharacteristicByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpCharacteristicSelectOptions"
+        }
+      },
+      "A_InspPlanOperationOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOperationOrderByOptions"
+        }
+      },
+      "A_InspPlanOperationSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOperationSelectOptions"
+        }
+      },
+      "A_InspPlanOperationByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOperationSelectOptions"
+        }
+      },
+      "A_InspPlanOpPRTOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpPRTOrderByOptions"
+        }
+      },
+      "A_InspPlanOpPRTSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpPRTSelectOptions"
+        }
+      },
+      "A_InspPlanOpPRTByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspPlanOpPRTSelectOptions"
         }
       }
     },
