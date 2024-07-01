@@ -1,0 +1,1008 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Inspection Plan",
+    "version": "1.0.0",
+    "description": "\r\n\r\nInspection plans help you to describe how a quality inspection of one or several materials is to take place. In the inspection plan, you define the sequence of inspection operations and the range of specifications available for inspecting inspection characteristics."
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_CLOUD/2402.latest/EN/df/80a14a344046d99ebd21b59861d131/frameset.htm"
+  },
+  "x-sap-api-type": "ODATA",
+  "x-sap-shortText": "Enables external systems to create, read, update, and delete inspection plans using this synchronous inbound service",
+  "x-sap-software-min-version": "2402",
+  "x-sap-ext-overview": [
+    {
+      "name": "Communication Scenario",
+      "values": [
+        {
+          "text": "Inspection Master Data Integration(SAP_COM_0110)",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Scope Items",
+      "values": [
+        {
+          "text": "[Quality Management in Procurement(1FM)](https://me.sap.com/processnavigator/SolP/1FM \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Sales(1MP)](https://me.sap.com/processnavigator/SolP/1MP \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Stock Handling(1MR)](https://me.sap.com/processnavigator/SolP/1MR \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Nonconformance Management(2QN)](https://me.sap.com/processnavigator/SolP/2QN \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Discrete Manufacturing(1E1)](https://me.sap.com/processnavigator/SolP/1E1 \" Link To BP \")",
+          "format": "markdown"
+        }
+      ]
+    },
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Business Object",
+      "values": [
+        {
+          "text": "Inspection Plan",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata/sap/API_INSPECTIONPLAN_SRV",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    },
+    {
+      "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INSPECTIONPLAN_SRV"
+    }
+  ],
+  "x-sap-extensible": {
+    "supported": "no"
+  },
+  "tags": [
+    {
+      "name": "Inspection Plan Headers"
+    },
+    {
+      "name": "Dependent Charc Spec Assignments"
+    },
+    {
+      "name": "Material Assignments"
+    },
+    {
+      "name": "Characteristic Assignments"
+    },
+    {
+      "name": "Inspection Plan Operations"
+    },
+    {
+      "name": "PRT Assignments"
+    }
+  ],
+  "paths": {
+    "/A_InspectionPlan": {
+      "get": {
+        "operationId": "listA_InspectionPlans",
+        "summary": "Reads all inspection plan headers.",
+        "description": "Reads the IDs of all the existing inspection plan headers.",
+        "tags": [
+          "Inspection Plan Headers"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "$ref": "#/components/parameters/A_InspectionPlanOrderByOptions"
+          },
+          {
+            "$ref": "#/components/parameters/A_InspectionPlanSelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "CollectionOfA_InspectionPlanWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "CollectionOfA_InspectionPlan",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/A_InspectionPlan"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createA_InspectionPlan",
+        "summary": "Creates a new inspection plan header.",
+        "description": "Creates an ID for a new inspection plan header.",
+        "tags": [
+          "Inspection Plan Headers"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateA_InspectionPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_InspectionPlanWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/A_InspectionPlan"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "A_InspectionPlan": {
+        "type": "object",
+        "properties": {
+          "Delete_mc": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Dyn. Method Control"
+          },
+          "Update_mc": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Dyn. Method Control"
+          },
+          "InspectionPlanGroup": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Group",
+            "description": "Key for Task List Group"
+          },
+          "InspectionPlan": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Group Counter"
+          },
+          "InspectionPlanInternalVersion": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Counter",
+            "description": "Internal counter"
+          },
+          "IsDeleted": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Deletion Indicator"
+          },
+          "BillOfOperationsDesc": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Description",
+            "description": "Routing Description"
+          },
+          "Plant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "BillOfOperationsUsage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Usage",
+            "description": "Task List Usage"
+          },
+          "BillOfOperationsStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Overall Status",
+            "description": "Status"
+          },
+          "ResponsiblePlannerGroup": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Planner Group",
+            "description": "Responsible Planner Group or Department"
+          },
+          "MinimumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size From",
+            "description": "Minimum Lot Size"
+          },
+          "MaximumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size To",
+            "description": "Maximum Lot Size"
+          },
+          "BillOfOperationsUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Task List Unit",
+            "description": "Task List Unit of Measure"
+          },
+          "ReplacedBillOfOperations": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 20,
+            "title": "Old Task List No.",
+            "description": "Old Number"
+          },
+          "IsMarkedForDeletion": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Deletion Flag",
+            "description": "Indicator: Delete completely in reorganization run"
+          },
+          "InspPlanHasMultipleSpec": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Multiple Specs",
+            "description": "Indicator: Multiple Specifications"
+          },
+          "InspSubsetFieldCombination": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "User Field Combination",
+            "description": "Identification for the Inspection Point Field Combination"
+          },
+          "InspectionPartialLotAssignment": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Partial Lot Assignment",
+            "description": "Partial Lot Assignment in an Inspection During Production"
+          },
+          "SmplDrawingProcedure": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 8,
+            "title": "Sample-Drawing Procedure"
+          },
+          "SmplDrawingProcedureVersion": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 6,
+            "title": "Version",
+            "description": "Version No. of the Sample-Drawing Procedure"
+          },
+          "InspectionLotDynamicLevel": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Dynamic Modification Level",
+            "description": "Level at Which Dynamic Modification Parameters Are Defined"
+          },
+          "InspLotDynamicRule": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Modification Rule",
+            "description": "Dynamic Modification Rule"
+          },
+          "InspExternalNumberingOfValues": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "External Numbering",
+            "description": "External Numbering of Units to Be Inspected"
+          },
+          "CreationDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "Date Record Created On"
+          },
+          "CreatedByUser": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Created By User"
+          },
+          "LastChangeDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Changed On",
+            "description": "Last Changed On"
+          },
+          "LastChangedByUser": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Changed By",
+            "description": "Last Changed By User"
+          },
+          "ChangeNumber": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Change Number"
+          },
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid-From Date"
+          },
+          "ValidityEndDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid-To Date"
+          },
+          "ChangedDateTime": {
+            "type": "string",
+            "example": "/Date(1492098664000)/",
+            "title": "Short Time Stamp",
+            "description": "UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"
+          }
+        },
+        "title": "Inspection Plan Headers"
+      },
+      "CreateA_InspectionPlan": {
+        "type": "object",
+        "properties": {
+          "InspectionPlanGroup": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Group",
+            "description": "Key for Task List Group"
+          },
+          "InspectionPlan": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Group Counter"
+          },
+          "BillOfOperationsDesc": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Description",
+            "description": "Routing Description"
+          },
+          "Plant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "BillOfOperationsUsage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Usage",
+            "description": "Task List Usage"
+          },
+          "BillOfOperationsStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Overall Status",
+            "description": "Status"
+          },
+          "ResponsiblePlannerGroup": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Planner Group",
+            "description": "Responsible Planner Group or Department"
+          },
+          "MinimumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size From",
+            "description": "Minimum Lot Size"
+          },
+          "MaximumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size To",
+            "description": "Maximum Lot Size"
+          },
+          "BillOfOperationsUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Task List Unit",
+            "description": "Task List Unit of Measure"
+          },
+          "ReplacedBillOfOperations": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 20,
+            "title": "Old Task List No.",
+            "description": "Old Number"
+          },
+          "InspPlanHasMultipleSpec": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Multiple Specs",
+            "description": "Indicator: Multiple Specifications"
+          },
+          "InspSubsetFieldCombination": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "User Field Combination",
+            "description": "Identification for the Inspection Point Field Combination"
+          },
+          "InspectionPartialLotAssignment": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Partial Lot Assignment",
+            "description": "Partial Lot Assignment in an Inspection During Production"
+          },
+          "SmplDrawingProcedure": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 8,
+            "title": "Sample-Drawing Procedure"
+          },
+          "SmplDrawingProcedureVersion": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 6,
+            "title": "Version",
+            "description": "Version No. of the Sample-Drawing Procedure"
+          },
+          "InspectionLotDynamicLevel": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Dynamic Modification Level",
+            "description": "Level at Which Dynamic Modification Parameters Are Defined"
+          },
+          "InspLotDynamicRule": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Modification Rule",
+            "description": "Dynamic Modification Rule"
+          },
+          "InspExternalNumberingOfValues": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "External Numbering",
+            "description": "External Numbering of Units to Be Inspected"
+          },
+          "ChangeNumber": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Change Number"
+          },
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid-From Date"
+          }
+        },
+        "required": [
+          "InspectionPlanGroup",
+          "InspectionPlan",
+          "Plant",
+          "BillOfOperationsUsage",
+          "BillOfOperationsStatus",
+          "BillOfOperationsUnit"
+        ],
+        "title": "Inspection Plan Headers (for create)"
+      },
+      "UpdateA_InspectionPlan": {
+        "type": "object",
+        "properties": {
+          "BillOfOperationsDesc": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Description",
+            "description": "Routing Description"
+          },
+          "Plant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "BillOfOperationsUsage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Usage",
+            "description": "Task List Usage"
+          },
+          "BillOfOperationsStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Overall Status",
+            "description": "Status"
+          },
+          "ResponsiblePlannerGroup": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Planner Group",
+            "description": "Responsible Planner Group or Department"
+          },
+          "MinimumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size From",
+            "description": "Minimum Lot Size"
+          },
+          "MaximumLotSizeQuantity": {
+            "type": "string",
+            "nullable": true,
+            "format": "decimal",
+            "x-sap-precision": 13,
+            "x-sap-scale": 3,
+            "multipleOf": 1.0e-3,
+            "minimum": -9999999999.999,
+            "maximum": 9999999999.999,
+            "example": "0",
+            "title": "Lot Size To",
+            "description": "Maximum Lot Size"
+          },
+          "BillOfOperationsUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Task List Unit",
+            "description": "Task List Unit of Measure"
+          },
+          "ReplacedBillOfOperations": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 20,
+            "title": "Old Task List No.",
+            "description": "Old Number"
+          },
+          "InspPlanHasMultipleSpec": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Multiple Specs",
+            "description": "Indicator: Multiple Specifications"
+          },
+          "InspSubsetFieldCombination": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "User Field Combination",
+            "description": "Identification for the Inspection Point Field Combination"
+          },
+          "InspectionPartialLotAssignment": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Partial Lot Assignment",
+            "description": "Partial Lot Assignment in an Inspection During Production"
+          },
+          "SmplDrawingProcedure": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 8,
+            "title": "Sample-Drawing Procedure"
+          },
+          "SmplDrawingProcedureVersion": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 6,
+            "title": "Version",
+            "description": "Version No. of the Sample-Drawing Procedure"
+          },
+          "InspectionLotDynamicLevel": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Dynamic Modification Level",
+            "description": "Level at Which Dynamic Modification Parameters Are Defined"
+          },
+          "InspLotDynamicRule": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Modification Rule",
+            "description": "Dynamic Modification Rule"
+          },
+          "InspExternalNumberingOfValues": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "External Numbering",
+            "description": "External Numbering of Units to Be Inspected"
+          },
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid-From Date"
+          }
+        },
+        "title": "Inspection Plan Headers (for update)"
+      },
+      "count": {
+        "type": "string",
+        "description": "The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "object",
+                "required": [
+                  "lang",
+                  "value"
+                ],
+                "properties": {
+                  "lang": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      },
+      "A_InspectionPlanOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionPlanGroup",
+            "InspectionPlanGroup desc",
+            "InspectionPlan",
+            "InspectionPlan desc",
+            "InspectionPlanInternalVersion",
+            "InspectionPlanInternalVersion desc",
+            "IsDeleted",
+            "IsDeleted desc",
+            "BillOfOperationsDesc",
+            "BillOfOperationsDesc desc",
+            "Plant",
+            "Plant desc",
+            "BillOfOperationsUsage",
+            "BillOfOperationsUsage desc",
+            "BillOfOperationsStatus",
+            "BillOfOperationsStatus desc",
+            "ResponsiblePlannerGroup",
+            "ResponsiblePlannerGroup desc",
+            "MinimumLotSizeQuantity",
+            "MinimumLotSizeQuantity desc",
+            "MaximumLotSizeQuantity",
+            "MaximumLotSizeQuantity desc",
+            "BillOfOperationsUnit",
+            "BillOfOperationsUnit desc",
+            "ReplacedBillOfOperations",
+            "ReplacedBillOfOperations desc",
+            "IsMarkedForDeletion",
+            "IsMarkedForDeletion desc",
+            "InspPlanHasMultipleSpec",
+            "InspPlanHasMultipleSpec desc",
+            "InspSubsetFieldCombination",
+            "InspSubsetFieldCombination desc",
+            "InspectionPartialLotAssignment",
+            "InspectionPartialLotAssignment desc",
+            "SmplDrawingProcedure",
+            "SmplDrawingProcedure desc",
+            "SmplDrawingProcedureVersion",
+            "SmplDrawingProcedureVersion desc",
+            "InspectionLotDynamicLevel",
+            "InspectionLotDynamicLevel desc",
+            "InspLotDynamicRule",
+            "InspLotDynamicRule desc",
+            "InspExternalNumberingOfValues",
+            "InspExternalNumberingOfValues desc",
+            "CreationDate",
+            "CreationDate desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "ChangeNumber",
+            "ChangeNumber desc",
+            "ValidityStartDate",
+            "ValidityStartDate desc",
+            "ValidityEndDate",
+            "ValidityEndDate desc",
+            "ChangedDateTime",
+            "ChangedDateTime desc"
+          ]
+        }
+      },
+      "A_InspectionPlanSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "Delete_mc",
+            "Update_mc",
+            "InspectionPlanGroup",
+            "InspectionPlan",
+            "InspectionPlanInternalVersion",
+            "IsDeleted",
+            "BillOfOperationsDesc",
+            "Plant",
+            "BillOfOperationsUsage",
+            "BillOfOperationsStatus",
+            "ResponsiblePlannerGroup",
+            "MinimumLotSizeQuantity",
+            "MaximumLotSizeQuantity",
+            "BillOfOperationsUnit",
+            "ReplacedBillOfOperations",
+            "IsMarkedForDeletion",
+            "InspPlanHasMultipleSpec",
+            "InspSubsetFieldCombination",
+            "InspectionPartialLotAssignment",
+            "SmplDrawingProcedure",
+            "SmplDrawingProcedureVersion",
+            "InspectionLotDynamicLevel",
+            "InspLotDynamicRule",
+            "InspExternalNumberingOfValues",
+            "CreationDate",
+            "CreatedByUser",
+            "LastChangeDate",
+            "LastChangedByUser",
+            "ChangeNumber",
+            "ValidityStartDate",
+            "ValidityEndDate",
+            "ChangedDateTime"
+          ]
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$inlinecount",
+        "in": "query",
+        "description": "Include count of items, see [Inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67)",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "allpages",
+            "none"
+          ]
+        }
+      },
+      "A_InspectionPlanOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanOrderByOptions"
+        }
+      },
+      "A_InspectionPlanSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanSelectOptions"
+        }
+      },
+      "A_InspectionPlanByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionPlanSelectOptions"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2Auth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "scopes": {
+              "API_INSPECTIONPLAN_SRV_0001": ""
+            },
+            "refreshUrl": "https://{host}:{port}",
+            "authorizationUrl": "https://{host}:{port}",
+            "tokenUrl": "https://{host}:{port}"
+          }
+        }
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2Auth": [
+        "API_INSPECTIONPLAN_SRV_0001"
+      ]
+    },
+    {
+      "BasicAuth": []
+    }
+  ]
+}
