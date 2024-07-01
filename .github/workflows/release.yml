@@ -9,6 +9,7 @@ on:
         required: true
         options:
           - api_inspectionlot_srv
+          - api_qualityinforecord_srv
 
 jobs:
   call_workflow:

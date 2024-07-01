@@ -67,9 +67,10 @@ Execute the commands below to build from the source.
    ./gradlew clean :qm-ballerina:<api_name>:build
    ```
 
-   |   API Name  |            Connector             |
-   | ----------- | -------------------------------- |
-   | API_INSPECTIONLOT_SRV | ballerinax/sap.s4hana.api_inspectionlot_srv |
+   |       API Name            |                  Connector                      |
+   | ------------------------- | ----------------------------------------------- |
+   | API_INSPECTIONLOT_SRV     | ballerinax/sap.s4hana.api_inspectionlot_srv     |
+   | API_QUALITYINFORECORD_SRV | ballerinax/sap.s4hana.api_qualityinforecord_srv |
 
 5. To run tests against different environment:
 
