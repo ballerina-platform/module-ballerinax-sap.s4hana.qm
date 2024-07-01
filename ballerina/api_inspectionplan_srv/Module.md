@@ -70,7 +70,7 @@ inspectionplan:Client inspectionplanClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionplan:A_InspectionPlanWrapper createdInspectionplan = check inspectionplanClient->createA_InspectionPlan();
+inspectionplan:CollectionOfA_InspectionPlanWrapper listOfInspectionplans = check inspectionplanClient->listA_InspectionPlans();
 ```
 
 ### Step 4: Run the Ballerina application
