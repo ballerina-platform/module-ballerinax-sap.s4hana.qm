@@ -97,6 +97,7 @@
   "paths": {
     "/A_InspectionSpecification": {
       "get": {
+        "operationId": "listA_InspectionSpecifications",
         "summary": "Reads a set of master inspection characteristics.",
         "description": "Reads a set of master inspection characteristics with administrative data, control indicators, catalog data, and quantitative data.",
         "tags": [
@@ -199,6 +200,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionSpecification",
         "summary": "Reads a specific master inspection characteristic.",
         "description": "Reads a specific master inspection characteristic with administrative data, control indicators, catalog data, and quantitative data.",
         "tags": [
@@ -269,6 +271,7 @@
         }
       ],
       "get": {
+        "operationId": "listTextsOfA_InspectionSpecification",
         "summary": "Reads master inspection characteristics with text associations.",
         "description": "Reads one or more master inspection characteristics with associations to the related master inspection characteristic texts.",
         "tags": [
@@ -340,6 +343,7 @@
     },
     "/A_InspectionSpecificationText": {
       "get": {
+        "operationId": "listA_InspectionSpecificationTexts",
         "summary": "Reads all master inspection characteristic texts.",
         "description": "Reads all master inspection characteristic texts.",
         "tags": [
@@ -452,6 +456,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_InspectionSpecificationText",
         "summary": "Reads the text of a master inspection characteristic in a specific language.",
         "description": "Reads the short text of a specific master inspection characteristic in a specific language.",
         "tags": [
@@ -532,6 +537,7 @@
         }
       ],
       "get": {
+        "operationId": "getInspectionSpecificationOfA_InspectionSpecificationText",
         "summary": "Reads master inspection characteristic texts with associations to master inspection characteristics.",
         "description": "Reads one or more master inspection characteristic texts with associations to the related master inspection characteristics.",
         "tags": [
@@ -571,6 +577,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
