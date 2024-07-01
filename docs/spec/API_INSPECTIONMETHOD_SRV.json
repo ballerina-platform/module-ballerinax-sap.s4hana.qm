@@ -121,99 +121,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethod",
-                  "InspectionMethod desc",
-                  "InspectionMethodVersion",
-                  "InspectionMethodVersion desc",
-                  "InspectionMethodPlant",
-                  "InspectionMethodPlant desc",
-                  "InspectionMethodValidFromDate",
-                  "InspectionMethodValidFromDate desc",
-                  "InspectionMethodSearchField",
-                  "InspectionMethodSearchField desc",
-                  "InspectionMethodStatus",
-                  "InspectionMethodStatus desc",
-                  "InspMethInformationField1",
-                  "InspMethInformationField1 desc",
-                  "InspMethInformationField2",
-                  "InspMethInformationField2 desc",
-                  "InspMethInformationField3",
-                  "InspMethInformationField3 desc",
-                  "QltyMstrDataAuthorizationGroup",
-                  "QltyMstrDataAuthorizationGroup desc",
-                  "InspectorQualification",
-                  "InspectorQualification desc",
-                  "CreatedByUser",
-                  "CreatedByUser desc",
-                  "CreationDate",
-                  "CreationDate desc",
-                  "LastChangedByUser",
-                  "LastChangedByUser desc",
-                  "LastChangeDate",
-                  "LastChangeDate desc",
-                  "LinkedSAPObjectKey",
-                  "LinkedSAPObjectKey desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "InspectionMethodPlant",
-                  "InspectionMethodValidFromDate",
-                  "InspectionMethodSearchField",
-                  "InspectionMethodStatus",
-                  "InspMethInformationField1",
-                  "InspMethInformationField2",
-                  "InspMethInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspectorQualification",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "LinkedSAPObjectKey",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodExpandOptions"
           }
         ],
         "responses": {
@@ -222,11 +136,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionMethodWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionMethodType",
+                      "title": "CollectionOfA_InspectionMethod",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -235,7 +149,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodType"
+                            "$ref": "#/components/schemas/A_InspectionMethod"
                           }
                         }
                       }
@@ -292,52 +206,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "InspectionMethodPlant",
-                  "InspectionMethodValidFromDate",
-                  "InspectionMethodSearchField",
-                  "InspectionMethodStatus",
-                  "InspMethInformationField1",
-                  "InspMethInformationField2",
-                  "InspMethInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspectorQualification",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "LinkedSAPObjectKey",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodByKeySelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodByKeyExpandOptions"
           }
         ],
         "responses": {
@@ -346,11 +218,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionMethodType",
+                  "title": "A_InspectionMethodWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodType"
+                      "$ref": "#/components/schemas/A_InspectionMethod"
                     }
                   }
                 }
@@ -422,69 +294,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethodPlant",
-                  "InspectionMethodPlant desc",
-                  "InspectionMethod",
-                  "InspectionMethod desc",
-                  "InspectionMethodVersion",
-                  "InspectionMethodVersion desc",
-                  "Language",
-                  "Language desc",
-                  "InspectionMethodText",
-                  "InspectionMethodText desc",
-                  "InspMethodHasLongText",
-                  "InspMethodHasLongText desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionMethodOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethodPlant",
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "Language",
-                  "InspectionMethodText",
-                  "InspMethodHasLongText",
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionMethodSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/TextOfA_InspectionMethodExpandOptions"
           }
         ],
         "responses": {
@@ -493,11 +309,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionMethodTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionMethodTextType",
+                      "title": "CollectionOfA_InspectionMethodText",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -506,7 +322,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType"
+                            "$ref": "#/components/schemas/A_InspectionMethodText"
                           }
                         }
                       }
@@ -548,69 +364,13 @@
             "$ref": "#/components/parameters/count"
           },
           {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethodPlant",
-                  "InspectionMethodPlant desc",
-                  "InspectionMethod",
-                  "InspectionMethod desc",
-                  "InspectionMethodVersion",
-                  "InspectionMethodVersion desc",
-                  "Language",
-                  "Language desc",
-                  "InspectionMethodText",
-                  "InspectionMethodText desc",
-                  "InspMethodHasLongText",
-                  "InspMethodHasLongText desc"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodTextOrderByOptions"
           },
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethodPlant",
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "Language",
-                  "InspectionMethodText",
-                  "InspMethodHasLongText",
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodTextSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodTextExpandOptions"
           }
         ],
         "responses": {
@@ -619,11 +379,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Wrapper",
+                  "title": "CollectionOfA_InspectionMethodTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "title": "Collection of A_InspectionMethodTextType",
+                      "title": "CollectionOfA_InspectionMethodText",
                       "type": "object",
                       "properties": {
                         "__count": {
@@ -632,7 +392,7 @@
                         "results": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType"
+                            "$ref": "#/components/schemas/A_InspectionMethodText"
                           }
                         }
                       }
@@ -699,42 +459,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethodPlant",
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "Language",
-                  "InspectionMethodText",
-                  "InspMethodHasLongText",
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodTextByKeySelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_InspectionMethod"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/A_InspectionMethodTextByKeyExpandOptions"
           }
         ],
         "responses": {
@@ -743,11 +471,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionMethodTextType",
+                  "title": "A_InspectionMethodTextWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType"
+                      "$ref": "#/components/schemas/A_InspectionMethodText"
                     }
                   }
                 }
@@ -812,52 +540,10 @@
         ],
         "parameters": [
           {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "InspectionMethod",
-                  "InspectionMethodVersion",
-                  "InspectionMethodPlant",
-                  "InspectionMethodValidFromDate",
-                  "InspectionMethodSearchField",
-                  "InspectionMethodStatus",
-                  "InspMethInformationField1",
-                  "InspMethInformationField2",
-                  "InspMethInformationField3",
-                  "QltyMstrDataAuthorizationGroup",
-                  "InspectorQualification",
-                  "CreatedByUser",
-                  "CreationDate",
-                  "LastChangedByUser",
-                  "LastChangeDate",
-                  "LinkedSAPObjectKey",
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/InspectionMethodOfA_InspectionMethodTextSelectOptions"
           },
           {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "to_Text"
-                ]
-              }
-            }
+            "$ref": "#/components/parameters/InspectionMethodOfA_InspectionMethodTextExpandOptions"
           }
         ],
         "responses": {
@@ -866,11 +552,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "A_InspectionMethodType",
+                  "title": "A_InspectionMethodWrapper",
                   "type": "object",
                   "properties": {
                     "d": {
-                      "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodType"
+                      "$ref": "#/components/schemas/A_InspectionMethod"
                     }
                   }
                 }
@@ -923,7 +609,7 @@
   },
   "components": {
     "schemas": {
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodType": {
+      "A_InspectionMethod": {
         "type": "object",
         "properties": {
           "InspectionMethod": {
@@ -1037,7 +723,7 @@
               "results": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType"
+                  "$ref": "#/components/schemas/A_InspectionMethodText"
                 }
               }
             }
@@ -1045,7 +731,7 @@
         },
         "title": "Inspection Methods"
       },
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodType-create": {
+      "CreateA_InspectionMethod": {
         "type": "object",
         "properties": {
           "InspectionMethod": {
@@ -1159,7 +845,7 @@
               "results": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType-create"
+                  "$ref": "#/components/schemas/CreateA_InspectionMethodText"
                 }
               }
             }
@@ -1172,7 +858,7 @@
         ],
         "title": "Inspection Methods (for create)"
       },
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodType-update": {
+      "UpdateA_InspectionMethod": {
         "type": "object",
         "properties": {
           "InspectionMethodValidFromDate": {
@@ -1266,7 +952,7 @@
         },
         "title": "Inspection Methods (for update)"
       },
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType": {
+      "A_InspectionMethodText": {
         "type": "object",
         "properties": {
           "InspectionMethodPlant": {
@@ -1304,12 +990,12 @@
             "title": "Inspection Method Has Long Text"
           },
           "to_InspectionMethod": {
-            "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodType"
+            "$ref": "#/components/schemas/A_InspectionMethod"
           }
         },
         "title": "Inspection Method Texts"
       },
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType-create": {
+      "CreateA_InspectionMethodText": {
         "type": "object",
         "properties": {
           "InspectionMethodPlant": {
@@ -1347,7 +1033,7 @@
             "title": "Inspection Method Has Long Text"
           },
           "to_InspectionMethod": {
-            "$ref": "#/components/schemas/API_INSPECTIONMETHOD_SRV.A_InspectionMethodType-create"
+            "$ref": "#/components/schemas/CreateA_InspectionMethod"
           }
         },
         "required": [
@@ -1358,7 +1044,7 @@
         ],
         "title": "Inspection Method Texts (for create)"
       },
-      "API_INSPECTIONMETHOD_SRV.A_InspectionMethodTextType-update": {
+      "UpdateA_InspectionMethodText": {
         "type": "object",
         "properties": {
           "InspectionMethodText": {
@@ -1418,6 +1104,166 @@
             }
           }
         }
+      },
+      "A_InspectionMethodOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionMethod",
+            "InspectionMethod desc",
+            "InspectionMethodVersion",
+            "InspectionMethodVersion desc",
+            "InspectionMethodPlant",
+            "InspectionMethodPlant desc",
+            "InspectionMethodValidFromDate",
+            "InspectionMethodValidFromDate desc",
+            "InspectionMethodSearchField",
+            "InspectionMethodSearchField desc",
+            "InspectionMethodStatus",
+            "InspectionMethodStatus desc",
+            "InspMethInformationField1",
+            "InspMethInformationField1 desc",
+            "InspMethInformationField2",
+            "InspMethInformationField2 desc",
+            "InspMethInformationField3",
+            "InspMethInformationField3 desc",
+            "QltyMstrDataAuthorizationGroup",
+            "QltyMstrDataAuthorizationGroup desc",
+            "InspectorQualification",
+            "InspectorQualification desc",
+            "CreatedByUser",
+            "CreatedByUser desc",
+            "CreationDate",
+            "CreationDate desc",
+            "LastChangedByUser",
+            "LastChangedByUser desc",
+            "LastChangeDate",
+            "LastChangeDate desc",
+            "LinkedSAPObjectKey",
+            "LinkedSAPObjectKey desc"
+          ]
+        }
+      },
+      "A_InspectionMethodSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionMethod",
+            "InspectionMethodVersion",
+            "InspectionMethodPlant",
+            "InspectionMethodValidFromDate",
+            "InspectionMethodSearchField",
+            "InspectionMethodStatus",
+            "InspMethInformationField1",
+            "InspMethInformationField2",
+            "InspMethInformationField3",
+            "QltyMstrDataAuthorizationGroup",
+            "InspectorQualification",
+            "CreatedByUser",
+            "CreationDate",
+            "LastChangedByUser",
+            "LastChangeDate",
+            "LinkedSAPObjectKey",
+            "to_Text"
+          ]
+        }
+      },
+      "A_InspectionMethodExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_Text"
+          ]
+        }
+      },
+      "A_InspectionMethodTextOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionMethodPlant",
+            "InspectionMethodPlant desc",
+            "InspectionMethod",
+            "InspectionMethod desc",
+            "InspectionMethodVersion",
+            "InspectionMethodVersion desc",
+            "Language",
+            "Language desc",
+            "InspectionMethodText",
+            "InspectionMethodText desc",
+            "InspMethodHasLongText",
+            "InspMethodHasLongText desc"
+          ]
+        }
+      },
+      "A_InspectionMethodTextSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionMethodPlant",
+            "InspectionMethod",
+            "InspectionMethodVersion",
+            "Language",
+            "InspectionMethodText",
+            "InspMethodHasLongText",
+            "to_InspectionMethod"
+          ]
+        }
+      },
+      "A_InspectionMethodTextExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_InspectionMethod"
+          ]
+        }
+      },
+      "InspectionMethodOfA_InspectionMethodTextSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "InspectionMethod",
+            "InspectionMethodVersion",
+            "InspectionMethodPlant",
+            "InspectionMethodValidFromDate",
+            "InspectionMethodSearchField",
+            "InspectionMethodStatus",
+            "InspMethInformationField1",
+            "InspMethInformationField2",
+            "InspMethInformationField3",
+            "QltyMstrDataAuthorizationGroup",
+            "InspectorQualification",
+            "CreatedByUser",
+            "CreationDate",
+            "LastChangedByUser",
+            "LastChangeDate",
+            "LinkedSAPObjectKey",
+            "to_Text"
+          ]
+        }
+      },
+      "InspectionMethodOfA_InspectionMethodTextExpandOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "to_Text"
+          ]
+        }
       }
     },
     "parameters": {
@@ -1450,6 +1296,141 @@
             "allpages",
             "none"
           ]
+        }
+      },
+      "A_InspectionMethodOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodOrderByOptions"
+        }
+      },
+      "A_InspectionMethodSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodSelectOptions"
+        }
+      },
+      "A_InspectionMethodExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodExpandOptions"
+        }
+      },
+      "A_InspectionMethodByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodSelectOptions"
+        }
+      },
+      "A_InspectionMethodByKeyExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodExpandOptions"
+        }
+      },
+      "TextOfA_InspectionMethodOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextOrderByOptions"
+        }
+      },
+      "TextOfA_InspectionMethodSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextSelectOptions"
+        }
+      },
+      "TextOfA_InspectionMethodExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextExpandOptions"
+        }
+      },
+      "A_InspectionMethodTextOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextOrderByOptions"
+        }
+      },
+      "A_InspectionMethodTextSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextSelectOptions"
+        }
+      },
+      "A_InspectionMethodTextExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextExpandOptions"
+        }
+      },
+      "A_InspectionMethodTextByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextSelectOptions"
+        }
+      },
+      "A_InspectionMethodTextByKeyExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_InspectionMethodTextExpandOptions"
+        }
+      },
+      "InspectionMethodOfA_InspectionMethodTextSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/InspectionMethodOfA_InspectionMethodTextSelectOptions"
+        }
+      },
+      "InspectionMethodOfA_InspectionMethodTextExpandOptions": {
+        "name": "$expand",
+        "in": "query",
+        "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/InspectionMethodOfA_InspectionMethodTextExpandOptions"
         }
       }
     },
