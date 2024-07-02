@@ -18,6 +18,7 @@ on:
           - api_inspectionlot_srv
           - api_inspectionplan_srv
           - api_masterinspcharacteristic_srv
+          - api_inspectionmethod_srv
 
 jobs:
   publish-release:
