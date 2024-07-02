@@ -175,7 +175,8 @@ function sanitizeSameParameterNameAndSchemaName(string specPath) returns error? 
             }
         }
 
-        if reponseSchema == "" {
+         if reponseSchema == "" {
+            updatedPaths[key] = value;
             continue;
         }
 
