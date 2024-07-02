@@ -75,8 +75,9 @@ function testListQualityFirstArticleInspections() returns error? {
 function testCreateQltyFirstArticleInspOfQualityInProcurement() returns error? {
     QualityFirstArticleInspectionWrapper|error creatingQltyFirstArticleInspOfQltyInProc = s4HanaClient->createQualityFirstArticleInspection({
         QltyInProcmtIntID: "000001",
-        QltyInProcmt1stArticleInsp: "", 
-        Material: "585"});
+        QltyInProcmt1stArticleInsp: "",
+        Material: "585"
+    });
     test:assertTrue(creatingQltyFirstArticleInspOfQltyInProc is error, "The quality info record response expected to be 500");
     error e = <error>creatingQltyFirstArticleInspOfQltyInProc;
     test:assertEquals(e.detail()["statusCode"], 500, "Expected 500 status code");

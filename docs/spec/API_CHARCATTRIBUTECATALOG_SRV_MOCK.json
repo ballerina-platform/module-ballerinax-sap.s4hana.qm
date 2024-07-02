@@ -222,46 +222,6 @@
         },
         "title": "Characteristic Attribute Selected Sets"
       },
-      "CreateA_CharcAttribSeldCodeSet": {
-        "type": "object",
-        "properties": {
-          "SelectedCodeSetPlant": {
-            "type": "string",
-            "maxLength": 4,
-            "title": "Plant"
-          },
-          "SelectedCodeSet": {
-            "type": "string",
-            "maxLength": 8,
-            "title": "Selected Set"
-          },
-          "InspectionSelectedSetStatus": {
-            "type": "string",
-            "nullable": true,
-            "maxLength": 1,
-            "title": "Status of Code Group",
-            "description": "Status of Master Record"
-          }
-        },
-        "required": [
-          "SelectedCodeSetPlant",
-          "SelectedCodeSet"
-        ],
-        "title": "Characteristic Attribute Selected Sets (for create)"
-      },
-      "UpdateA_CharcAttribSeldCodeSet": {
-        "type": "object",
-        "properties": {
-          "InspectionSelectedSetStatus": {
-            "type": "string",
-            "nullable": true,
-            "maxLength": 1,
-            "title": "Status of Code Group",
-            "description": "Status of Master Record"
-          }
-        },
-        "title": "Characteristic Attribute Selected Sets (for update)"
-      },
       "count": {
         "type": "string",
         "description": "The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option."
@@ -391,72 +351,6 @@
             "CharcAttribSeldSetCodeChgdOn"
           ]
         }
-      },
-      "A_CharcAttribSeldSetCodeTOrderByOptions": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-          "type": "string",
-          "enum": [
-            "SelectedCodeSetPlant",
-            "SelectedCodeSetPlant desc",
-            "SelectedCodeSet",
-            "SelectedCodeSet desc",
-            "CharacteristicAttributeCodeGrp",
-            "CharacteristicAttributeCodeGrp desc",
-            "CharacteristicAttributeCode",
-            "CharacteristicAttributeCode desc",
-            "Language",
-            "Language desc",
-            "CharacteristicAttributeCodeTxt",
-            "CharacteristicAttributeCodeTxt desc"
-          ]
-        }
-      },
-      "A_CharcAttribSeldSetCodeTSelectOptions": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-          "type": "string",
-          "enum": [
-            "SelectedCodeSetPlant",
-            "SelectedCodeSet",
-            "CharacteristicAttributeCodeGrp",
-            "CharacteristicAttributeCode",
-            "Language",
-            "CharacteristicAttributeCodeTxt"
-          ]
-        }
-      },
-      "A_CharcAttribSeldSetTOrderByOptions": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-          "type": "string",
-          "enum": [
-            "SelectedCodeSetPlant",
-            "SelectedCodeSetPlant desc",
-            "SelectedCodeSet",
-            "SelectedCodeSet desc",
-            "Language",
-            "Language desc",
-            "SelectedCodeSetText",
-            "SelectedCodeSetText desc"
-          ]
-        }
-      },
-      "A_CharcAttribSeldSetTSelectOptions": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-          "type": "string",
-          "enum": [
-            "SelectedCodeSetPlant",
-            "SelectedCodeSet",
-            "Language",
-            "SelectedCodeSetText"
-          ]
-        }
       }
     },
     "parameters": {
@@ -509,15 +403,6 @@
           "$ref": "#/components/schemas/A_CharcAttribSeldCodeSetSelectOptions"
         }
       },
-      "A_CharcAttribSeldCodeSetByKeySelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldCodeSetSelectOptions"
-        }
-      },
       "A_CharcAttribSeldSetCodeOrderByOptions": {
         "name": "$orderby",
         "in": "query",
@@ -534,69 +419,6 @@
         "explode": false,
         "schema": {
           "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeSelectOptions"
-        }
-      },
-      "A_CharcAttribSeldSetCodeByKeySelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeSelectOptions"
-        }
-      },
-      "A_CharcAttribSeldSetCodeTOrderByOptions": {
-        "name": "$orderby",
-        "in": "query",
-        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTOrderByOptions"
-        }
-      },
-      "A_CharcAttribSeldSetCodeTSelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTSelectOptions"
-        }
-      },
-      "A_CharcAttribSeldSetCodeTByKeySelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTSelectOptions"
-        }
-      },
-      "A_CharcAttribSeldSetTOrderByOptions": {
-        "name": "$orderby",
-        "in": "query",
-        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetTOrderByOptions"
-        }
-      },
-      "A_CharcAttribSeldSetTSelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetTSelectOptions"
-        }
-      },
-      "A_CharcAttribSeldSetTByKeySelectOptions": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
-        "explode": false,
-        "schema": {
-          "$ref": "#/components/schemas/A_CharcAttribSeldSetTSelectOptions"
         }
       }
     },

@@ -3,7 +3,7 @@
 _Author_: @HabeebaMinhar @EsalaMapa \
 _Reviewer_: @niveathika \
 _Created_: 2024/06/18 \
-_Updated_: 2024/06/27 \
+_Updated_: 2024/07/02 \
 _Edition_: Swan Lake  
 
 ## Sanitization Steps
@@ -20,7 +20,51 @@ _Edition_: Swan Lake
    `wrapper` -> `A_InspectionlotWrapper`
    `Collection of A_InspectionlotType` -> `CollectionOfA_Inspectionlot`
 
-4. Add operation Ids. This is more user-friendly with SAP-specific scripts. The logic for parameter sanitization is
+4. Change parameter name to start with lowercase if the response schema is also named the same.
+   ```
+   "/TaskCode/{TaskCodeGroup}/{TaskCode}": {
+      "parameters": [
+        ...
+        {
+          "name": "TaskCode",
+          "in": "path",
+          "required": true,
+          "description": "Code for Classification of a Task",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        ...
+      ],
+      "get": {
+        "summary": "Get entity from TaskCode by key",
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskCode"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+   ```
+   ```
+   "/TaskCode/{TaskCodeGroup}/{taskCode}": {
+      "parameters": [
+        ...
+        {
+          "name": "taskCode",
+   ```
+
+5. Add operation Ids. This is more user-friendly with SAP-specific scripts. The logic for parameter sanitization is
    reused, making it less complicated for the tool. The pattern is as follows:
    `${HTTP Method}${The Resource Name}Of${Base Path Name}`
    `/salesorder(asdad)/to_Item` => `getTo_ItemOfSalesorder`
@@ -75,8 +119,8 @@ _Edition_: Swan Lake
 
 11. Generate mock server under `modules/mock` folder.
 
-```ballerina
-bal openapi -i spec/<API_NAME>_MOCK.json -o ../ballerina/<Module Name>/modules/mock --mode service  --license license.txt
-```
+   ```ballerina
+   bal openapi -i spec/<API_NAME>_MOCK.json -o ../ballerina/<Module Name>/modules/mock --mode service  --license license.txt
+   ```
 
 12. Ensure the test cases are written against mock and live servers, with `isTestOnLiveServer` as the param to switch. 

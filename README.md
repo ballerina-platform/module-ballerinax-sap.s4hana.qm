@@ -13,22 +13,30 @@ designed for large-scale enterprises by SAP SE.
 This repository encompasses all Ballerina packages pertaining to the S/4HANA Quality Management submodule. Notably:
 
 1. The `ballerinax/sap.s4hana.api_inspectionlot_srv` package provides APIs that enable seamless integration with
-   the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview). This service enables you to read, create, and update inspection lots.
+   the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview). This service enables you to
+   read, create, and update inspection lots.
 
 2. The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package provides APIs that enable seamless integration with
-   the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview). This service enables you to retrieve inspection methods with their settings and administrative data.
+   the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview). This service
+   enables you to retrieve inspection methods with their settings and administrative data.
 
 3. The `ballerinax/sap.s4hana.api_inspectionplan_srv` package provides APIs that enable seamless integration with
-   the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables you to read, create, update, and delete inspection plan header data.
+   the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables you
+   to read, create, update, and delete inspection plan header data.
 
-4. The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package provides APIs that enable seamless integration with
-   the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview). This service allows to read quality inspection specifications of the type master inspection characteristic.
+4. The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package provides APIs that enable seamless integration
+   with
+   the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).
+   This service allows to read quality inspection specifications of the type master inspection characteristic.
 
 5. The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package provides APIs that enable seamless integration with
-   the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows to create, read, update, and delete data related to quality info records and first article inspection.
+   the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows
+   to create, read, update, and delete data related to quality info records and first article inspection.
 
- 6. The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package provides APIs that enable seamless integration with
-   the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview). This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics.
+6. The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package provides APIs that enable seamless integration with
+   the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).
+   This service allows to read plant-specific selected sets with their codes that are used to record inspection results
+   for qualitative characteristics.
 
 ## Issues and projects
 
@@ -129,8 +137,7 @@ Execute the commands below to build from the source.
 
 As an open-source project, Ballerina welcomes contributions from the community.
 
-For more information, go to 
-the [contribution guidelines](https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md).
+For more information, go to the [contribution guidelines](https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md).
 
 ## Code of conduct
 
@@ -141,5 +148,4 @@ All the contributors are encouraged to read the [Ballerina Code of Conduct](http
 * For more information go to the [`sap` package](https://lib.ballerina.io/ballerinax/sap/latest).
 * For example demonstrations of the usage, go to [Ballerina By Examples](https://ballerina.io/learn/by-example/).
 * Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
-* Post all technical questions on Stack Overflow with 
-  the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.
+* Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.

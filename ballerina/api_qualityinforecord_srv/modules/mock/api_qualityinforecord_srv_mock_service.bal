@@ -68,8 +68,6 @@ service /sap/opu/odata/sap/API_QUALITYINFORECORD_SRV on ep0 {
         };
     }
 
-    
-
     # Add new entity to QualityFirstArticleInspection
     #
     # + payload - New entity 

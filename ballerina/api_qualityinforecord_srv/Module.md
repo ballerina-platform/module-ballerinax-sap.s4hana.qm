@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows to create, read, update, and delete data related to quality info records and first article inspection..
+The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows to create, read, update, and delete data related to quality info records and first article inspection.
 
 ## Setup guide
 
