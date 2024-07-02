@@ -71,6 +71,7 @@ Execute the commands below to build from the source.
    | ----------- | -------------------------------- |
    | API_INSPECTIONLOT_SRV | ballerinax/sap.s4hana.api_inspectionlot_srv |
    | API_INSPECTIONPLAN_SRV | ballerinax/sap.s4hana.api_inspectionplan_srv |
+   | API_MASTERINSPCHARACTERISTIC_SRV | ballerinax/sap.s4hana.api_masterinspcharacteristic_srv |
 
 5. To run tests against different environment:
 

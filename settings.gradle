@@ -33,6 +33,7 @@ rootProject.name = "module-ballerinax-sap.s4hana.qm"
 include ':qm-ballerina'
 include ':qm-ballerina:api_inspectionlot_srv'
 include ':qm-ballerina:api_inspectionplan_srv'
+include ':qm-ballerina:api_masterinspcharacteristic_srv'
 include ':qm-examples'
 
 
@@ -40,6 +41,7 @@ project(':qm-ballerina').projectDir = file("ballerina")
 project(':qm-examples').projectDir = file("examples")
 project(':qm-ballerina:api_inspectionlot_srv').projectDir = file("ballerina/api_inspectionlot_srv")
 project(':qm-ballerina:api_inspectionplan_srv').projectDir = file("ballerina/api_inspectionplan_srv")
+project(':qm-ballerina:api_masterinspcharacteristic_srv').projectDir = file("ballerina/api_masterinspcharacteristic_srv")
 
 
 gradleEnterprise {

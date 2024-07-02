@@ -10,6 +10,7 @@ on:
         options:
           - api_inspectionlot_srv
           - api_inspectionplan_srv
+          - api_masterinspcharacteristic_srv
 
 jobs:
   call_workflow:
