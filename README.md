@@ -12,6 +12,24 @@ designed for large-scale enterprises by SAP SE.
 
 This repository encompasses all Ballerina packages pertaining to the S/4HANA Quality Management submodule. Notably:
 
+1. The `ballerinax/sap.s4hana.api_inspectionlot_srv` package provides APIs that enable seamless integration with
+   the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview). This service enables you to read, create, and update inspection lots.
+
+2. The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package provides APIs that enable seamless integration with
+   the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview). This service enables you to retrieve inspection methods with their settings and administrative data.
+
+3. The `ballerinax/sap.s4hana.api_inspectionplan_srv` package provides APIs that enable seamless integration with
+   the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables you to read, create, update, and delete inspection plan header data.
+
+4. The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package provides APIs that enable seamless integration with
+   the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview). This service allows to read quality inspection specifications of the type master inspection characteristic.
+
+5. The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package provides APIs that enable seamless integration with
+   the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows to create, read, update, and delete data related to quality info records and first article inspection.
+
+ 6. The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package provides APIs that enable seamless integration with
+   the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview). This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics.
+
 ## Issues and projects
 
 The **Issues** and **Projects** tabs are disabled for this repository as this is part of the Ballerina library. To
@@ -67,13 +85,14 @@ Execute the commands below to build from the source.
    ./gradlew clean :qm-ballerina:<api_name>:build
    ```
 
-   |       API Name            |                  Connector                      |
-   | ------------------------- | ----------------------------------------------- |
-   | API_INSPECTIONLOT_SRV     | ballerinax/sap.s4hana.api_inspectionlot_srv     |
-   | API_INSPECTIONPLAN_SRV | ballerinax/sap.s4hana.api_inspectionplan_srv |
-   | API_MASTERINSPCHARACTERISTIC_SRV | ballerinax/sap.s4hana.api_masterinspcharacteristic_srv |
-   | API_INSPECTIONMETHOD_SRV | ballerinax/sap.s4hana.api_inspectionmethod_srv |
-   | API_QUALITYINFORECORD_SRV | ballerinax/sap.s4hana.api_qualityinforecord_srv |
+   |           API Name               |                     Connector                          |
+   | -------------------------------- | ------------------------------------------------------ |
+   | api_inspectionlot_srv            | ballerinax/sap.s4hana.api_inspectionlot_srv            |
+   | api_inspectionplan_srv           | ballerinax/sap.s4hana.api_inspectionplan_srv           |
+   | api_masterinspcharacteristic_srv | ballerinax/sap.s4hana.api_masterinspcharacteristic_srv |
+   | api_inspectionmethod_srv         | ballerinax/sap.s4hana.api_inspectionmethod_srv         |
+   | api_qualityinforecord_srv        | ballerinax/sap.s4hana.api_qualityinforecord_srv        |
+   | api_charcattributecatalog_srv    | ballerinax/sap.s4hana.api_charcattributecatalog_srv    |
 
 5. To run tests against different environment:
 
