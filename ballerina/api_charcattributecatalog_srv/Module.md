@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs for seamless integration with the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).This service allows to. read quality inspection specifications of the type master inspection characteristic. A master inspection characteristic is a master data record that describes the quality inspection criteria for materials.
+The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.
 
 ## Setup guide
 
@@ -35,14 +35,14 @@ The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs
 
 ## Quickstart
 
-To use the `sap.s4hana.api_masterinspcharacteristic_srv` connector in your Ballerina application, modify the `.bal` file as follows:
+To use the `sap.s4hana.api_charcattributecatalog_srv` connector in your Ballerina application, modify the `.bal` file as follows:
 
 ### Step 1: Import the module
 
-Import the `sap.s4hana.api_masterinspcharacteristic_srv` module.
+Import the `sap.s4hana.api_charcattributecatalog_srv` module.
 
 ```ballerina
-import ballerinax/sap.s4hana.api_masterinspcharacteristic_srv as masterinspchar;
+import ballerinax/sap.s4hana.api_charcattributecatalog_srv as charattributecat;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -54,7 +54,7 @@ configurable string hostname = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-masterinspchar:Client masterinspcharClient = check new (
+charattributecat:Client charattributecatClient = check new (
     hostname = hostname,
     config = {
         auth: {
@@ -70,7 +70,7 @@ masterinspchar:Client masterinspcharClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-masterinspchar:CollectionOfA_InspectionSpecificationWrapper listOfInspectionSpecs = check masterinspcharClient->listA_InspectionSpecifications();
+charattributecat:CollectionOfA_CharcAttribSeldCodeSetWrapper listOfSelectedCodes = check charattributecatClient->listA_CharcAttribSeldCodeSets();
 ```
 
 ### Step 4: Run the Ballerina application
