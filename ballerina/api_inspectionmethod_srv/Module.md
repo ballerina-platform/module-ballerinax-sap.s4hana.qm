@@ -1,9 +1,9 @@
-## Package Overview
+## Overview
 
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamless integration with the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview).In the SAP system, you process quality inspections on the basis of inspection lots. The data relating to a quality inspection is grouped into several entities. With this service it is possible, for example, to update inspection lot header data or to create inspection results and usage decisions.
+The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection method is a master data record that describes the procedure for performing the quality inspection of a characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.
 
 ## Setup guide
 
@@ -13,7 +13,7 @@ The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamle
 
    ![Display Scenarios](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap/main/docs/setup/3-1-display-scenarios.png)
 
-3. In the search bar, type `Quality Inspection Process Integration` and select the corresponding scenario from the results.
+3. In the search bar, type `Inspection Master Data Integration` and select the corresponding scenario from the results.
 
    ![Search Sales Order](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap/main/docs/setup/3-2-search-sales-order.png)
 
@@ -35,14 +35,14 @@ The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamle
 
 ## Quickstart
 
-To use the `sap.s4hana.api_inspectionlot_srv` connector in your Ballerina application, modify the `.bal` file as follows:
+To use the `sap.s4hana.api_inspectionmethod_srv` connector in your Ballerina application, modify the `.bal` file as follows:
 
 ### Step 1: Import the module
 
-Import the `sap.s4hana.api_inspectionlot_srv` module.
+Import the `sap.s4hana.api_inspectionmethod_srv` module.
 
 ```ballerina
-import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionlot;
+import ballerinax/sap.s4hana.api_inspectionmethod_srv as inspectionmethod;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -54,7 +54,7 @@ configurable string hostname = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-inspectionlot:Client inspectionlotClient = check new (
+inspectionmethod:Client inspectionmethodClient = check new (
     hostname = hostname,
     config = {
         auth: {
@@ -70,7 +70,7 @@ inspectionlot:Client inspectionlotClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionlot:CollectionOfA_InspectionLotWrapper listOfInspectionlots = check inspectionlotClient->listA_Inspectionlots();
+inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionmethods = check inspectionmethodClient->listA_InspectionMethods();
 ```
 
 ### Step 4: Run the Ballerina application
@@ -78,13 +78,3 @@ inspectionlot:CollectionOfA_InspectionLotWrapper listOfInspectionlots = check in
 ```bash
 bal run
 ```
-
-## Report Issues
-
-To report bugs, request new features, start new discussions, view project boards, etc., go to
-the [Ballerina library parent repository](https://github.com/ballerina-platform/ballerina-library).
-
-## Useful Links
-
-- Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
-- Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.

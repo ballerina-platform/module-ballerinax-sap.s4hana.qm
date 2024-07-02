@@ -1,0 +1,7 @@
+{
+  "description": "The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection method is a master data record that describes the procedure for performing the quality inspection of a characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.",
+  "communication-scenario": "Inspection Master Data Integration",
+  "import-statement": "import ballerinax/sap.s4hana.api_inspectionmethod_srv as inspectionmethod;",
+  "client-init": "inspectionmethod:Client inspectionmethodClient = check new (",
+  "api-invocation": "inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionmethods = check inspectionmethodClient->listA_InspectionMethods();"
+}
