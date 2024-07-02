@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). The data related to a quality info record and first article inspection has one entity type each. For read operations, filter information must be sent according to the OData protocol.
+The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows to create, read, update, and delete data related to quality info records and first article inspection.
 
 ## Setup guide
 
@@ -70,7 +70,7 @@ qltyinforecd:Client qltyInfoRecClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-qltyinforecd:Wrapper CollectionOfQualityFirstArticleInspectionWrapper = check qltyInfoRecClient->listQltyFirstArticleInspsOfQualityInProcurement();
+qltyinforecd:CollectionOfQualityFirstArticleInspectionWrapper createdQltyInfoRec = check qltyInfoRecClient->listQualityFirstArticleInspections();
 ```
 
 ### Step 4: Run the Ballerina application

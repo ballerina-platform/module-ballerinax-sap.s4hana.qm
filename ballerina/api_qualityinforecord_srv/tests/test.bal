@@ -19,7 +19,6 @@ import sap.s4hana.api_qualityinforecord_srv.mock as _;
 import ballerina/log;
 import ballerina/os;
 import ballerina/test;
-import ballerina/io;
 
 configurable boolean isTestOnLiveServer = os:getEnv("IS_TEST_ON_S4HANA_SERVER") == "false";
 
@@ -67,7 +66,6 @@ function initializeClientsForS4HanaServer() returns error? {
 }
 function testListQualityFirstArticleInspections() returns error? {
     CollectionOfQualityFirstArticleInspectionWrapper listQltyFirstArticleInspections = check s4HanaClient->listQualityFirstArticleInspections({});
-    io:println(listQltyFirstArticleInspections);
     test:assertTrue(listQltyFirstArticleInspections.d?.results !is (), "The quality info record is expected to be non-empty.");
 }
 
