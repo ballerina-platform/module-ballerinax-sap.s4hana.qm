@@ -102,6 +102,7 @@
   "paths": {
     "/A_CharcAttribSeldCodeSet": {
       "get": {
+        "operationId": "listA_CharcAttribSeldCodeSets",
         "summary": "Reads all selected sets of catalog type Characteristic Attributes.",
         "description": "Reads all characteristic attribute selected sets with statuses and administrative data. Characteristic attributes are values of qualitative inspection characteristics in a coded format. The characteristic attribute codes can be combined in a plant-specific selected set, which is allowed or useful for a particular application.",
         "tags": [
@@ -191,6 +192,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_CharcAttribSeldCodeSet",
         "summary": "Reads a specific selected set of catalog type Characteristic Attributes.",
         "description": "Reads a specific characteristic attribute selected set in a specific plant with statuses and administrative data. Characteristicattributes are values of qualitative inspection characteristics in a coded format. The characteristic attribute codes can be combined in a plant-specific selected set, which is allowed or useful for a particular application.",
         "tags": [
@@ -226,6 +228,7 @@
     },
     "/A_CharcAttribSeldSetCode": {
       "get": {
+        "operationId": "listA_CharcAttribSeldSetCodes",
         "summary": "Reads all selected set codes and code groups of catalog type Characteristic Attributes.",
         "description": "Reads all codes and their code groups that are contained in plant-specific characteristic attribute selected sets. You can retrieve administration data and valuation data.",
         "tags": [
@@ -335,6 +338,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_CharcAttribSeldSetCode",
         "summary": "Reads a specific selected set code of catalog type Characteristic Attributes.",
         "description": "Reads a specific code that is contained in a plant-specific characteristic attribute selected set. You can retrieve administration data and valuation data.",
         "tags": [
@@ -370,6 +374,7 @@
     },
     "/A_CharcAttribSeldSetCodeT": {
       "get": {
+        "operationId": "listA_CharcAttribSeldSetCodeTs",
         "summary": "Reads all selected set code texts of catalog type Characteristic Attributes.",
         "description": "Reads all short texts of codes that are contained in plant-specific characteristic attribute selected sets.",
         "tags": [
@@ -489,6 +494,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_CharcAttribSeldSetCodeT",
         "summary": "Reads a specific selected set code text of catalog type Characteristic Attributes in a specific language.",
         "description": "Reads the short text of a code that is contained in a plant-specific characteristic attribute selected set in a specific language.",
         "tags": [
@@ -524,6 +530,7 @@
     },
     "/A_CharcAttribSeldSetT": {
       "get": {
+        "operationId": "listA_CharcAttribSeldSetTs",
         "summary": "Reads all selected set texts of catalog type Characteristic Attributes.",
         "description": "Reads all short texts of plant-specific characteristic attribute selected sets.",
         "tags": [
@@ -623,6 +630,7 @@
         }
       ],
       "get": {
+        "operationId": "getA_CharcAttribSeldSetT",
         "summary": "Reads a specific selected set text of catalog type Characteristic Attributes in a specific language.",
         "description": "Reads the short text of a specific characteristic attribute selected set in a specific plant and a specific language.",
         "tags": [
@@ -658,6 +666,7 @@
     },
     "/$batch": {
       "post": {
+        "operationId": "performBatchOperation",
         "summary": "Send a group of requests",
         "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
         "tags": [
