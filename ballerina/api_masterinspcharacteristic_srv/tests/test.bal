@@ -26,8 +26,7 @@ configurable string hostname = isTestOnLiveServer ? os:getEnv("HOST_NAME") : "lo
 configurable string username = isTestOnLiveServer ? os:getEnv("USERNAME") : "admin";
 configurable string password = isTestOnLiveServer ? os:getEnv("PASSWORD") : "admin";
 
-//boolean isBalBuild = os:getEnv("IS_BAL_BUILD") == "true";
-boolean isBalBuild = true;
+boolean isBalBuild = os:getEnv("IS_BAL_BUILD") == "true";
 string certPathPostFix = isBalBuild ? "../" : "/home/ballerina/ballerina/";
 
 Client s4HanaClient = test:mock(Client);
