@@ -1,0 +1,1530 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Characteristic Attribute Catalog - Read",
+    "version": "1.0.0",
+    "description": "\r\n\r\nThe catalog data that is read with this service consists of plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic ***Surface***."
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_CLOUD/2402.latest/EN/92/9751669aeb40f083215bf16c284c1a/frameset.htm"
+  },
+  "x-sap-api-type": "ODATA",
+  "x-sap-shortText": "Read catalog data that is used to document the quality inspection results for qualitative characteristics using this synchronous inbound service",
+  "x-sap-software-min-version": "2402",
+  "x-sap-ext-overview": [
+    {
+      "name": "Communication Scenario",
+      "values": [
+        {
+          "text": "Inspection Master Data Integration(SAP_COM_0110)",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Scope Items",
+      "values": [
+        {
+          "text": "[Quality Management in Procurement(1FM)](https://me.sap.com/processnavigator/SolP/1FM \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Sales(1MP)](https://me.sap.com/processnavigator/SolP/1MP \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Stock Handling(1MR)](https://me.sap.com/processnavigator/SolP/1MR \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Nonconformance Management(2QN)](https://me.sap.com/processnavigator/SolP/2QN \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Quality Management in Discrete Manufacturing(1E1)](https://me.sap.com/processnavigator/SolP/1E1 \" Link To BP \")",
+          "format": "markdown"
+        }
+      ]
+    },
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Business Object",
+      "values": [
+        {
+          "text": "Characteristic Attribute Selected Set",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata/sap/API_CHARCATTRIBUTECATALOG_SRV",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    },
+    {
+      "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CHARCATTRIBUTECATALOG_SRV"
+    }
+  ],
+  "x-sap-extensible": {
+    "supported": "no"
+  },
+  "tags": [
+    {
+      "name": "Characteristic Attribute Selected Sets"
+    },
+    {
+      "name": "Characteristic Attribute Selected Set Codes and Code Groups"
+    },
+    {
+      "name": "Characteristic Attribute Selected Set Code Texts"
+    },
+    {
+      "name": "Characteristic Attribute Selected Set Texts"
+    }
+  ],
+  "paths": {
+    "/A_CharcAttribSeldCodeSet": {
+      "get": {
+        "operationId": "listA_CharcAttribSeldCodeSets",
+        "summary": "Reads all selected sets of catalog type Characteristic Attributes.",
+        "description": "Reads all characteristic attribute selected sets with statuses and administrative data. Characteristic attributes are values of qualitative inspection characteristics in a coded format. The characteristic attribute codes can be combined in a plant-specific selected set, which is allowed or useful for a particular application.",
+        "tags": [
+          "Characteristic Attribute Selected Sets"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldCodeSetOrderByOptions"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldCodeSetSelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "CollectionOfA_CharcAttribSeldCodeSetWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "CollectionOfA_CharcAttribSeldCodeSet",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/A_CharcAttribSeldCodeSet"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldCodeSet(SelectedCodeSetPlant='{SelectedCodeSetPlant}',SelectedCodeSet='{SelectedCodeSet}')": {
+      "parameters": [
+        {
+          "name": "SelectedCodeSetPlant",
+          "in": "path",
+          "required": true,
+          "description": "Plant",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "SelectedCodeSet",
+          "in": "path",
+          "required": true,
+          "description": "Selected Set",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getA_CharcAttribSeldCodeSet",
+        "summary": "Reads a specific selected set of catalog type Characteristic Attributes.",
+        "description": "Reads a specific characteristic attribute selected set in a specific plant with statuses and administrative data. Characteristicattributes are values of qualitative inspection characteristics in a coded format. The characteristic attribute codes can be combined in a plant-specific selected set, which is allowed or useful for a particular application.",
+        "tags": [
+          "Characteristic Attribute Selected Sets"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldCodeSetByKeySelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_CharcAttribSeldCodeSetWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/A_CharcAttribSeldCodeSet"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetCode": {
+      "get": {
+        "operationId": "listA_CharcAttribSeldSetCodes",
+        "summary": "Reads all selected set codes and code groups of catalog type Characteristic Attributes.",
+        "description": "Reads all codes and their code groups that are contained in plant-specific characteristic attribute selected sets. You can retrieve administration data and valuation data.",
+        "tags": [
+          "Characteristic Attribute Selected Set Codes and Code Groups"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeOrderByOptions"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeSelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "CollectionOfA_CharcAttribSeldSetCodeWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "CollectionOfA_CharcAttribSeldSetCode",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/A_CharcAttribSeldSetCode"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetCode(SelectedCodeSetPlant='{SelectedCodeSetPlant}',SelectedCodeSet='{SelectedCodeSet}',CharacteristicAttributeCodeGrp='{CharacteristicAttributeCodeGrp}',CharacteristicAttributeCode='{CharacteristicAttributeCode}')": {
+      "parameters": [
+        {
+          "name": "SelectedCodeSetPlant",
+          "in": "path",
+          "required": true,
+          "description": "Plant",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "SelectedCodeSet",
+          "in": "path",
+          "required": true,
+          "description": "Selected Set",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "name": "CharacteristicAttributeCodeGrp",
+          "in": "path",
+          "required": true,
+          "description": "Code Group",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "name": "CharacteristicAttributeCode",
+          "in": "path",
+          "required": true,
+          "description": "Code",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getA_CharcAttribSeldSetCode",
+        "summary": "Reads a specific selected set code of catalog type Characteristic Attributes.",
+        "description": "Reads a specific code that is contained in a plant-specific characteristic attribute selected set. You can retrieve administration data and valuation data.",
+        "tags": [
+          "Characteristic Attribute Selected Set Codes and Code Groups"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeByKeySelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_CharcAttribSeldSetCodeWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/A_CharcAttribSeldSetCode"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetCodeT": {
+      "get": {
+        "operationId": "listA_CharcAttribSeldSetCodeTs",
+        "summary": "Reads all selected set code texts of catalog type Characteristic Attributes.",
+        "description": "Reads all short texts of codes that are contained in plant-specific characteristic attribute selected sets.",
+        "tags": [
+          "Characteristic Attribute Selected Set Code Texts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeTOrderByOptions"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeTSelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "CollectionOfA_CharcAttribSeldSetCodeTWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "CollectionOfA_CharcAttribSeldSetCodeT",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeT"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetCodeT(SelectedCodeSetPlant='{SelectedCodeSetPlant}',SelectedCodeSet='{SelectedCodeSet}',CharacteristicAttributeCodeGrp='{CharacteristicAttributeCodeGrp}',CharacteristicAttributeCode='{CharacteristicAttributeCode}',Language='{Language}')": {
+      "parameters": [
+        {
+          "name": "SelectedCodeSetPlant",
+          "in": "path",
+          "required": true,
+          "description": "Plant",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "SelectedCodeSet",
+          "in": "path",
+          "required": true,
+          "description": "Selected Set",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "name": "CharacteristicAttributeCodeGrp",
+          "in": "path",
+          "required": true,
+          "description": "Code Group",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "name": "CharacteristicAttributeCode",
+          "in": "path",
+          "required": true,
+          "description": "Code",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "Language",
+          "in": "path",
+          "required": true,
+          "description": "Language Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 2
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getA_CharcAttribSeldSetCodeT",
+        "summary": "Reads a specific selected set code text of catalog type Characteristic Attributes in a specific language.",
+        "description": "Reads the short text of a code that is contained in a plant-specific characteristic attribute selected set in a specific language.",
+        "tags": [
+          "Characteristic Attribute Selected Set Code Texts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetCodeTByKeySelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_CharcAttribSeldSetCodeTWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeT"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetT": {
+      "get": {
+        "operationId": "listA_CharcAttribSeldSetTs",
+        "summary": "Reads all selected set texts of catalog type Characteristic Attributes.",
+        "description": "Reads all short texts of plant-specific characteristic attribute selected sets.",
+        "tags": [
+          "Characteristic Attribute Selected Set Texts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetTOrderByOptions"
+          },
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetTSelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "CollectionOfA_CharcAttribSeldSetTWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "CollectionOfA_CharcAttribSeldSetT",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/A_CharcAttribSeldSetT"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_CharcAttribSeldSetT(SelectedCodeSetPlant='{SelectedCodeSetPlant}',SelectedCodeSet='{SelectedCodeSet}',Language='{Language}')": {
+      "parameters": [
+        {
+          "name": "SelectedCodeSetPlant",
+          "in": "path",
+          "required": true,
+          "description": "Plant",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "SelectedCodeSet",
+          "in": "path",
+          "required": true,
+          "description": "Selected Set",
+          "schema": {
+            "type": "string",
+            "maxLength": 8
+          }
+        },
+        {
+          "name": "Language",
+          "in": "path",
+          "required": true,
+          "description": "Language Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 2
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getA_CharcAttribSeldSetT",
+        "summary": "Reads a specific selected set text of catalog type Characteristic Attributes in a specific language.",
+        "description": "Reads the short text of a specific characteristic attribute selected set in a specific plant and a specific language.",
+        "tags": [
+          "Characteristic Attribute Selected Set Texts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/A_CharcAttribSeldSetTByKeySelectOptions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_CharcAttribSeldSetTWrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/A_CharcAttribSeldSetT"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/$batch": {
+      "post": {
+        "operationId": "performBatchOperation",
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=152).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET A_CharcAttribSeldCodeSet HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "A_CharcAttribSeldCodeSet": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "InspectionSelectedSetStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Status of Code Group",
+            "description": "Status of Master Record"
+          },
+          "CharcAttribSeldSetCreatedBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Name of User Who Created the Data Record"
+          },
+          "CharcAttribSeldSetCrtedOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "System Date on Which Data Record Was Created"
+          },
+          "CharcAttribSeldSetLastChgdBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Changed By",
+            "description": "Name of User Who Last Changed Data Record"
+          },
+          "CharcAttribSeldSetLastChgdOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Changed On",
+            "description": "System Date on Which Data Record Was Changed"
+          }
+        },
+        "title": "Characteristic Attribute Selected Sets"
+      },
+      "CreateA_CharcAttribSeldCodeSet": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "InspectionSelectedSetStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Status of Code Group",
+            "description": "Status of Master Record"
+          }
+        },
+        "required": [
+          "SelectedCodeSetPlant",
+          "SelectedCodeSet"
+        ],
+        "title": "Characteristic Attribute Selected Sets (for create)"
+      },
+      "UpdateA_CharcAttribSeldCodeSet": {
+        "type": "object",
+        "properties": {
+          "InspectionSelectedSetStatus": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Status of Code Group",
+            "description": "Status of Master Record"
+          }
+        },
+        "title": "Characteristic Attribute Selected Sets (for update)"
+      },
+      "A_CharcAttribSeldSetCode": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "CharacteristicAttributeCodeGrp": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Code Group"
+          },
+          "CharacteristicAttributeCode": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Code"
+          },
+          "CharcAttributeValuation": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Code Valuation"
+          },
+          "DefectClass": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Defect Class"
+          },
+          "CharcAttribSeldSetCodeCrtedBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Name of User Who Created the Data Record"
+          },
+          "CharcAttribSeldSetCodeCrtedOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "System Date on Which Data Record Was Created"
+          },
+          "CharcAttribSeldSetCodeChgdBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Changed By",
+            "description": "Name of User Who Last Changed Data Record"
+          },
+          "CharcAttribSeldSetCodeChgdOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Changed On",
+            "description": "System Date on Which Data Record Was Changed"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Codes and Code Groups"
+      },
+      "CreateA_CharcAttribSeldSetCode": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "CharacteristicAttributeCodeGrp": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Code Group"
+          },
+          "CharacteristicAttributeCode": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Code"
+          },
+          "CharcAttributeValuation": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Code Valuation"
+          },
+          "DefectClass": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Defect Class"
+          },
+          "CharcAttribSeldSetCodeCrtedBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Name of User Who Created the Data Record"
+          },
+          "CharcAttribSeldSetCodeCrtedOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "System Date on Which Data Record Was Created"
+          },
+          "CharcAttribSeldSetCodeChgdBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Changed By",
+            "description": "Name of User Who Last Changed Data Record"
+          },
+          "CharcAttribSeldSetCodeChgdOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Changed On",
+            "description": "System Date on Which Data Record Was Changed"
+          }
+        },
+        "required": [
+          "SelectedCodeSetPlant",
+          "SelectedCodeSet",
+          "CharacteristicAttributeCodeGrp",
+          "CharacteristicAttributeCode"
+        ],
+        "title": "Characteristic Attribute Selected Set Codes and Code Groups (for create)"
+      },
+      "UpdateA_CharcAttribSeldSetCode": {
+        "type": "object",
+        "properties": {
+          "CharcAttributeValuation": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Code Valuation"
+          },
+          "DefectClass": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Defect Class"
+          },
+          "CharcAttribSeldSetCodeCrtedBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Name of User Who Created the Data Record"
+          },
+          "CharcAttribSeldSetCodeCrtedOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "System Date on Which Data Record Was Created"
+          },
+          "CharcAttribSeldSetCodeChgdBy": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Changed By",
+            "description": "Name of User Who Last Changed Data Record"
+          },
+          "CharcAttribSeldSetCodeChgdOn": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Changed On",
+            "description": "System Date on Which Data Record Was Changed"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Codes and Code Groups (for update)"
+      },
+      "A_CharcAttribSeldSetCodeT": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "CharacteristicAttributeCodeGrp": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Code Group"
+          },
+          "CharacteristicAttributeCode": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Code"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "CharacteristicAttributeCodeTxt": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Code Text",
+            "description": "Text for Code"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Code Texts"
+      },
+      "CreateA_CharcAttribSeldSetCodeT": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "CharacteristicAttributeCodeGrp": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Code Group"
+          },
+          "CharacteristicAttributeCode": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Code"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "CharacteristicAttributeCodeTxt": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Code Text",
+            "description": "Text for Code"
+          }
+        },
+        "required": [
+          "SelectedCodeSetPlant",
+          "SelectedCodeSet",
+          "CharacteristicAttributeCodeGrp",
+          "CharacteristicAttributeCode",
+          "Language"
+        ],
+        "title": "Characteristic Attribute Selected Set Code Texts (for create)"
+      },
+      "UpdateA_CharcAttribSeldSetCodeT": {
+        "type": "object",
+        "properties": {
+          "CharacteristicAttributeCodeTxt": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Code Text",
+            "description": "Text for Code"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Code Texts (for update)"
+      },
+      "A_CharcAttribSeldSetT": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "SelectedCodeSetText": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Text for Selected Set"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Texts"
+      },
+      "CreateA_CharcAttribSeldSetT": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetPlant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SelectedCodeSet": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "Selected Set"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "SelectedCodeSetText": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Text for Selected Set"
+          }
+        },
+        "required": [
+          "SelectedCodeSetPlant",
+          "SelectedCodeSet",
+          "Language"
+        ],
+        "title": "Characteristic Attribute Selected Set Texts (for create)"
+      },
+      "UpdateA_CharcAttribSeldSetT": {
+        "type": "object",
+        "properties": {
+          "SelectedCodeSetText": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 40,
+            "title": "Text for Selected Set"
+          }
+        },
+        "title": "Characteristic Attribute Selected Set Texts (for update)"
+      },
+      "count": {
+        "type": "string",
+        "description": "The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "object",
+                "required": [
+                  "lang",
+                  "value"
+                ],
+                "properties": {
+                  "lang": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      },
+      "A_CharcAttribSeldCodeSetOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "InspectionSelectedSetStatus",
+            "InspectionSelectedSetStatus desc",
+            "CharcAttribSeldSetCreatedBy",
+            "CharcAttribSeldSetCreatedBy desc",
+            "CharcAttribSeldSetCrtedOn",
+            "CharcAttribSeldSetCrtedOn desc",
+            "CharcAttribSeldSetLastChgdBy",
+            "CharcAttribSeldSetLastChgdBy desc",
+            "CharcAttribSeldSetLastChgdOn",
+            "CharcAttribSeldSetLastChgdOn desc"
+          ]
+        }
+      },
+      "A_CharcAttribSeldCodeSetSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSet",
+            "InspectionSelectedSetStatus",
+            "CharcAttribSeldSetCreatedBy",
+            "CharcAttribSeldSetCrtedOn",
+            "CharcAttribSeldSetLastChgdBy",
+            "CharcAttribSeldSetLastChgdOn"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetCodeOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "CharacteristicAttributeCodeGrp",
+            "CharacteristicAttributeCodeGrp desc",
+            "CharacteristicAttributeCode",
+            "CharacteristicAttributeCode desc",
+            "CharcAttributeValuation",
+            "CharcAttributeValuation desc",
+            "DefectClass",
+            "DefectClass desc",
+            "CharcAttribSeldSetCodeCrtedBy",
+            "CharcAttribSeldSetCodeCrtedBy desc",
+            "CharcAttribSeldSetCodeCrtedOn",
+            "CharcAttribSeldSetCodeCrtedOn desc",
+            "CharcAttribSeldSetCodeChgdBy",
+            "CharcAttribSeldSetCodeChgdBy desc",
+            "CharcAttribSeldSetCodeChgdOn",
+            "CharcAttribSeldSetCodeChgdOn desc"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetCodeSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSet",
+            "CharacteristicAttributeCodeGrp",
+            "CharacteristicAttributeCode",
+            "CharcAttributeValuation",
+            "DefectClass",
+            "CharcAttribSeldSetCodeCrtedBy",
+            "CharcAttribSeldSetCodeCrtedOn",
+            "CharcAttribSeldSetCodeChgdBy",
+            "CharcAttribSeldSetCodeChgdOn"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetCodeTOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "CharacteristicAttributeCodeGrp",
+            "CharacteristicAttributeCodeGrp desc",
+            "CharacteristicAttributeCode",
+            "CharacteristicAttributeCode desc",
+            "Language",
+            "Language desc",
+            "CharacteristicAttributeCodeTxt",
+            "CharacteristicAttributeCodeTxt desc"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetCodeTSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSet",
+            "CharacteristicAttributeCodeGrp",
+            "CharacteristicAttributeCode",
+            "Language",
+            "CharacteristicAttributeCodeTxt"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetTOrderByOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSetPlant desc",
+            "SelectedCodeSet",
+            "SelectedCodeSet desc",
+            "Language",
+            "Language desc",
+            "SelectedCodeSetText",
+            "SelectedCodeSetText desc"
+          ]
+        }
+      },
+      "A_CharcAttribSeldSetTSelectOptions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "enum": [
+            "SelectedCodeSetPlant",
+            "SelectedCodeSet",
+            "Language",
+            "SelectedCodeSetText"
+          ]
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$inlinecount",
+        "in": "query",
+        "description": "Include count of items, see [Inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67)",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "allpages",
+            "none"
+          ]
+        }
+      },
+      "A_CharcAttribSeldCodeSetOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldCodeSetOrderByOptions"
+        }
+      },
+      "A_CharcAttribSeldCodeSetSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldCodeSetSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldCodeSetByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldCodeSetSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeOrderByOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeTOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTOrderByOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeTSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetCodeTByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetCodeTSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetTOrderByOptions": {
+        "name": "$orderby",
+        "in": "query",
+        "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetTOrderByOptions"
+        }
+      },
+      "A_CharcAttribSeldSetTSelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetTSelectOptions"
+        }
+      },
+      "A_CharcAttribSeldSetTByKeySelectOptions": {
+        "name": "$select",
+        "in": "query",
+        "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+        "explode": false,
+        "schema": {
+          "$ref": "#/components/schemas/A_CharcAttribSeldSetTSelectOptions"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2Auth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "scopes": {
+              "API_CHARCATTRIBUTECATALOG_SRV_0001": ""
+            },
+            "refreshUrl": "https://{host}:{port}",
+            "authorizationUrl": "https://{host}:{port}",
+            "tokenUrl": "https://{host}:{port}"
+          }
+        }
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2Auth": [
+        "API_CHARCATTRIBUTECATALOG_SRV_0001"
+      ]
+    },
+    {
+      "BasicAuth": []
+    }
+  ]
+}

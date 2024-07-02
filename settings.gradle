@@ -35,6 +35,7 @@ include ':qm-ballerina:api_inspectionlot_srv'
 include ':qm-ballerina:api_inspectionplan_srv'
 include ':qm-ballerina:api_masterinspcharacteristic_srv'
 include ':qm-ballerina:api_inspectionmethod_srv'
+include ':qm-ballerina:api_charcattributecatalog_srv'
 include ':qm-ballerina:api_qualityinforecord_srv'
 include ':qm-examples'
 
@@ -44,6 +45,7 @@ project(':qm-ballerina:api_inspectionlot_srv').projectDir = file("ballerina/api_
 project(':qm-ballerina:api_inspectionplan_srv').projectDir = file("ballerina/api_inspectionplan_srv")
 project(':qm-ballerina:api_masterinspcharacteristic_srv').projectDir = file("ballerina/api_masterinspcharacteristic_srv")
 project(':qm-ballerina:api_inspectionmethod_srv').projectDir = file("ballerina/api_inspectionmethod_srv")
+project(':qm-ballerina:api_charcattributecatalog_srv').projectDir = file("ballerina/api_charcattributecatalog_srv")
 project(':qm-ballerina:api_qualityinforecord_srv').projectDir = file("ballerina/api_qualityinforecord_srv")
 
 gradleEnterprise {

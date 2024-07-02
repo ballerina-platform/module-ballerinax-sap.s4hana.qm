@@ -12,6 +12,7 @@ on:
           - api_inspectionplan_srv
           - api_masterinspcharacteristic_srv
           - api_inspectionmethod_srv
+          - api_charcattributecatalog_srv
           - api_qualityinforecord_srv
 
 jobs:

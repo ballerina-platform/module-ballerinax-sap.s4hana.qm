@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import sap.s4hana.api_inspectionplan_srv.mock as _;
+import sap.s4hana.api_charcattributecatalog_srv.mock as _;
 
 import ballerina/log;
 import ballerina/os;
@@ -64,24 +64,7 @@ function initializeClientsForS4HanaServer() returns error? {
 
 @test:Config {
 }
-function testListA_InspectionPlans() returns error? {
-    CollectionOfA_InspectionPlanWrapper inspectionplan = check s4HanaClient->listA_InspectionPlans({});
-    test:assertTrue(inspectionplan.d !is (), "The inspection plan is expected to be non-empty.");
-}
-
-// Since creating a purchasing info record needs master data. This create response is meant to fail.
-@test:Config {
-}
-function testCreateInspectionPlan() returns error? {
-    A_InspectionPlanWrapper|error createdInspectionPlan = s4HanaClient->createA_InspectionPlan({
-        Plant: ("1010"),
-        BillOfOperationsUsage: ("5"),
-        BillOfOperationsStatus: ("4"),
-        InspectionPlan: "1",
-        BillOfOperationsUnit: ("EA"),
-        InspectionPlanGroup: "IP_API_1"
-    });
-    test:assertTrue(createdInspectionPlan is error, "The inspection plan response expected to be 500");
-    error e = <error>createdInspectionPlan;
-    test:assertEquals(e.detail()["statusCode"], 500, "Expected 500 status code");
+function testListA_CharcAttribSeldCodeSets() returns error? {
+    CollectionOfA_CharcAttribSeldCodeSetWrapper listOfCharAttributeCodeSets = check s4HanaClient->listA_CharcAttribSeldCodeSets({});
+    test:assertTrue(listOfCharAttributeCodeSets.d !is (), "The Character attribute code set is expected to be non-empty.");
 }

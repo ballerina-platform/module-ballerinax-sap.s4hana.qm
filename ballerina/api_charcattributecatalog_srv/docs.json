@@ -1,0 +1,7 @@
+{
+  "description": "The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.",
+  "communication-scenario": "Inspection Master Data Integration",
+  "import-statement": "import ballerinax/sap.s4hana.api_charcattributecatalog_srv as charattributecat;",
+  "client-init": "charattributecat:Client charattributecatClient = check new (",
+  "api-invocation": "charattributecat:CollectionOfA_CharcAttribSeldCodeSetWrapper listOfSelectedCodes = check charattributecatClient->listA_CharcAttribSeldCodeSets();"
+}
