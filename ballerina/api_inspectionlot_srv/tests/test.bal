@@ -66,7 +66,7 @@ function initializeClientsForS4HanaServer() returns error? {
 }
 function testGetA_InspectionLot() returns error? {
     CollectionOfA_InspectionLotWrapper inspectionlot = check s4HanaClient->listA_InspectionLots({});
-    test:assertTrue(inspectionlot.d !is (), "The purchasing info record is expected to be non-empty.");
+    test:assertTrue(inspectionlot.d !is (), "The inspection lot is expected to be non-empty.");
 }
 
 // Since creating a purchasing info record needs master data. This create response is meant to fail.
@@ -76,7 +76,7 @@ function testCreateInspectionlot() returns error? {
     A_InspectionLotWrapper|error createdInspectionlot = s4HanaClient->createA_InspectionLot({
         InspectionLot: "10000002600"
     });
-    test:assertTrue(createdInspectionlot is error, "The purchasing info record response expected to be 500");
+    test:assertTrue(createdInspectionlot is error, "The inspection lot response expected to be 500");
     error e = <error>createdInspectionlot;
     test:assertEquals(e.detail()["statusCode"], 500, "Expected 500 status code");
 }

@@ -91,6 +91,7 @@ task build {
     dependsOn(':qm-ballerina:api_masterinspcharacteristic_srv:commitTomlFiles')
     dependsOn(':qm-ballerina:api_inspectionmethod_srv:commitTomlFiles')
     dependsOn(':qm-ballerina:api_charcattributecatalog_srv:commitTomlFiles')
+    dependsOn(':qm-ballerina:api_qualityinforecord_srv:commitTomlFiles')
 }
 
 publishToMavenLocal.dependsOn build

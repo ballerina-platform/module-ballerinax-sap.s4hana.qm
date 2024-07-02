@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import sap.s4hana.api_inspectionplan_srv.mock as _;
+import sap.s4hana.api_qualityinforecord_srv.mock as _;
 
 import ballerina/log;
 import ballerina/os;
@@ -64,24 +64,20 @@ function initializeClientsForS4HanaServer() returns error? {
 
 @test:Config {
 }
-function testListA_InspectionPlans() returns error? {
-    CollectionOfA_InspectionPlanWrapper inspectionplan = check s4HanaClient->listA_InspectionPlans({});
-    test:assertTrue(inspectionplan.d !is (), "The inspection plan is expected to be non-empty.");
+function testListQualityFirstArticleInspections() returns error? {
+    CollectionOfQualityFirstArticleInspectionWrapper listQltyFirstArticleInspections = check s4HanaClient->listQualityFirstArticleInspections({});
+    test:assertTrue(listQltyFirstArticleInspections.d?.results !is (), "The quality info record is expected to be non-empty.");
 }
 
-// Since creating a purchasing info record needs master data. This create response is meant to fail.
+//Since creating a quality info record needs master data. This create response is meant to fail.
 @test:Config {
 }
-function testCreateInspectionPlan() returns error? {
-    A_InspectionPlanWrapper|error createdInspectionPlan = s4HanaClient->createA_InspectionPlan({
-        Plant: ("1010"),
-        BillOfOperationsUsage: ("5"),
-        BillOfOperationsStatus: ("4"),
-        InspectionPlan: "1",
-        BillOfOperationsUnit: ("EA"),
-        InspectionPlanGroup: "IP_API_1"
-    });
-    test:assertTrue(createdInspectionPlan is error, "The inspection plan response expected to be 500");
-    error e = <error>createdInspectionPlan;
+function testCreateQltyFirstArticleInspOfQualityInProcurement() returns error? {
+    QualityFirstArticleInspectionWrapper|error creatingQltyFirstArticleInspOfQltyInProc = s4HanaClient->createQualityFirstArticleInspection({
+        QltyInProcmtIntID: "000001",
+        QltyInProcmt1stArticleInsp: "", 
+        Material: "585"});
+    test:assertTrue(creatingQltyFirstArticleInspOfQltyInProc is error, "The quality info record response expected to be 500");
+    error e = <error>creatingQltyFirstArticleInspOfQltyInProc;
     test:assertEquals(e.detail()["statusCode"], 500, "Expected 500 status code");
 }
