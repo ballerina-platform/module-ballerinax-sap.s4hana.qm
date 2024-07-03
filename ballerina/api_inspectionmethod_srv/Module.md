@@ -70,7 +70,7 @@ inspectionmethod:Client inspectionmethodClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionmethods = check inspectionmethodClient->listA_InspectionMethods();
+inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionMethods = check inspectionmethodClient->listA_InspectionMethods();
 ```
 
 ### Step 4: Run the Ballerina application

@@ -3,5 +3,5 @@
   "communication-scenario": "Quality Info Record Integration",
   "import-statement": "import ballerinax/sap.s4hana.api_qualityinforecord_srv as qltyinforecd;",
   "client-init": "qltyinforecd:Client qltyInfoRecClient = check new (",
-  "api-invocation": "qltyinforecd:CollectionOfQualityFirstArticleInspectionWrapper createdQltyInfoRec = check qltyInfoRecClient->listQualityFirstArticleInspections();"
+  "api-invocation": "qltyinforecd:CollectionOfQualityFirstArticleInspectionWrapper listInspections = check qltyInfoRecClient->listQualityFirstArticleInspections();"
 }

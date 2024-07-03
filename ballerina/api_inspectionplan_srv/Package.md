@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seamless integration with the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview).Inspection plans help you to describe how a quality inspection of one or several materials is to take place. In the inspection plan, you define the sequence of inspection operations and the range of specifications available for inspecting inspection characteristics.
+The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seamless integration with the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables external systems to create, read, update, and delete inspection plans.
 
 ## Setup guide
 

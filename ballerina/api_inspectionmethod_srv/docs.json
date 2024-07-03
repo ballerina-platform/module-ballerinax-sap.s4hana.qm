@@ -3,5 +3,5 @@
   "communication-scenario": "Inspection Master Data Integration",
   "import-statement": "import ballerinax/sap.s4hana.api_inspectionmethod_srv as inspectionmethod;",
   "client-init": "inspectionmethod:Client inspectionmethodClient = check new (",
-  "api-invocation": "inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionmethods = check inspectionmethodClient->listA_InspectionMethods();"
+  "api-invocation": "inspectionmethod:CollectionOfA_InspectionMethodWrapper listOfInspectionMethods = check inspectionmethodClient->listA_InspectionMethods();"
 }

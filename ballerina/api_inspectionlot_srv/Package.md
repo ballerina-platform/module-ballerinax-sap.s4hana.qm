@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamless integration with the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview).In the SAP system, you process quality inspections on the basis of inspection lots. The data relating to a quality inspection is grouped into several entities. With this service it is possible, for example, to update inspection lot header data or to create inspection results and usage decisions.
+The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamless integration with the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview).In the SAP system, you process quality inspections on the basis of inspection lots. With this service it is possible, for example, to update inspection lot header data or to create inspection results and usage decisions.
 
 ## Setup guide
 

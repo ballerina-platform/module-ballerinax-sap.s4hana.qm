@@ -12,31 +12,33 @@ designed for large-scale enterprises by SAP SE.
 
 This repository encompasses all Ballerina packages pertaining to the S/4HANA Quality Management submodule. Notably:
 
-1. The `ballerinax/sap.s4hana.api_inspectionlot_srv` package provides APIs that enable seamless integration with
-   the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview). This service enables you to
-   read, create, and update inspection lots.
+1. The `ballerinax/sap.s4hana.api_inspectionlot_srv` package offers APIs for seamless integration with
+   the [Inspection Lot API v1.2.0](https://api.sap.com/api/API_INSPECTIONLOT_SRV/overview).In the SAP system, you
+   process quality inspections on the basis of inspection lots. With this service it is possible, for example, to update
+   inspection lot header data or to create inspection results and usage decisions.
 
-2. The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package provides APIs that enable seamless integration with
-   the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview). This service
-   enables you to retrieve inspection methods with their settings and administrative data.
+2. The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with
+   the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection
+   method is a master data record that describes the procedure for performing the quality inspection of a
+   characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.
 
-3. The `ballerinax/sap.s4hana.api_inspectionplan_srv` package provides APIs that enable seamless integration with
-   the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables you
-   to read, create, update, and delete inspection plan header data.
+3. The `ballerinax/sap.s4hana.api_inspectionplan_srv` package offers APIs for seamless integration with
+   the [Inspection Plan API v1.0.0](https://api.sap.com/api/API_INSPECTIONPLAN_SRV/overview). This service enables
+   external systems to create, read, update, and delete inspection plans.
 
-4. The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package provides APIs that enable seamless integration
-   with
-   the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).
-   This service allows to read quality inspection specifications of the type master inspection characteristic.
+4. The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs for seamless integration with
+   the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview)
+   .This service allows to read quality inspection specifications of the type master inspection characteristic. A master
+   inspection characteristic is a master data record that describes the quality inspection criteria for materials.
 
-5. The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package provides APIs that enable seamless integration with
+5. The `ballerinax/sap.s4hana.api_qualityinforecord_srv` package offers APIs for seamless integration with
    the [Quality Info Record API v1.2.0](https://api.sap.com/api/API_QUALITYINFORECORD_SRV/overview). This service allows
    to create, read, update, and delete data related to quality info records and first article inspection.
 
-6. The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package provides APIs that enable seamless integration with
-   the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).
-   This service allows to read plant-specific selected sets with their codes that are used to record inspection results
-   for qualitative characteristics.
+6. The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with
+   the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview)
+   .This service allows to read plant-specific selected sets with their codes that are used to record inspection results
+   for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.
 
 ## Issues and projects
 
