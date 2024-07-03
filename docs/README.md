@@ -97,20 +97,20 @@ _Edition_: Swan Lake
 
 5. Add the `<API_NAME>.json` file under the `docs/spec` directory.
 
-   **Note**: Following scripts need to be run within the docs folder.
+    **Note**: Following scripts need to be run within the `docs` folder.
 
 6. Run `bal run sanitation/sanitations.bal -- "<API Name>"`
 
 7. Run `bal run sanitation/operationId.bal -- "<API Name>"`
 
-   **Note**: Commit each change separately for easier future reviews.
+    **Note**: Commit each change separately for easier future reviews.
 
 8. Generate the OpenAPI client.
 
     ```ballerina
     bal openapi -i spec/<API Name>.json -o ../ballerina/<Module Name> --mode client  --license license.txt
     ```
-   **Note**: DO NOT FORGET to delete main.bal.
+    **Note**: DO NOT FORGET to delete main.bal.
 
 9. Run `bal run sanitation/clientSanitations.bal -- "<Module Name>" "<API Postfix>"`
 
@@ -119,8 +119,8 @@ _Edition_: Swan Lake
 
 11. Generate mock server under `modules/mock` folder.
 
-   ```ballerina
-   bal openapi -i spec/<API_NAME>_MOCK.json -o ../ballerina/<Module Name>/modules/mock --mode service  --license license.txt
-   ```
+    ```ballerina
+    bal openapi -i spec/<API_NAME>_MOCK.json -o ../ballerina/<Module Name>/modules/mock --mode service  --license license.txt
+    ```
 
 12. Ensure the test cases are written against mock and live servers, with `isTestOnLiveServer` as the param to switch. 
