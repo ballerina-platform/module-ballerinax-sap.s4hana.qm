@@ -3,7 +3,7 @@
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
 
-The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs for seamless integration with the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).This service allows to. read quality inspection specifications of the type master inspection characteristic. A master inspection characteristic is a master data record that describes the quality inspection criteria for materials.
+The `ballerinax/sap.s4hana.api_masterinspcharacteristic_srv` package offers APIs for seamless integration with the [Master Inspection Characteristic - Read API v2.0.0](https://api.sap.com/api/API_MASTERINSPCHARACTERISTIC_SRV/overview).This service allows to read quality inspection specifications of the type master inspection characteristic. A master inspection characteristic is a master data record that describes the quality inspection criteria for materials.
 
 ## Setup guide
 

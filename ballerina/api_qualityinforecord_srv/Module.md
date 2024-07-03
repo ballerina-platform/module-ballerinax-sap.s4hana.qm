@@ -70,7 +70,7 @@ qltyinforecd:Client qltyInfoRecClient = check new (
 Now, utilize the available connector operations.
 
 ```ballerina
-qltyinforecd:CollectionOfQualityFirstArticleInspectionWrapper createdQltyInfoRec = check qltyInfoRecClient->listQualityFirstArticleInspections();
+qltyinforecd:CollectionOfQualityFirstArticleInspectionWrapper listInspections = check qltyInfoRecClient->listQualityFirstArticleInspections();
 ```
 
 ### Step 4: Run the Ballerina application
