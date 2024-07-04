@@ -6,10 +6,11 @@ these [examples](https://github.com/ballerina-platform/module-ballerinax-sap.s4h
 use cases like accessing S/4HANA Master Inspection Characteristic - Read API or Inspection Lot API.
 
 1. [S/4HANA to Database Integration](https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/tree/main/examples/SAP-to-Database) -
-   Demonstrates leveraging the `sap.s4hana.api_masterinspcharacteristic_srv:Client` in Ballerina for S/4HANA API interactions. It specifically showcases how to get master data from S/4HANA Quality Management module and check your own database to see if the data should be inserted or not.
+   This example demonstrates how to use Ballerina to interact with the `sap.s4hana.api_masterinspcharacteristic_srv:Client` for accessing S/4HANA Quality Management module data, and then updating a MySQL database based on this information.
 
 2. [Paper invoice to S/4HANA](https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/tree/main/examples/paper-invoice-to-inspectionlot) -
-   Demonstrates leveraging the `sap.s4hana.api_inspectionlot_srv:Client` in Ballerina for S/4HANA API interactions. It extracts data from a physical invoice using Optical character recognition (OCR) with [Eden AI](edenai.co) API and creates an inspection lot with the invoce data to start the inspection process in S/4HANA QM module.
+   demonstrates how to use Ballerina's `sap.s4hana.api_inspectionlot_srv:Client` for S/4HANA API interactions. Optical character recognition (OCR) with [Eden AI](edenai.co) API is used to extract data from a physical invoice. The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
+
 
 ## Prerequisites
 
