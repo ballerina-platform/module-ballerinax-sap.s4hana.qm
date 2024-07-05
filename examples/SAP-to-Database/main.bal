@@ -42,10 +42,12 @@ final mysql:Client db = check new (
 );
 
 public function main() returns error? {
-    masterdata:CollectionOfA_InspectionSpecificationWrapper masterDataResponse = check masterdataClient->listA_InspectionSpecifications();
+    masterdata:CollectionOfA_InspectionSpecificationWrapper masterDataResponse =
+                    check masterdataClient->listA_InspectionSpecifications();
     masterdata:A_InspectionSpecification[] inspectionSpecifications = masterDataResponse.d?.results ?: [];
 
-    stream<record {string InspectionSpecification;}, error?> resultFromDB = db->query(`SELECT InspectionSpecification FROM Ins_Spec_Directory`);
+    stream<record {string InspectionSpecification;}, error?> resultFromDB =
+    db->query(`SELECT InspectionSpecification FROM Ins_Spec_Directory`);
     string[] specificationIds = check from record {string InspectionSpecification;} key in resultFromDB
         select key.InspectionSpecification;
 
@@ -57,31 +59,17 @@ public function main() returns error? {
         log:printInfo("Database is upto date.");
         return;
     }
-    sql:ExecutionResult[]|sql:Error insertResult = insertSpecification(specsNotinDB);
-    int[] resultIndexes = [];
-    if insertResult is sql:BatchExecuteError {
-        resultIndexes = from sql:ExecutionResult result in insertResult.detail().executionResults
-            where result.affectedRowCount == sql:EXECUTION_FAILED
-            select <int>insertResult.detail().executionResults.indexOf(result);
-        log:printError(insertResult.message() + "These records failed insertion:");
-        foreach int index in resultIndexes {
-            log:printInfo(specsNotinDB[index].InspectionSpecification ?: "");
-        }
-    }
-    else if insertResult is sql:ExecutionResult[] {
-        resultIndexes = from sql:ExecutionResult result in insertResult
-            select <int>insertResult.indexOf(result);
-        log:printInfo("Database Insertion succsessful. Inserted records: ");
-        foreach int index in resultIndexes {
-            log:printInfo(specsNotinDB[index].InspectionSpecification ?: "");
-        }
-    }
-    else {
-        return insertResult;
+
+    sql:ExecutionResult[] insertResult = insertSpecification(specsNotinDB) ?: [];
+    int[] resultIndexes = from sql:ExecutionResult result in insertResult
+        select <int>insertResult.indexOf(result);
+    log:printInfo("Database Insertion succsessful. Inserted records: ");
+    foreach int index in resultIndexes {
+        log:printInfo(specsNotinDB[index].InspectionSpecification ?: "");
     }
 }
 
-isolated function insertSpecification(masterdata:A_InspectionSpecification[] specifications) returns sql:ExecutionResult[]|sql:Error {
+isolated function insertSpecification(masterdata:A_InspectionSpecification[] specifications) returns sql:ExecutionResult[]? {
     sql:ParameterizedQuery[] insertQueries = from masterdata:A_InspectionSpecification spec in specifications
         select `INSERT INTO Ins_Spec_Directory(InspectionSpecification,
                                                 InspectionSpecVersion,
@@ -99,5 +87,18 @@ isolated function insertSpecification(masterdata:A_InspectionSpecification[] spe
                           ${spec?.InspSpecGlobalName},
                           ${spec?.InspSpecChangeDate})`;
     sql:ExecutionResult[]|sql:Error insertResult = db->batchExecute(insertQueries);
-    return insertResult;
+    if insertResult is sql:BatchExecuteError {
+        int[] errorIndexes = from sql:ExecutionResult result in insertResult.detail().executionResults
+            where result.affectedRowCount == sql:EXECUTION_FAILED
+            select <int>insertResult.detail().executionResults.indexOf(result);
+        log:printError(insertResult.message() + "These records failed insertion:");
+        foreach int index in errorIndexes {
+            log:printInfo(specifications[index].InspectionSpecification ?: "");
+        }
+    } else if insertResult is sql:Error {
+        log:printError(insertResult.message());
+    } else {
+        return insertResult;
+    }
+    return;
 }

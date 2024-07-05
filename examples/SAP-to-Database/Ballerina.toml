@@ -1,5 +1,5 @@
 [package]
-org = "integration_samples"
+org = "wso2"
 name = "Read_SAP_Master_Inspection_Data"
 version = "0.1.0"
 distribution = "2201.9.0"
