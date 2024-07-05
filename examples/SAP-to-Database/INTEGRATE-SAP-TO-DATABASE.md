@@ -4,7 +4,7 @@ This example demonstrates how to use Ballerina to interact with the `sap.s4hana.
 
 The example works as follows:
 
-![example workflow](SAPtoDBworkflow.png)
+![example workflow](..\SAP-to-Database\SAPtoDBworkflow.png)
  
 ## Prerequisites
 
