@@ -1,7 +1,22 @@
+// Copyright (c) 2024 WSO2 LLC. (http://www.wso2.org).
+//
+// WSO2 LLC. licenses this file to you under the Apache License,
+// Version 2.0 (the "License"); you may not use this file except
+// in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 import ballerina/http;
 import ballerina/log;
 import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionLot;
-import ballerina/io;
 
 const OCR_REQUEST_PATH = "/invoice_parser";
 const OCR_URL = "https://api.edenai.run/v2/ocr";
@@ -12,11 +27,15 @@ configurable S4HANAClientConfig s4hanaClientConfig = ?;
 configurable string ocrToken = ?;
 configurable string invoiceUrl = ?;
 
-final map<string> & readonly supplierMap = {"SNG Engineering Inc": "1010"};
-final map<string> & readonly plantMap = {"SNG Engineering Inc": "1010"};
-final map<string> & readonly materialMap = {"89FG": "FG376", "89QM": "E002"};
+const map<string> & readonly supplierMap = {"SNG Engineering Inc": "1010"};
+const map<string> & readonly plantMap = {"SNG Engineering Inc": "1010"};
+const map<string> & readonly materialMap = {"89FG": "FG376", "89QM": "E002"};
 
-final http:Client ocrHttpClient = check getOCRHttpClient();
+final http:Client ocrHttpClient = check new (
+    url = OCR_URL,
+    auth = {token: ocrToken},
+    cookieConfig = {enabled: true}
+);
 
 final inspectionLot:Client inspectionLotClient = check new (
     config = {
@@ -35,34 +54,20 @@ public function main() {
         log:printError("Error while reading paper invoice: " + invoiceResponse.message());
         return;
     }
-
     log:printInfo("Received inspection lot with invoice number: " + invoiceResponse.invoice_number + " on " + invoiceResponse.date);
-    SAPInspectionLot|error inspectionLotData = transformInspectionLotData(invoiceResponse);
+
+    inspectionLot:CreateA_InspectionLot|error inspectionLotData = transformInspectionLotData(invoiceResponse);
     if inspectionLotData is error {
         log:printError("Error while transforming inspection lot: " + inspectionLotData.message());
         return;
     }
-    io:print(inspectionLotData);
 
-    InspectionLot[] data = inspectionLotData._InspectionLotDetails;
-    inspectionLot:CreateA_InspectionLot inspectionLot = {
-        InspectionLot: inspectionLotData.InspectionLot,
-        InspectionLotType: inspectionLotData.InspectionLotType,
-        Material: data[0].Material,
-        Plant: data[0].Plant,
-        InspectionLotQuantity: data[0].Quantity.toString()
-    };
-
-    inspectionLot:A_InspectionLotWrapper|error inspectionLotResponse = inspectionLotClient->createA_InspectionLot(inspectionLot);
+    inspectionLot:A_InspectionLotWrapper|error inspectionLotResponse = inspectionLotClient->createA_InspectionLot(inspectionLotData);
     if inspectionLotResponse is error {
         log:printError("Error while creating SAP Inspection Lot: " + inspectionLotResponse.message());
+    } else {
+        log:printInfo("Inspection lot with invoice number: " + invoiceResponse.invoice_number + " is created");
     }
-     io:println(inspectionLotResponse);
-}
-
-isolated function getOCRHttpClient() returns http:Client|error {
-    http:BearerTokenConfig tokenAuthHandler = {token: ocrToken};
-    return new (url = OCR_URL, auth = tokenAuthHandler, cookieConfig = {enabled: true});
 }
 
 isolated function readPaperInvoice() returns PaperInvoice|error {
@@ -75,7 +80,7 @@ isolated function readPaperInvoice() returns PaperInvoice|error {
         language: "en",
         file_url: invoiceUrl
     },
-        headers = {[CONTENT_TYPE] : APPLICATION_JSON},
+        headers = {[CONTENT_TYPE]: APPLICATION_JSON},
         targetType = ExtractedInvoice
     );
     if response is http:Error {
@@ -84,7 +89,7 @@ isolated function readPaperInvoice() returns PaperInvoice|error {
     return response.eden\-ai.extracted_data[0];
 }
 
-isolated function transformInspectionLotData(PaperInvoice paperInvoice) returns SAPInspectionLot|error {
+isolated function transformInspectionLotData(PaperInvoice paperInvoice) returns inspectionLot:CreateA_InspectionLot|error {
     string inspectionLot = "890000038513";
     string inspectionLotType = "89FG";
     string supplier = paperInvoice.merchant_information.merchant_name;
@@ -96,11 +101,14 @@ isolated function transformInspectionLotData(PaperInvoice paperInvoice) returns 
         {
             Material: material,
             Plant: plant,
-            Quantity:lineItem.quantity
+            Quantity: lineItem.quantity
         };
+
     return {
         InspectionLot: inspectionLot,
-        InspectionLotType:inspectionLotType,
-        _InspectionLotDetails: inspectionLotDetails
+        InspectionLotType: inspectionLotType,
+        Material: inspectionLotDetails[0].Material,
+        Plant: inspectionLotDetails[0].Plant,
+        InspectionLotQuantity: inspectionLotDetails[0].Quantity.toString()
     };
 }
