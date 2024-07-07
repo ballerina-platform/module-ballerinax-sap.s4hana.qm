@@ -1,10 +1,11 @@
-# Extract paper Delivery Note and integrate with S/4HANA
+# Extract data from paper delivery note and integrate with S/4HANA
 
 This example illustrates leveraging the `sap.s4hana.api_inspectionlot_srv:Client` in Ballerina for S/4HANA
 API interactions. It extracts data from a paper Delivery Note using Optical character recognition (OCR) with [Eden AI](edenai.co) API. The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
 
 The example works as follows:
-![example workflow](createInspectionLotExampleWorkflow.png)
+
+![example workflow](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/main/examples/delivery-note-to-inspectionlot/createInspectionLotExampleWorkflow.png)
 
 ## Prerequisites
 
