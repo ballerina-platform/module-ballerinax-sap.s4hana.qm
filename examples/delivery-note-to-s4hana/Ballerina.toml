@@ -1,0 +1,14 @@
+[package]
+org = "wso2"
+name = "delivery_note_to_inspectionlot"
+version = "0.1.0"
+distribution = "2201.9.0"
+
+[build-options]
+observabilityIncluded = true
+
+[[dependency]]
+org = "ballerinax"
+name = "sap.s4hana.api_inspectionlot_srv"
+version = "1.0.0"
+repository = "local"
