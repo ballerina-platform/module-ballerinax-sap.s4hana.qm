@@ -42,14 +42,15 @@ final mysql:Client db = check new (
 );
 
 public function main() returns error? {
-    masterdata:CollectionOfA_InspectionSpecificationWrapper masterDataResponse =
-                    check masterdataClient->listA_InspectionSpecifications();
-    masterdata:A_InspectionSpecification[] inspectionSpecifications = masterDataResponse.d?.results ?: [];
 
-    stream<record {string InspectionSpecification;}, error?> resultFromDB =
-    db->query(`SELECT InspectionSpecification FROM Ins_Spec_Directory`);
-    string[] specificationIds = check from record {string InspectionSpecification;} key in resultFromDB
-        select key.InspectionSpecification;
+    masterdata:CollectionOfA_InspectionSpecificationWrapper response =
+                    check masterdataClient->listA_InspectionSpecifications();
+    masterdata:A_InspectionSpecification[] inspectionSpecifications = response.d?.results ?: [];
+
+    stream<record {string id;}, error?> resultFromDB =
+                                        db->query(`SELECT InspectionSpecification AS id FROM Ins_Spec_Directory`);
+    string[] specificationIds = check from record {string id;} key in resultFromDB
+        select key.id;
 
     masterdata:A_InspectionSpecification[] specsNotinDB = inspectionSpecifications.filter(
         (value) => specificationIds.indexOf(value.InspectionSpecification ?: "") is ()
@@ -60,17 +61,7 @@ public function main() returns error? {
         return;
     }
 
-    sql:ExecutionResult[] insertResult = insertSpecification(specsNotinDB) ?: [];
-    int[] resultIndexes = from sql:ExecutionResult result in insertResult
-        select <int>insertResult.indexOf(result);
-    log:printInfo("Database Insertion succsessful. Inserted records: ");
-    foreach int index in resultIndexes {
-        log:printInfo(specsNotinDB[index].InspectionSpecification ?: "");
-    }
-}
-
-isolated function insertSpecification(masterdata:A_InspectionSpecification[] specifications) returns sql:ExecutionResult[]? {
-    sql:ParameterizedQuery[] insertQueries = from masterdata:A_InspectionSpecification spec in specifications
+    sql:ParameterizedQuery[] insertQueries = from masterdata:A_InspectionSpecification spec in specsNotinDB
         select `INSERT INTO Ins_Spec_Directory(InspectionSpecification,
                                                 InspectionSpecVersion,
                                                 InspectionSpecPlant,
@@ -86,19 +77,24 @@ isolated function insertSpecification(masterdata:A_InspectionSpecification[] spe
                           ${spec?.InspectionSpecificationSrchTxt},
                           ${spec?.InspSpecGlobalName},
                           ${spec?.InspSpecChangeDate})`;
+
     sql:ExecutionResult[]|sql:Error insertResult = db->batchExecute(insertQueries);
     if insertResult is sql:BatchExecuteError {
         int[] errorIndexes = from sql:ExecutionResult result in insertResult.detail().executionResults
             where result.affectedRowCount == sql:EXECUTION_FAILED
             select <int>insertResult.detail().executionResults.indexOf(result);
-        log:printError(insertResult.message() + "These records failed insertion:");
+        log:printError("Following results failed to be updated in database:");
         foreach int index in errorIndexes {
-            log:printInfo(specifications[index].InspectionSpecification ?: "");
+            log:printInfo(specsNotinDB[index].InspectionSpecification ?: "");
         }
-    } else if insertResult is sql:Error {
-        log:printError(insertResult.message());
-    } else {
-        return insertResult;
+        return;
     }
-    return;
+
+    if insertResult is sql:Error {
+        log:printError("Error occurred while inserting data to database." + insertResult.message());
+        return;
+    }
+
+    log:printInfo("Database Insertion succsessful. Inserted records: ");
+    specificationIds.forEach((id) => log:printInfo(id));
 }

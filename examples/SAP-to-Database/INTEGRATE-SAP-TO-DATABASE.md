@@ -1,19 +1,17 @@
 # Read S/4HANA Master Inspection data and sync a MySQL database
 
-This example demonstrates how to use Ballerina to interact with the `sap.s4hana.api_masterinspcharacteristic_srv:Client` for accessing S/4HANA Quality Management module, and then syncing a MySQL database based on this information.
-
-The example works as follows:
-
-![example workflow](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/main/examples/SAP-to-Database/SAPtoDBworkflow.png)
+This example demonstrates how to use Ballerina to interact with
+the `sap.s4hana.api_masterinspcharacteristic_srv:Client` for accessing S/4HANA Quality Management module, and then
+syncing a MySQL database based on this information.
 
 ## Prerequisites
 
 ### 1. Setup the S/4HANA API
 
-Refer to the [Setup Guide](https://central.ballerina.io/ballerinax/sap/latest#setup-guide) for obtaining necessary credentials (
-hostname, username, password) to acess the S/4HANA API.
+Refer to the [Setup Guide](https://central.ballerina.io/ballerinax/sap/latest#setup-guide) for obtaining necessary credentials (hostname, username, password) to access the S/4HANA API.
 
 ### 2. Setup a database server
+
 Set up a MySQL database using your preferred client. Create the following table schema:
 
 ```sql
@@ -34,7 +32,8 @@ CREATE TABLE Ins_Spec_Directory (
 
 ### 2. Configuration
 
-In the example directory, create a `Config.toml` file to configure the database credentials and S/4HANA API. Add your credentials there:
+In the example directory, create a `Config.toml` file to configure the database credentials and S/4HANA API. Add your
+credentials there:
 
 ```toml
 [s4hanaClientConfig]
