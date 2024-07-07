@@ -1,6 +1,8 @@
 # Extract data from paper delivery note and integrate with S/4HANA
 
-This example demonstrates how to use Ballerina's `sap.s4hana.api_inspectionlot_srv:Client` to interact with S/4HANA API. Optical character recognition (OCR) with [Eden AI](edenai.co) API is used to extract data from a physical delivery note. The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
+This example demonstrates how to use Ballerina's `sap.s4hana.api_inspectionlot_srv:Client` to interact with S/4HANA API.
+Optical character recognition (OCR) with [Eden AI](edenai.co) API is used to extract data from a physical delivery note.
+The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
 
 ## Prerequisites
 
@@ -15,7 +17,8 @@ hostname, username, password).
 
 ### 2. Configuration
 
-In the example directory, create a Config.toml file and configure InspectionLot and S/4HANA API credentials as shown below:
+In the example directory, create a Config.toml file and configure InspectionLot and S/4HANA API credentials as shown
+below:
 
 ```toml
 ocrToken = "<Token>"

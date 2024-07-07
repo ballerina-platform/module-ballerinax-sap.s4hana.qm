@@ -8,7 +8,8 @@ syncing a MySQL database based on this information.
 
 ### 1. Setup the S/4HANA API
 
-Refer to the [Setup Guide](https://central.ballerina.io/ballerinax/sap/latest#setup-guide) for obtaining necessary credentials (hostname, username, password) to access the S/4HANA API.
+Refer to the [Setup Guide](https://central.ballerina.io/ballerinax/sap/latest#setup-guide) for obtaining necessary
+credentials (hostname, username, password) to access the S/4HANA API.
 
 ### 2. Setup a database server
 
