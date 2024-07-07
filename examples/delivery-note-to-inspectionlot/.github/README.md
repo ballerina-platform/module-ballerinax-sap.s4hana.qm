@@ -1,1 +1,1 @@
-../Extract-data-from-delivery-note-to-create-Inspectionlot
+../Extract-data-from-delivery-note-to-create-Inspectionlot.md
