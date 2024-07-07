@@ -4,8 +4,8 @@ This example demonstrates how to use Ballerina to interact with the `sap.s4hana.
 
 The example works as follows:
 
-![example workflow](..\SAP-to-Database\SAPtoDBworkflow.png)
- 
+![example workflow](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/main/examples/SAP-to-Database/SAPtoDBworkflow.png)
+
 ## Prerequisites
 
 ### 1. Setup the S/4HANA API
