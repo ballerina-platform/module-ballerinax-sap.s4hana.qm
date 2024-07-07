@@ -1,0 +1,14 @@
+[package]
+org = "wso2"
+name = "Read_SAP_Master_Inspection_Data"
+version = "0.1.0"
+distribution = "2201.9.0"
+
+[[dependency]]
+org = "ballerinax"
+name = "sap.s4hana.api_masterinspcharacteristic_srv"
+version = "1.0.0"
+repository = "local"
+
+[build-options]
+observabilityIncluded = true
