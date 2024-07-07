@@ -1,11 +1,6 @@
 # Extract data from paper delivery note and integrate with S/4HANA
 
-This example illustrates leveraging the `sap.s4hana.api_inspectionlot_srv:Client` in Ballerina for S/4HANA
-API interactions. It extracts data from a paper Delivery Note using Optical character recognition (OCR) with [Eden AI](edenai.co) API. The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
-
-The example works as follows:
-
-![example workflow](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/main/examples/delivery-note-to-inspectionlot/createInspectionLotExampleWorkflow.png)
+This example demonstrates how to use Ballerina's `sap.s4hana.api_inspectionlot_srv:Client` to interact with S/4HANA API. Optical character recognition (OCR) with [Eden AI](edenai.co) API is used to extract data from a physical delivery note. The data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
 
 ## Prerequisites
 
@@ -23,14 +18,13 @@ hostname, username, password).
 In the example directory, create a Config.toml file and configure InspectionLot and S/4HANA API credentials as shown below:
 
 ```toml
+ocrToken = "<Token>"
+invoiceUrl = "<invoiceUrl>" # Optional. URL the invoice to be processed is exposed
+
 [s4hanaClientConfig]
 hostname = "<Hostname>"
 username = "<Username>"
 password = "<Password>"
-
-[<ORG_NAME>.delivery_note_to_inspectionlot]
-ocrToken = "<Token>"
-invoiceUrl = "<invoiceUrl>"
 ```
 
 ## Run the Example
@@ -40,4 +34,3 @@ Execute the following command to run the example:
 ```bash
 bal run
 ```
-The URL of the invoice image is passed as a command-line argument.

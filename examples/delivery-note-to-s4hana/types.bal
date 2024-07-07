@@ -16,11 +16,11 @@
 
 type ExtractedInvoice record {
     record {
-        PaperInvoice[] extracted_data;
+        PaperDeliveryNote[] extracted_data;
     } eden\-ai;
 };
 
-type PaperInvoice record {
+type PaperDeliveryNote record {
     string invoice_number;
     string date;
     record {string merchant_name;} merchant_information;
@@ -30,12 +30,6 @@ type PaperInvoice record {
 type InvoiceItem record {
     string description;
     int quantity;
-};
-
-type InspectionLot record {
-    string Material;
-    string Plant;
-    int Quantity;
 };
 
 type S4HANAClientConfig record {|

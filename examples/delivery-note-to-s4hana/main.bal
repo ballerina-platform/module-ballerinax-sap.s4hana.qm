@@ -16,20 +16,19 @@
 
 import ballerina/http;
 import ballerina/log;
+import ballerina/mime;
+import ballerina/uuid;
 import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionLot;
-
-const OCR_REQUEST_PATH = "/invoice_parser";
-const OCR_URL = "https://api.edenai.run/v2/ocr";
-const CONTENT_TYPE = "Content-Type";
-const APPLICATION_JSON = "application/json";
 
 configurable S4HANAClientConfig s4hanaClientConfig = ?;
 configurable string ocrToken = ?;
 configurable string invoiceUrl = ?;
 
-const map<string> & readonly supplierMap = {"SNG Engineering Inc": "1010"};
-const map<string> & readonly plantMap = {"SNG Engineering Inc": "1010"};
-const map<string> & readonly materialMap = {"89FG": "FG376", "89QM": "E002"};
+const OCR_REQUEST_PATH = "/invoice_parser";
+const OCR_URL = "https://api.edenai.run/v2/ocr";
+
+const map<string> & readonly materialMap = {"Material A": "1010", "Material B": "2020"};
+const map<string> & readonly inspectionLotPerMaterial = {"89FG": "FG376", "89QM": "E002"};
 
 final http:Client ocrHttpClient = check new (
     url = OCR_URL,
@@ -49,28 +48,34 @@ final inspectionLot:Client inspectionLotClient = check new (
 
 public function main() {
 
-    PaperInvoice|error invoiceResponse = readPaperInvoice();
-    if invoiceResponse is error {
-        log:printError("Error while reading paper invoice: " + invoiceResponse.message());
-        return;
-    }
-    log:printInfo("Received inspection lot with invoice number: " + invoiceResponse.invoice_number + " on " + invoiceResponse.date);
-
-    inspectionLot:CreateA_InspectionLot|error inspectionLotData = transformInspectionLotData(invoiceResponse);
-    if inspectionLotData is error {
-        log:printError("Error while transforming inspection lot: " + inspectionLotData.message());
+    PaperDeliveryNote|error paperNote = readPaperDeliveryNote();
+    if paperNote is error {
+        log:printError(string `Error while reading paper invoice: ${paperNote.message()}`);
         return;
     }
 
-    inspectionLot:A_InspectionLotWrapper|error inspectionLotResponse = inspectionLotClient->createA_InspectionLot(inspectionLotData);
-    if inspectionLotResponse is error {
-        log:printError("Error while creating SAP Inspection Lot: " + inspectionLotResponse.message());
-    } else {
-        log:printInfo("Inspection lot with invoice number: " + invoiceResponse.invoice_number + " is created");
+    inspectionLot:CreateA_InspectionLot[] inspectionLots = from InvoiceItem item in paperNote.item_lines
+        let string inspectionLot = uuid:createRandomUuid().substring(0, 10)
+        let string materialId = materialMap.get(item.description)
+        select {
+            InspectionLot: inspectionLot,
+            InspectionLotType: inspectionLotPerMaterial.get(materialId),
+            Material: materialId,
+            Plant: "1010",
+            InspectionLotQuantity: item.quantity.toString()
+        };
+
+    foreach inspectionLot:CreateA_InspectionLot inspectionLotData in inspectionLots {
+        inspectionLot:A_InspectionLotWrapper|error inspectionLotResponse = inspectionLotClient->createA_InspectionLot(inspectionLotData);
+        if inspectionLotResponse is error {
+            log:printError(string `Error while creating SAP Inspection Lot for material: ${inspectionLotData?.Material ?: ""}. ${inspectionLotResponse.message()}`);
+            continue;
+        }
+        log:printInfo(string `Inspection lot with number ${paperNote.invoice_number} for material ${inspectionLotData?.Material ?: ""} is created.`);
     }
 }
 
-isolated function readPaperInvoice() returns PaperInvoice|error {
+isolated function readPaperDeliveryNote() returns PaperDeliveryNote|error {
     ExtractedInvoice|http:Error response = ocrHttpClient->post(
         path = OCR_REQUEST_PATH,
         message = {
@@ -80,35 +85,11 @@ isolated function readPaperInvoice() returns PaperInvoice|error {
         language: "en",
         file_url: invoiceUrl
     },
-        headers = {[CONTENT_TYPE]: APPLICATION_JSON},
+        headers = {[http:CONTENT_TYPE]: mime:APPLICATION_JSON},
         targetType = ExtractedInvoice
     );
     if response is http:Error {
         return response;
     }
     return response.eden\-ai.extracted_data[0];
-}
-
-isolated function transformInspectionLotData(PaperInvoice paperInvoice) returns inspectionLot:CreateA_InspectionLot|error {
-    string inspectionLot = "890000038513";
-    string inspectionLotType = "89FG";
-    string supplier = paperInvoice.merchant_information.merchant_name;
-    string plant = plantMap.get(supplier);
-    string material = materialMap.get(inspectionLotType);
-
-    InspectionLot[] inspectionLotDetails = from InvoiceItem lineItem in paperInvoice.item_lines
-        select
-        {
-            Material: material,
-            Plant: plant,
-            Quantity: lineItem.quantity
-        };
-
-    return {
-        InspectionLot: inspectionLot,
-        InspectionLotType: inspectionLotType,
-        Material: inspectionLotDetails[0].Material,
-        Plant: inspectionLotDetails[0].Plant,
-        InspectionLotQuantity: inspectionLotDetails[0].Quantity.toString()
-    };
 }
