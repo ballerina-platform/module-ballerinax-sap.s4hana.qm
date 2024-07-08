@@ -81,19 +81,19 @@ public function main(string apiName) returns error? {
 
     map<Path> paths = spec.paths;
     foreach var [key, value] in paths.entries() {
-        if (value.get is Method) {
+        if value.get is Method {
             value.get.operationId = check getSanitisedPathName(key, GET, isODATA4, value.get?.responses);
         }
-        if (value.post is Method) {
+        if value.post is Method {
             value.post.operationId = check getSanitisedPathName(key, POST, isODATA4);
         }
-        if (value.put is Method) {
+        if value.put is Method {
             value.put.operationId = check getSanitisedPathName(key, PUT, isODATA4);
         }
-        if (value.delete is Method) {
+        if value.delete is Method {
             value.delete.operationId = check getSanitisedPathName(key, DELETE, isODATA4);
         }
-        if (value.patch is Method) {
+        if value.patch is Method {
             value.patch.operationId = check getSanitisedPathName(key, PATCH, isODATA4);
         }
     }
@@ -218,7 +218,7 @@ function getSanitizedName(string word, boolean isCollectionReturnedResult) retur
 }
 
 function isCollectionReturned(HttpMethod method, json? response) returns boolean {
-    if (method == GET) {
+    if method == GET {
         if response is () {
             return false;
         }

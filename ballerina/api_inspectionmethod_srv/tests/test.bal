@@ -33,21 +33,21 @@ Client s4HanaClient = test:mock(Client);
 
 @test:BeforeSuite
 function initializeClientsForS4HanaServer() returns error? {
-    if (isTestOnLiveServer) {
+    if isTestOnLiveServer {
         log:printInfo("Running tests on S4HANA server");
         s4HanaClient = check new (
-            config = {
+            {
                 auth: {
                     username,
                     password
                 }
             },
-            hostname = hostname
+            hostname
         );
     } else {
         log:printInfo("Running tests on mock server");
         s4HanaClient = check new (
-            config = {
+            {
                 auth: {
                     username,
                     password
@@ -56,7 +56,7 @@ function initializeClientsForS4HanaServer() returns error? {
                     cert: certPathPostFix + "resources/public.crt"
                 }
             },
-            hostname = hostname,
+            hostname,
             port = 9090
         );
     }
