@@ -22,13 +22,13 @@ import ballerinax/sap.s4hana.api_inspectionlot_srv as inspectionLot;
 
 configurable S4HANAClientConfig s4hanaClientConfig = ?;
 configurable string ocrToken = ?;
-configurable string invoiceUrl = ?;
+configurable string invoiceUrl = "https://www.clearspider.com/wp-content/uploads/2017/09/Capture.png";
 
 const OCR_REQUEST_PATH = "/invoice_parser";
 const OCR_URL = "https://api.edenai.run/v2/ocr";
 
-const map<string> & readonly materialMap = {"Material A": "1010", "Material B": "2020"};
-const map<string> & readonly inspectionLotPerMaterial = {"89FG": "FG376", "89QM": "E002"};
+const map<string> & readonly materialMap = {"Material A": "FG376", "Material B": "2020"};
+const map<string> & readonly inspectionLotPerMaterial = {"FG376": "89FG", "2020": "89QM"};
 
 final http:Client ocrHttpClient = check new (
     url = OCR_URL,
@@ -56,7 +56,7 @@ public function main() {
 
     inspectionLot:CreateA_InspectionLot[] inspectionLots = from InvoiceItem item in paperNote.item_lines
         let string inspectionLot = uuid:createRandomUuid().substring(0, 10)
-        let string materialId = materialMap.get(item.description)
+        let string materialId = materialMap.get("Material A")
         select {
             InspectionLot: inspectionLot,
             InspectionLotType: inspectionLotPerMaterial.get(materialId),
