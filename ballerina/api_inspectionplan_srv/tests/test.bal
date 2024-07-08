@@ -57,7 +57,7 @@ function initializeClientsForS4HanaServer() returns error? {
                 }
             },
             hostname,
-            port = 9090
+            9090
         );
     }
 }
