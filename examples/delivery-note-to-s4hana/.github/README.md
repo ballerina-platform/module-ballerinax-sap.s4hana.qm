@@ -1,1 +1,1 @@
-../PAPER DELIVERY NOTE TO S4HANA.md
+../Paper Delivery Note to S4HANA.md

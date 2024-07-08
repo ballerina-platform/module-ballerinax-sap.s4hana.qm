@@ -1,1 +1,1 @@
-../INTEGRATE-SAP-TO-DATABASE.md
+../Integrate-SAP-to-database.md
