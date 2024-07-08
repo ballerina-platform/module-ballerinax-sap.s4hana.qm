@@ -93,7 +93,7 @@ use cases S/4HANA to database, paper delivery note to S/4HANA integrations.
 
 2. [Paper Delivery Note to S/4HANA](https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.qm/tree/main/examples/delivery-note-to-s4hana) -
    Demonstrates how to use Ballerina's `sap.s4hana.api_inspectionlot_srv:Client` to interact with S/4HANA API. Optical
-   character recognition (OCR) with [Eden AI](edenai.co) API is used to extract data from a physical delivery note. The
+   character recognition (OCR) with [Eden AI](https://www.edenai.co/) API is used to extract data from a physical delivery note. The
    data is then used to establish an inspection lot to initiate the inspection process in the S/4HANA QM module.
 
 ## Report Issues
