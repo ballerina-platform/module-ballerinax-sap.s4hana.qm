@@ -22,13 +22,10 @@ type ExtractedInvoice record {
 
 type PaperDeliveryNote record {
     string invoice_number;
-    string date;
-    record {string merchant_name;} merchant_information;
     InvoiceItem[] item_lines;
 };
 
 type InvoiceItem record {
-    string description;
     int quantity;
 };
 
