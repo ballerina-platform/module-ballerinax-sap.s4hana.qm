@@ -55,13 +55,13 @@ configurable string username = ?;
 configurable string password = ?;
 
 charattributecat:Client charattributecatClient = check new (
-    hostname = hostname,
-    config = {
+    {
         auth: {
             username,
             password
         }
-    }
+    },
+    hostname
 );
 ```
 

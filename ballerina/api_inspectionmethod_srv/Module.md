@@ -55,13 +55,13 @@ configurable string username = ?;
 configurable string password = ?;
 
 inspectionmethod:Client inspectionmethodClient = check new (
-    hostname = hostname,
-    config = {
+    {
         auth: {
             username,
             password
         }
-    }
+    },
+    hostname
 );
 ```
 
