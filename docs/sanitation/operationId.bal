@@ -208,7 +208,7 @@ function getSanitisedPathName(string key, HttpMethod method, boolean isODATA4, j
 }
 
 function getSanitizedName(string word, boolean isCollectionReturnedResult) returns string|error {
-    if (isCollectionReturnedResult && !word.endsWith("Details")) {
+    if isCollectionReturnedResult && !word.endsWith("Details") {
         string pluralizeBasePath = check pluralize:pluralize(word);
         io:println(string `Plural of ${word} is ${pluralizeBasePath}`);
         return pluralizeBasePath;
