@@ -1,9 +1,9 @@
 ## Package Overview
 
+The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.
+
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
-
-The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.
 
 ## Setup guide
 

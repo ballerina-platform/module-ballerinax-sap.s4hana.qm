@@ -1,9 +1,9 @@
 ## Overview
 
+The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection method is a master data record that describes the procedure for performing the quality inspection of a characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.
+
 [S/4HANA](https://www.sap.com/india/products/erp/s4hana.html) is a robust enterprise resource planning (ERP) solution,
 designed for large-scale enterprises by SAP SE.
-
-The `ballerinax/sap.s4hana.api_inspectionmethod_srv` package offers APIs for seamless integration with the [Inspection Method - Read API v2.0.0](https://api.sap.com/api/API_INSPECTIONMETHOD_SRV/overview).An inspection method is a master data record that describes the procedure for performing the quality inspection of a characteristic. This service enables you to retrieve inspection methods with their settings and administrative data.
 
 ## Setup guide
 
