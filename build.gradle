@@ -58,7 +58,7 @@ allprojects {
 task clean {
 }
 
-task build {
+tasks.register('build') {
     dependsOn(':qm-sanitation:build')
     dependsOn(':qm-ballerina:build')
     dependsOn(':qm-examples:build')
