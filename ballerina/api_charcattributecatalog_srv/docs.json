@@ -1,7 +1,16 @@
 {
-  "description": "The `ballerinax/sap.s4hana.api_charcattributecatalog_srv` package offers APIs for seamless integration with the [Characteristic Attribute Catalog - Read API v1.0.0](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview).This service allows to read plant-specific selected sets with their codes that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.",
+  "description": "WSO2 SAP S/4HANA Characteristic Attribute Catalog provides a way to interact with the [Characteristic Attribute Catalog - Read API](https://api.sap.com/api/API_CHARCATTRIBUTECATALOG_SRV/overview). The service allows to read the plant-specific selected sets of a characteristic attribute catalog, with their codes and texts, that are used to record inspection results for qualitative characteristics, for example, the codes 01 (Smooth) and 02 (Rough) for the characteristic Surface.",
   "communication-scenario": "Inspection Master Data Integration",
+  "communication-scenario-id": "SAP_COM_0110",
+  "scenario-search-image": "s4-3-search-scenario-sap-com-0110.png",
+  "new-arrangement-image": "s4-4-new-arrangement-sap-com-0110.png",
+  "arrangement-details-image": "s4-5-arrangement-details-sap-com-0110.png",
   "import-statement": "import ballerinax/sap.s4hana.api_charcattributecatalog_srv as charattributecat;",
   "client-init": "charattributecat:Client charattributecatClient = check new (",
-  "api-invocation": "charattributecat:CollectionOfA_CharcAttribSeldCodeSetWrapper listOfSelectedCodes = check charattributecatClient->listA_CharcAttribSeldCodeSets();"
+  "api-invocation": "charattributecat:CollectionOfA_CharcAttribSeldCodeSetWrapper listOfSelectedCodes = check charattributecatClient->listA_CharcAttribSeldCodeSets();",
+  "key-features": [
+    "Read the selected sets of a characteristic attribute catalog for a plant",
+    "Read the codes in a selected set with their valuation and defect class",
+    "Read the language-dependent texts of selected sets and codes"
+  ]
 }
