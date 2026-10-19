@@ -2,10 +2,9 @@
 org = "ballerinax"
 name = "sap.s4hana.api_charcattributecatalog_srv"
 version = "1.0.0"
-distribution = "2201.9.0"
+distribution = "2201.13.0"
 authors = ["Ballerina"]
-keywords = ["Business Management/ERP", "Cost/Paid", "Vendor/SAP", "Production Planning", "PP"]
-export = ["sap.s4hana.api_charcattributecatalog_srv"]
+keywords = ["Name/SAP S/4HANA Characteristic Attribute Catalog", "Type/Connector", "Vendor/SAP", "Area/ERP & Business Operations", "Business Management/ERP", "Cost/Paid", "S/4HANA", "Quality Management", "QM", "Inspection Catalog", "Characteristic Attribute Catalog"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.qm"
 icon = "../icon.png"
 license = ["Apache-2.0"]

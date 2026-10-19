@@ -583,31 +583,40 @@ public type ConnectionConfig record {|
     # The HTTP version understood by the client
     http:HttpVersion httpVersion = http:HTTP_2_0;
     # Configurations related to HTTP/1.x protocol
-    ClientHttp1Settings http1Settings?;
+    http:ClientHttp1Settings http1Settings = {};
     # Configurations related to HTTP/2 protocol
-    http:ClientHttp2Settings http2Settings?;
+    http:ClientHttp2Settings http2Settings = {};
     # The maximum time to wait (in seconds) for a response before closing the connection
     decimal timeout = 60;
     # The choice of setting `forwarded`/`x-forwarded` header
     string forwarded = "disable";
+    # Configurations associated with Redirection
+    http:FollowRedirects followRedirects?;
     # Configurations associated with request pooling
     http:PoolConfiguration poolConfig?;
     # HTTP caching related configurations
-    http:CacheConfig cache?;
+    http:CacheConfig cache = {};
     # Specifies the way of handling compression (`accept-encoding`) header
     http:Compression compression = http:COMPRESSION_AUTO;
     # Configurations associated with the behaviour of the Circuit Breaker
     http:CircuitBreakerConfig circuitBreaker?;
     # Configurations associated with retrying
     http:RetryConfig retryConfig?;
+    # Configurations associated with cookies
+    http:CookieConfig cookieConfig?;
     # Configurations associated with inbound response size limits
-    http:ResponseLimitConfigs responseLimits?;
+    http:ResponseLimitConfigs responseLimits = {};
     # SSL/TLS-related options
     http:ClientSecureSocket secureSocket?;
     # Proxy server related options
     http:ProxyConfig proxy?;
+    # Provides settings related to client socket configuration
+    http:ClientSocketConfig socketConfig = {};
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
+    # Enables relaxed data binding on the client side. When enabled, `nil` values are treated as optional,
+    # and absent fields are handled as `nilable` types. Enabled by default.
+    boolean laxDataBinding = true;
 |};
 
 public type CollectionOfA_InspPlanOperationWrapper record {
@@ -1311,18 +1320,6 @@ public type CreateA_InspPlanMaterialAssgmt record {
     string? BOOSearchText?;
 };
 
-# Proxy server configurations to be used with the HTTP client endpoint.
-public type ProxyConfig record {|
-    # Host name of the proxy server
-    string host = "";
-    # Proxy server port
-    int port = 0;
-    # Proxy server username
-    string userName = "";
-    # Proxy server password
-    @display {label: "", kind: "password"}
-    string password = "";
-|};
 
 public type A_InspPlanDepdntCharc record {
     boolean? Delete_mc?;
@@ -1480,15 +1477,6 @@ public type ListA_InspPlanOpPRTsQueries record {
 
 public type A_InspPlanDepdntCharcOrderByOptions ("InspectionPlanGroup"|"InspectionPlanGroup desc"|"InspectionPlan"|"InspectionPlan desc"|"InspectionPlanInternalVersion"|"InspectionPlanInternalVersion desc"|"BOOOperationInternalID"|"BOOOperationInternalID desc"|"BOOOpInternalVersionCounter"|"BOOOpInternalVersionCounter desc"|"BOOCharacteristic"|"BOOCharacteristic desc"|"BOOCharacteristicVersion"|"BOOCharacteristicVersion desc"|"BOODpndantCharcSpec"|"BOODpndantCharcSpec desc"|"BOODpndantCharcSpecVers"|"BOODpndantCharcSpecVers desc"|"InspSpecIsQuantitative"|"InspSpecIsQuantitative desc"|"InspSpecIsDefectsRecgAutomatic"|"InspSpecIsDefectsRecgAutomatic desc"|"InspSpecIsSelectedSetRequired"|"InspSpecIsSelectedSetRequired desc"|"InspectionSpecificationText"|"InspectionSpecificationText desc"|"InspSpecIsDefectRecordingRqd"|"InspSpecIsDefectRecordingRqd desc"|"ProdnRsceToolItemNumber"|"ProdnRsceToolItemNumber desc"|"ValidityStartDate"|"ValidityStartDate desc"|"ValidityEndDate"|"ValidityEndDate desc"|"ChangeNumber"|"ChangeNumber desc"|"Supplier"|"Supplier desc"|"Customer"|"Customer desc"|"BOOSearchText"|"BOOSearchText desc"|"MultipleSpecificationObject"|"MultipleSpecificationObject desc"|"MultipleSpecificationObjType"|"MultipleSpecificationObjType desc"|"IsDeleted"|"IsDeleted desc"|"BOOOperationPRTInternalID"|"BOOOperationPRTInternalID desc"|"Material"|"Material desc"|"Plant"|"Plant desc"|"BillOfOperationsVariant"|"BillOfOperationsVariant desc"|"BOOToMaterialInternalID"|"BOOToMaterialInternalID desc"|"InspSpecDecimalPlaces"|"InspSpecDecimalPlaces desc"|"InspectionSpecificationUnit"|"InspectionSpecificationUnit desc"|"InspSpecTargetValue"|"InspSpecTargetValue desc"|"InspSpecHasTargetValue"|"InspSpecHasTargetValue desc"|"InspSpecUpperLimit"|"InspSpecUpperLimit desc"|"InspSpecLowerLimit"|"InspSpecLowerLimit desc"|"InspSpecHasUpperLimit"|"InspSpecHasUpperLimit desc"|"InspSpecHasLowerLimit"|"InspSpecHasLowerLimit desc"|"InspSpecNumberOfClasses"|"InspSpecNumberOfClasses desc"|"InspSpecClassWidthQty"|"InspSpecClassWidthQty desc"|"InspSpecHasClassWidth"|"InspSpecHasClassWidth desc"|"InspSpecClassMidpointQty"|"InspSpecClassMidpointQty desc"|"InspSpecHasClassMidpoint"|"InspSpecHasClassMidpoint desc"|"SelectedCodeSet"|"SelectedCodeSet desc"|"SelectedCodeSetPlant"|"SelectedCodeSetPlant desc"|"InspSpecAdditionalCatalog2"|"InspSpecAdditionalCatalog2 desc"|"InspSpecAdditionalSelectedSet2"|"InspSpecAdditionalSelectedSet2 desc"|"InspSpecAdditionalCodeGroup2"|"InspSpecAdditionalCodeGroup2 desc"|"InspSpecAddlSeldCodeSetPlant2"|"InspSpecAddlSeldCodeSetPlant2 desc"|"InspSpecAdditionalCatalog3"|"InspSpecAdditionalCatalog3 desc"|"InspSpecAdditionalSelectedSet3"|"InspSpecAdditionalSelectedSet3 desc"|"InspSpecAdditionalCodeGroup3"|"InspSpecAdditionalCodeGroup3 desc"|"InspSpecAddlSeldCodeSetPlant3"|"InspSpecAddlSeldCodeSetPlant3 desc"|"InspSpecAdditionalCatalog4"|"InspSpecAdditionalCatalog4 desc"|"InspSpecAdditionalSelectedSet4"|"InspSpecAdditionalSelectedSet4 desc"|"InspSpecAdditionalCodeGroup4"|"InspSpecAdditionalCodeGroup4 desc"|"InspSpecAddlSeldCodeSetPlant4"|"InspSpecAddlSeldCodeSetPlant4 desc"|"InspSpecAdditionalCatalog5"|"InspSpecAdditionalCatalog5 desc"|"InspSpecAdditionalSelectedSet5"|"InspSpecAdditionalSelectedSet5 desc"|"InspSpecAdditionalCodeGroup5"|"InspSpecAdditionalCodeGroup5 desc"|"InspSpecAddlSeldCodeSetPlant5"|"InspSpecAddlSeldCodeSetPlant5 desc"|"CreatedByUser"|"CreatedByUser desc"|"CreationDate"|"CreationDate desc"|"LastChangedByUser"|"LastChangedByUser desc"|"LastChangeDate"|"LastChangeDate desc"|"BillOfOperationsVersion"|"BillOfOperationsVersion desc"|"ChangedDateTime"|"ChangedDateTime desc")[];
 
-# Provides settings related to HTTP/1.x protocol.
-public type ClientHttp1Settings record {|
-    # Specifies whether to reuse a connection for multiple requests
-    http:KeepAlive keepAlive = http:KEEPALIVE_AUTO;
-    # The chunking behaviour of the request
-    http:Chunking chunking = http:CHUNKING_AUTO;
-    # Proxy server related options
-    ProxyConfig proxy?;
-|};
 
 # Represents the Queries record for the operation: getA_InspectionPlan
 public type GetA_InspectionPlanQueries record {
